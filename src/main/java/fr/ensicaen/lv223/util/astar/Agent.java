@@ -1,6 +1,6 @@
 package fr.ensicaen.lv223.util.astar;
 
-import fr.ensicaen.lv223.model.cells.Cell;
+import fr.ensicaen.lv223.model.environment.cells.Cell;
 
 import java.util.List;
 

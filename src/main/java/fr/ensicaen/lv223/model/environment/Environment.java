@@ -1,7 +1,6 @@
-package fr.ensicaen.lv223.model;
+package fr.ensicaen.lv223.model.environment;
 
-import fr.ensicaen.lv223.model.cells.Cell;
-import fr.ensicaen.lv223.model.cells.EnvironmentCell;
+import fr.ensicaen.lv223.model.environment.cells.Cell;
 
 import java.util.List;
 

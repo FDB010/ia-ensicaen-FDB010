@@ -1,4 +1,4 @@
-package fr.ensicaen.lv223.model.robotsAlpha;
+package fr.ensicaen.lv223.model.agent.robot;
 
 import javafx.scene.paint.Color;
 
@@ -8,10 +8,11 @@ public enum RobotType {
     FARMER(Color.CORNSILK),
     PIPELINE_BUILDER(Color.DARKSEAGREEN),
     ORE_EXTRACTOR(Color.DARKMAGENTA),
+    CENTRALIZER(Color.TRANSPARENT),
     NONE(Color.TRANSPARENT);
 
     private final Color color;
-    private RobotType(Color color)
+    RobotType(Color color)
     {
         this.color = color;
     }

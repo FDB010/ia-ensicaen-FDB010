@@ -1,6 +1,6 @@
-package fr.ensicaen.lv223.model.cells;
+package fr.ensicaen.lv223.model.environment.cells.specials;
 
-import fr.ensicaen.lv223.model.CellType;
+import fr.ensicaen.lv223.model.environment.cells.CellType;
 
 /**
  * The class {@code FoodCell} extends the class {@link ExtractableCell} and
