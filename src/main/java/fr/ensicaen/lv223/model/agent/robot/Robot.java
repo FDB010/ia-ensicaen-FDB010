@@ -4,7 +4,9 @@ import fr.ensicaen.lv223.model.agent.Agent;
 import fr.ensicaen.lv223.model.agent.robot.command.Command;
 import fr.ensicaen.lv223.model.agent.robot.message.Message;
 import fr.ensicaen.lv223.model.agent.robot.objectif.Objectif;
+import fr.ensicaen.lv223.model.environment.cells.Cell;
 
+import java.util.List;
 import java.util.PriorityQueue;
 
 public abstract class Robot implements Agent {
