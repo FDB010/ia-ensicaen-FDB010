@@ -8,7 +8,7 @@ import fr.ensicaen.lv223.model.CellType;
  */
 public abstract class ExtractableCell extends Cell {
     /** The current amount of a given resource that is available on the cell */
-    protected double quantity;
+    protected double  quantity;
 
     /**
      * The initial amount of a given resource that was available at the start
