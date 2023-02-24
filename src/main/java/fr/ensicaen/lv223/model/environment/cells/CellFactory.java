@@ -1,6 +1,4 @@
-package fr.ensicaen.lv223.model.cells;
-
-import fr.ensicaen.lv223.model.CellType;
+package fr.ensicaen.lv223.model.environment.cells;
 
 import java.util.Optional;
 
@@ -61,6 +59,6 @@ public class CellFactory {
             default:
                 return null;
         }
-        return Optional.ofNullable(c);
+        return Optional.of(c);
     }
 }

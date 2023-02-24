@@ -3,9 +3,9 @@ package fr.ensicaen.lv223.presenter;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.ensicaen.lv223.model.*;
-import fr.ensicaen.lv223.model.cells.Cell;
-import fr.ensicaen.lv223.model.robotsAlpha.RobotType;
+import fr.ensicaen.lv223.model.environment.cells.Cell;
+import fr.ensicaen.lv223.model.agent.robot.RobotType;
+import fr.ensicaen.lv223.model.environment.planet.Planet;
 import fr.ensicaen.lv223.view.CellView;
 import javafx.scene.effect.GaussianBlur;
 
@@ -25,8 +25,8 @@ public class Presenter {
      * Constructs a new {@code Presenter} instance.
      */
     public Presenter() {
-        // TO COMPLETE BY INSTANTIATING ALL YOU NEED
         planet = new Planet();
+
     }
 
     /**
@@ -43,7 +43,7 @@ public class Presenter {
     public void drawPlanet() {
         List<List<Cell>> cells = planet.getCells();
         List<List<CellView>> cellsView = new ArrayList<>();
-        GaussianBlur blur = new GaussianBlur(0.0);
+        GaussianBlur blur = new GaussianBlur(60);
 
         for (int i = 0; i < cells.size(); i++) {
             cellsView.add(new ArrayList<>(cells.get(0).size()));
@@ -89,6 +89,7 @@ public class Presenter {
      */
     public void simulateOneTurn() {
         // TO COMPLETE
+        planet.play();
         drawPlanet();
         updateRobotPositionOnView();
     }

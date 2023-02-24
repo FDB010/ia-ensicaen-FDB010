@@ -1,6 +1,6 @@
-package fr.ensicaen.lv223.model.cells;
+package fr.ensicaen.lv223.model.environment;
 
-import fr.ensicaen.lv223.model.CellType;
+import fr.ensicaen.lv223.model.environment.cells.CellType;
 
 /**
  * The {@code EnvironmentCell} interface represents a cell in an environment.

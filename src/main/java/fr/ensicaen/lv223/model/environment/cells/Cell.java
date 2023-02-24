@@ -1,6 +1,6 @@
-package fr.ensicaen.lv223.model.cells;
+package fr.ensicaen.lv223.model.environment.cells;
 
-import fr.ensicaen.lv223.model.CellType;
+import fr.ensicaen.lv223.model.environment.EnvironmentCell;
 
 /**
  * The {@code Cell} class represents a cell in a two-dimensional grid, with

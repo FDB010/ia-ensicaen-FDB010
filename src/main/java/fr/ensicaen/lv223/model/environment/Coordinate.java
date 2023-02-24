@@ -1,4 +1,4 @@
-package fr.ensicaen.lv223.model;
+package fr.ensicaen.lv223.model.environment;
 
 import java.util.Objects;
 import java.util.Random;

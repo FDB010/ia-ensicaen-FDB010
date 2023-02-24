@@ -1,6 +1,6 @@
-package fr.ensicaen.lv223.model.cells;
+package fr.ensicaen.lv223.model.environment.cells.specials;
 
-import fr.ensicaen.lv223.model.CellType;
+import fr.ensicaen.lv223.model.environment.cells.CellType;
 
 /**
  * The {@code MineralCell} class extends the {@link ExtractableCell} class and
