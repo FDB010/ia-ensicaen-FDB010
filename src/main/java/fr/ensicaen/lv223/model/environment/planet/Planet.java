@@ -1,18 +1,18 @@
 package fr.ensicaen.lv223.model.environment.planet;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import fr.ensicaen.lv223.model.agent.Agent;
-import fr.ensicaen.lv223.model.environment.cells.Cell;
-import fr.ensicaen.lv223.model.environment.cells.CellFactory;
+import fr.ensicaen.lv223.model.environment.Coordinate;
 import fr.ensicaen.lv223.model.environment.Environment;
 import fr.ensicaen.lv223.model.environment.EnvironmentCell;
-import fr.ensicaen.lv223.model.environment.Coordinate;
+import fr.ensicaen.lv223.model.environment.cells.Cell;
+import fr.ensicaen.lv223.model.environment.cells.CellFactory;
 import fr.ensicaen.lv223.planetloader.JsonLoader;
 import fr.ensicaen.lv223.planetloader.PlanetData;
 import fr.ensicaen.lv223.planetloader.PlanetLoader;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * The {@code Planet} class implements the {@link Environment} interface and
@@ -30,7 +30,7 @@ public class Planet implements Environment {
     private final List<List<Cell>> cells;
     private int ageSinceTheArrivalOfTheColony;
 
-    private List<Agent> listAgents;
+    private final List<Agent> listAgents;
 
     public Planet() {
         PlanetLoader planetLoader = new JsonLoader("/json/planet.json");
