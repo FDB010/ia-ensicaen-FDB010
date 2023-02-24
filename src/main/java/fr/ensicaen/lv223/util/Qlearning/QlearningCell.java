@@ -13,9 +13,7 @@ public class QlearningCell extends Cell {
     private final String uniqueID = UUID.randomUUID().toString();
 
     public QlearningCell(Cell cell) {
-
         super(cell.getX(), cell.getY(), cell.getType(), cell.getIntensity());
-
     }
 
 
