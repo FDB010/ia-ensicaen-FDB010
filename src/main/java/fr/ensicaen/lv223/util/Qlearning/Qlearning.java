@@ -10,12 +10,8 @@ public class Qlearning {
     private double epsilon; // taux d'exploration
     static class Properties {
         private double alpha = 0.1;
-
         private double gamma = 0.9;
-
         private double epsilon = 0.1;
-
-
     }
     //Initialization de l'environnement
     private State init() {
