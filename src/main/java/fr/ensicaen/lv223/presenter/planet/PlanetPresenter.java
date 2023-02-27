@@ -12,8 +12,7 @@ public class PlanetPresenter {
     private IPresenter view;
     private final Planet planet;
 
-    public PlanetPresenter(IPresenter view, Planet planet) {
-        this.view = view;
+    public PlanetPresenter(Planet planet) {
         this.planet = planet;
     }
 
@@ -25,9 +24,11 @@ public class PlanetPresenter {
             cellsView.add(new ArrayList<>(cells.get(0).size()));
             for (int j = 0; j < cells.get(i).size(); j++) {
                 cellsView.get(i).add(
-                    new CellView(view.getSceneWidth() / 21.0,
-                    view.getSceneHeight() / 21.0,
-                    cells.get(i).get(j).getType().name())
+                    new CellView(
+                            view.getSceneWidth() / 21.0,
+                            view.getSceneHeight() / 21.0,
+                            cells.get(i).get(j).getType()
+                    )
                 );
             }
         }

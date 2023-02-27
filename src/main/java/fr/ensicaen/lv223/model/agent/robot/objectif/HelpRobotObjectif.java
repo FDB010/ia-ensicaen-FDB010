@@ -1,11 +1,8 @@
 package fr.ensicaen.lv223.model.agent.robot.objectif;
 
+import fr.ensicaen.lv223.model.agent.command.Command;
 import fr.ensicaen.lv223.model.agent.robot.Robot;
-import fr.ensicaen.lv223.model.agent.robot.command.Command;
-import fr.ensicaen.lv223.model.environment.cells.Cell;
-import fr.ensicaen.lv223.util.astar.Astar;
 
-import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 public class HelpRobotObjectif implements Objectif{

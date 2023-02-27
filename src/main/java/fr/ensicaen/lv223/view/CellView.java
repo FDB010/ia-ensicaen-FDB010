@@ -1,5 +1,9 @@
 package fr.ensicaen.lv223.view;
 
+import fr.ensicaen.lv223.model.environment.cells.CellType;
+import fr.ensicaen.lv223.util.Util;
+import fr.ensicaen.lv223.util.loader.viewloader.ImageLoader;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -26,7 +30,7 @@ public class CellView {
      * @param height The height of the cell.
      * @param type The type of cell, used to determine its color.
      */
-    public CellView(double width, double height, String type) {
+    public CellView(double width, double height, CellType type) {
         this.pane = new StackPane();
         this.width = width;
         this.height = height;
@@ -36,8 +40,16 @@ public class CellView {
         shape.setFill(color);
         this.pane.getChildren().add(shape);
 
+        try {
+            ImageLoader imageLoader = ImageLoader.getInstance(width, height);
+            this.pane.getChildren().add(new ImageView(imageLoader.getCellImage(type)));
+        } catch (Exception e) {
+            Util.LOGGER.severe("Error while loading cell image: " + e.getMessage());
+        }
+
+
         robotView = new RobotView(this.width);
-        this.pane.getChildren().add(robotView.getShape());
+        this.pane.getChildren().add(robotView.getNode());
     }
 
     /**
@@ -53,32 +65,32 @@ public class CellView {
      * @param type The type of this cell, used to determine its color.
      * @return The color of this cell.
      */
-    private Color getColor(String type) {
+    private Color getColor(CellType type) {
         switch (type) {
-            case "BASE":
+            case BASE:
                 return Color.DARKBLUE;
-            case "DESERT":
+            case DESERT:
                 return Color.LEMONCHIFFON;
-            case "DRY_GRASS":
+            case DRY_GRASS:
                 return Color.YELLOWGREEN;
-            case "FOOD":
+            case FOOD:
                 return Color.TOMATO;
-            case "FOREST":
+            case FOREST:
                 return Color.FORESTGREEN;
-            case "GRASS":
+            case GRASS:
                 return Color.MEDIUMSEAGREEN;
-            case "IMPENETRABLE":
+            case IMPENETRABLE:
                 return Color.BLACK;
-            case "LAKE":
+            case LAKE:
                 return Color.MEDIUMAQUAMARINE;
-            case "ORE":
+            case ORE:
                 return Color.GOLD;
-            case "STONE":
+            case STONE:
                 return Color.GREY;
-            case "WET_GRASS":
+            case WET_GRASS:
                 return Color.DARKGREEN;
             default:
-                return null;
+                return Color.CHOCOLATE;
         }
     }
 

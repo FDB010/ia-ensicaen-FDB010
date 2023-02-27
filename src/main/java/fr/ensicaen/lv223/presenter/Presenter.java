@@ -1,9 +1,5 @@
 package fr.ensicaen.lv223.presenter;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import fr.ensicaen.lv223.model.agent.robot.Robot;
 import fr.ensicaen.lv223.model.environment.planet.Planet;
 import fr.ensicaen.lv223.model.logic.Sequencer;
 import fr.ensicaen.lv223.presenter.colony.ColonyPresenter;
@@ -26,11 +22,9 @@ public class Presenter {
      * Constructs a new {@code Presenter} instance.
      */
     public Presenter() {
-        // TODO init robots
-        List<Robot> robots = new ArrayList<>(0);
-        sequencer = new Sequencer(new Planet(), robots);
-        planetPresenter = new PlanetPresenter(view, sequencer.planet);
-        colonyPresenter = new ColonyPresenter(view, sequencer.planet);
+        sequencer = new Sequencer(new Planet());
+        planetPresenter = new PlanetPresenter(sequencer.planet);
+        colonyPresenter = new ColonyPresenter(sequencer.mapper);
     }
 
     /**
@@ -53,6 +47,7 @@ public class Presenter {
         }
 
         sequencer.step();
+        // TODO implement the choice to see the turn or not
         if (nbTurns == 0) {
             updateView();
             return;

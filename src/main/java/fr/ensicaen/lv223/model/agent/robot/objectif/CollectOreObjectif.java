@@ -1,7 +1,7 @@
 package fr.ensicaen.lv223.model.agent.robot.objectif;
 
+import fr.ensicaen.lv223.model.agent.command.Command;
 import fr.ensicaen.lv223.model.agent.robot.Robot;
-import fr.ensicaen.lv223.model.agent.robot.command.Command;
 import fr.ensicaen.lv223.model.environment.cells.specials.MineralCell;
 
 import java.util.PriorityQueue;

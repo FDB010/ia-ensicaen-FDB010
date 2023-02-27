@@ -1,4 +1,4 @@
-package fr.ensicaen.lv223.planetloader;
+package fr.ensicaen.lv223.util.loader.planetloader;
 
 /**
  * The {@code PlanetData} class contains the data of a planet with its type and

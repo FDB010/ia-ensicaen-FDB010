@@ -5,9 +5,8 @@ package fr.ensicaen.lv223.model.environment.cells;
  * that can exist in the two-dimensional grid of LV-223.
  */
 public enum CellType {
-    BASE,      /**<! A cell that contains the base of the colony (is part of the
-     exoskeleton). */
-    BOUNDARY,       /**<! NOT YET USED */
+    BASE,           /**<! A cell that contains the base of the colony (is part of the exoskeleton). */
+    // BOUNDARY,       /**<! NOT YET USED neither implemented in this model */
     DESERT,         /**<! A cell that contains a desert. */
     DRY_GRASS,      /**<! A cell that contains a dry meadow. */
     FOOD,           /**<! A cell that contains a some food. */

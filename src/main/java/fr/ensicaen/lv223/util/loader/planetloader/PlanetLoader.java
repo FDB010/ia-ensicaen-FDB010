@@ -1,4 +1,4 @@
-package fr.ensicaen.lv223.planetloader;
+package fr.ensicaen.lv223.util.loader.planetloader;
 
 /**
  * {@code PlanetLoader} is an interface that represents a way to load planet

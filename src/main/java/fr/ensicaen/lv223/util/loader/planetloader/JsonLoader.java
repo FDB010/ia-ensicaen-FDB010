@@ -1,4 +1,4 @@
-package fr.ensicaen.lv223.planetloader;
+package fr.ensicaen.lv223.util.loader.planetloader;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
