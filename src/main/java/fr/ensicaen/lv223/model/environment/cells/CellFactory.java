@@ -1,5 +1,9 @@
 package fr.ensicaen.lv223.model.environment.cells;
 
+import fr.ensicaen.lv223.model.environment.cells.specials.FoodCell;
+import fr.ensicaen.lv223.model.environment.cells.specials.LakeCell;
+import fr.ensicaen.lv223.model.environment.cells.specials.MineralCell;
+
 import java.util.Optional;
 
 /**
@@ -20,7 +24,7 @@ public class CellFactory {
      * @return an Optional containing the Cell object, or an empty Optional if
      * the type is invalid
      */
-    public static Optional<Cell> factory(String type, double intensity, int x, int y) {
+    public static Optional<Cell> factory(String type, double intensity, int x, int y,double quantity) {
         Cell c;
         switch (type) {
             case "BASE":
@@ -33,7 +37,7 @@ public class CellFactory {
                 c = new Cell(x, y, CellType.DRY_GRASS, intensity);
                 break;
             case "FOOD":
-                c = new Cell(x, y, CellType.FOOD, intensity);
+                c = new FoodCell(x, y, CellType.FOOD, intensity,quantity);
                 break;
             case "FOREST":
                 c = new Cell(x, y, CellType.FOREST, intensity);
@@ -45,10 +49,10 @@ public class CellFactory {
                 c = new Cell(x, y, CellType.IMPENETRABLE, intensity);
                 break;
             case "LAKE":
-                c = new Cell(x, y, CellType.LAKE, intensity);
+                c = new LakeCell(x, y, CellType.LAKE, intensity,quantity);
                 break;
             case "ORE":
-                c = new Cell(x, y, CellType.ORE, intensity);
+                c = new MineralCell(x, y, CellType.ORE, intensity,0);
                 break;
             case "STONE":
                 c = new Cell(x, y, CellType.STONE, intensity);

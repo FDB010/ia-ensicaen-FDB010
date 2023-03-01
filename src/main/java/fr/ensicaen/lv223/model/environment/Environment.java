@@ -1,6 +1,8 @@
 package fr.ensicaen.lv223.model.environment;
 
 import fr.ensicaen.lv223.model.environment.cells.Cell;
+import fr.ensicaen.lv223.model.logic.localisation.Coordinate;
+import fr.ensicaen.lv223.model.environment.planet.state.PlanetEmotion;
 
 import java.util.List;
 
@@ -24,10 +26,12 @@ public interface Environment {
 
     /**
      * Gets the cell located at the specified coordinate.
-     * @param c the coordinate of the cell
+     * @param coord the coordinate of the cell
      * @return the cell located at the specified coordinate
      */
-    EnvironmentCell getCell(Coordinate c);
+    EnvironmentCell getCell(Coordinate coord);
+
+    EnvironmentCell getCell(int x, int y);
 
     /**
      * Sets the cell located at the specified coordinate.
@@ -41,4 +45,10 @@ public interface Environment {
      * @return The list of cells
      */
     List<List<Cell>> getCells();
+
+    /**
+     * Sets the emotion for the planet
+     */
+
+    void setEmotion();
 }

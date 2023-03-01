@@ -2,331 +2,304 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-
 <HBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <GridPane fx:id="gridOfPlanet">
-            <columnConstraints>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="12"/>
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-                <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-                <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-                <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-                <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-                <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-                <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-                <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-                <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-                <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-                <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-                <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-                <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-                <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-                <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-                <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-                <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-                <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-                <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-                <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-                <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-            </rowConstraints>
-            <children>
+    <GridPane fx:id="gridOfPlanet">
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="12"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
+        </rowConstraints>
 
-            </children>
+    </GridPane>
+    <VBox HBox.hgrow="ALWAYS">
+        <Label fx:id="ageSinceTheArrivalOfTheColony" text="Durée de la simulation : 0 ans">
+            <VBox.margin>
+                <Insets bottom="10.0" top="15.0"/>
+            </VBox.margin>
+        </Label>
+        <Label fx:id="healthStatusOfThePlanet" text="Santé de la planète : Bonne"/>
+        <Label fx:id="currentNumberOfRobots" text="Nombre de robots : 13">
+            <VBox.margin>
+                <Insets top="10.0"/>
+            </VBox.margin>
+        </Label>
+        <HBox spacing="20.0">
+            <VBox.margin>
+                <Insets bottom="10.0" top="10.0"/>
+            </VBox.margin>
+            <Label fx:id="waterStockOfTheColony" text="Stock eau : 0"/>
+            <Label fx:id="foodStockOfTheColony" text="Stock nourriture : 0"/>
+            <Label fx:id="oreStockOfTheColony" text="Stock minerai : 0"/>
+        </HBox>
+        <HBox prefHeight="25.0" prefWidth="340.0">
+            <ChoiceBox fx:id="choiceOfThePlanetTolerance" prefWidth="150.0"/>
+            <Label fx:id="tolerances" prefHeight="25.0" prefWidth="190.0" text=" : Tolérance de la planète "
+                   textAlignment="CENTER"/>
+        </HBox>
+        <ChoiceBox fx:id="choiceOfNumberOfSteps" prefWidth="150.0">
+            <VBox.margin>
+                <Insets bottom="10.0" top="10.0"/>
+            </VBox.margin>
+        </ChoiceBox>
+        <Button fx:id="buttonToStartOneOrMoreSteps" mnemonicParsing="false" text="Avancer">
+            <VBox.margin>
+                <Insets bottom="10.0" top="10.0"/>
+            </VBox.margin>
+        </Button>
+        <Label text="Légende">
+            <VBox.margin>
+                <Insets bottom="5.0"/>
+            </VBox.margin>
+        </Label>
+        <HBox prefHeight="100.0" prefWidth="200.0">
+            <VBox alignment="CENTER_LEFT">
+                <HBox>
+                    <VBox.margin>
+                        <Insets bottom="5.0" top="5.0"/>
+                    </VBox.margin>
+                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@display/img/tile/TILE_LAKE.png"/>
+                    </ImageView>
+                    <Label text="Lac">
+                        <HBox.margin>
+                            <Insets left="5.0"/>
+                        </HBox.margin>
+                    </Label>
+                </HBox>
+                <HBox layoutX="10.0" layoutY="38.0">
+                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@display/img/tile/TILE_ORE.png"/>
+                    </ImageView>
+                    <Label text="Minerai">
+                        <HBox.margin>
+                            <Insets left="5.0"/>
+                        </HBox.margin>
+                    </Label>
+                </HBox>
+                <HBox>
+                    <VBox.margin>
+                        <Insets bottom="5.0" top="5.0"/>
+                    </VBox.margin>
+                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@display/img/tile/TILE_BASE.png"/>
+                    </ImageView>
+                    <Label text="Base">
+                        <HBox.margin>
+                            <Insets left="5.0"/>
+                        </HBox.margin>
+                    </Label>
+                </HBox>
+                <HBox>
+                    <VBox.margin>
+                        <Insets bottom="5.0" top="5.0"/>
+                    </VBox.margin>
+                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@display/img/tile/TILE_STONE.png"/>
+                    </ImageView>
+                    <Label text="Pierraille">
+                        <HBox.margin>
+                            <Insets left="5.0"/>
+                        </HBox.margin>
+                    </Label>
+                </HBox>
+                <HBox>
+                    <VBox.margin>
+                        <Insets bottom="5.0" top="5.0"/>
+                    </VBox.margin>
+                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@display/img/tile/TILE_FOREST.png"/>
+                    </ImageView>
+                    <Label text="Forêt">
+                        <HBox.margin>
+                            <Insets left="5.0"/>
+                        </HBox.margin>
+                    </Label>
+                </HBox>
+                <HBox>
+                    <VBox.margin>
+                        <Insets bottom="5.0" top="5.0"/>
+                    </VBox.margin>
+                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@display/img/tile/TILE_WET_GRASS.png"/>
+                    </ImageView>
+                    <Label text="Prairie grasse">
+                        <HBox.margin>
+                            <Insets left="5.0"/>
+                        </HBox.margin>
+                    </Label>
+                </HBox>
+                <HBox>
+                    <VBox.margin>
+                        <Insets bottom="5.0" top="5.0"/>
+                    </VBox.margin>
+                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@display/img/tile/TILE_GRASS.png"/>
+                    </ImageView>
+                    <Label text="Prairie">
+                        <HBox.margin>
+                            <Insets left="5.0"/>
+                        </HBox.margin>
+                    </Label>
+                </HBox>
+                <HBox>
+                    <VBox.margin>
+                        <Insets bottom="5.0" top="5.0"/>
+                    </VBox.margin>
+                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@display/img/tile/TILE_DRY_GRASS.png"/>
+                    </ImageView>
+                    <Label text="Prairie sèche">
+                        <HBox.margin>
+                            <Insets left="5.0"/>
+                        </HBox.margin>
+                    </Label>
+                </HBox>
+                <HBox>
+                    <VBox.margin>
+                        <Insets bottom="5.0" top="5.0"/>
+                    </VBox.margin>
+                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@display/img/tile/TILE_DESERT.png"/>
+                    </ImageView>
+                    <Label text="Désert">
+                        <HBox.margin>
+                            <Insets left="5.0"/>
+                        </HBox.margin>
+                    </Label>
+                </HBox>
+                <HBox>
+                    <VBox.margin>
+                        <Insets bottom="5.0" top="5.0"/>
+                    </VBox.margin>
+                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@display/img/tile/TILE_FOOD.png"/>
+                    </ImageView>
+                    <Label text="Nourriture">
+                        <HBox.margin>
+                            <Insets left="5.0"/>
+                        </HBox.margin>
+                    </Label>
+                </HBox>
+                <HBox>
+                    <VBox.margin>
+                        <Insets bottom="5.0" top="5.0"/>
+                    </VBox.margin>
+                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@display/img/tile/TILE_IMPENETRABLE.png"/>
+                    </ImageView>
+                    <Label text="Infranchissable">
+                        <HBox.margin>
+                            <Insets left="5.0"/>
+                        </HBox.margin>
+                    </Label>
+                </HBox>
+            </VBox>
+            <VBox layoutX="10.0" layoutY="10.0">
+                <HBox>
+                    <VBox.margin>
+                        <Insets bottom="5.0" top="5.0"/>
+                    </VBox.margin>
+                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@display/img/robot/ROBOT_CARTOGRAPHER.png"/>
+                    </ImageView>
+                    <Label text="Cartographe">
+                        <HBox.margin>
+                            <Insets left="5.0"/>
+                        </HBox.margin>
+                    </Label>
+                </HBox>
+                <HBox layoutX="10.0" layoutY="179.0">
+                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@display/img/robot/ROBOT_ORE_EXTRACTOR.png"/>
+                    </ImageView>
+                    <Label text="Extracteur de minerai">
+                        <HBox.margin>
+                            <Insets left="5.0"/>
+                        </HBox.margin>
+                    </Label>
+                </HBox>
+                <HBox layoutX="10.0" layoutY="153.0">
+                    <VBox.margin>
+                        <Insets bottom="5.0" top="5.0"/>
+                    </VBox.margin>
+                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@display/img/robot/ROBOT_FOOD_RETRIEVER.png"/>
+                    </ImageView>
+                    <Label text="Récolteur de nourriture">
+                        <HBox.margin>
+                            <Insets left="5.0"/>
+                        </HBox.margin>
+                    </Label>
+                </HBox>
+                <HBox layoutX="10.0" layoutY="189.0">
+                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@display/img/robot/ROBOT_FARMER.png"/>
+                    </ImageView>
+                    <Label text="Agriculteur">
+                        <HBox.margin>
+                            <Insets left="5.0"/>
+                        </HBox.margin>
+                    </Label>
+                </HBox>
+                <HBox layoutX="10.0" layoutY="204.0">
+                    <VBox.margin>
+                        <Insets bottom="5.0" top="5.0"/>
+                    </VBox.margin>
+                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@display/img/robot/ROBOT_PIPELINE_BUILDER.png"/>
+                    </ImageView>
+                    <Label text="Constructeur de Pipeline">
+                        <HBox.margin>
+                            <Insets left="5.0"/>
+                        </HBox.margin>
+                    </Label>
+                </HBox>
+            </VBox>
+        </HBox>
+    </VBox>
 
-        </GridPane>
-        <VBox HBox.hgrow="ALWAYS">
-            <Label fx:id="ageSinceTheArrivalOfTheColony" text="Durée de la simulation : 0 ans">
-                <VBox.margin>
-                    <Insets bottom="10.0" top="15.0"/>
-                </VBox.margin>
-            </Label>
-            <Label fx:id="healthStatusOfThePlanet" text="Santé de la planète : Bonne"/>
-            <Label fx:id="currentNumberOfRobots" text="Nombre de robots : 13">
-                <VBox.margin>
-                    <Insets top="10.0"/>
-                </VBox.margin>
-            </Label>
-            <HBox spacing="20.0">
-                <VBox.margin>
-                    <Insets bottom="10.0" top="10.0"/>
-                </VBox.margin>
-                <children>
-                    <Label fx:id="waterStockOfTheColony" text="Stock d'eau : 0"/>
-                    <Label fx:id="foodStockOfTheColony" text="Stock de nourriture : 0"/>
-                    <Label fx:id="oreStockOfTheColony" text="Stock de minerai : 0"/>
-                </children>
-            </HBox>
-            <HBox prefHeight="25.0" prefWidth="340.0">
-                <children>
-                    <ChoiceBox fx:id="choiceOfThePlanetTolerance" prefWidth="150.0"/>
-                    <Label fx:id="tolerances" prefHeight="25.0" prefWidth="190.0" text=" : Tolérance de la planète "
-                           textAlignment="CENTER"/>
-                </children>
-            </HBox>
-            <ChoiceBox fx:id="choiceOfNumberOfSteps" prefWidth="150.0">
-                <VBox.margin>
-                    <Insets bottom="10.0" top="10.0"/>
-                </VBox.margin>
-            </ChoiceBox>
-            <Button fx:id="buttonToStartOneOrMoreSteps" mnemonicParsing="false" text="Avancer">
-                <VBox.margin>
-                    <Insets bottom="10.0" top="10.0"/>
-                </VBox.margin>
-            </Button>
-            <Label text="Légende">
-                <VBox.margin>
-                    <Insets bottom="5.0"/>
-                </VBox.margin>
-            </Label>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-                <children>
-                    <VBox alignment="CENTER_LEFT">
-                        <children>
-                            <HBox>
-                                <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMAQUAMARINE" height="20.0"
-                                               stroke="LIGHTSLATEGRAY" strokeType="INSIDE" width="20.0"/>
-                                    <Label text="Lac">
-                                        <HBox.margin>
-                                            <Insets left="5.0"/>
-                                        </HBox.margin>
-                                    </Label>
-                                </children>
-                                <VBox.margin>
-                                    <Insets bottom="5.0" top="5.0"/>
-                                </VBox.margin>
-                            </HBox>
-                            <HBox layoutX="10.0" layoutY="38.0">
-                                <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="GOLD" height="20.0"
-                                               stroke="LIGHTSLATEGRAY" strokeType="INSIDE" width="20.0"/>
-                                    <Label text="Minerai">
-                                        <HBox.margin>
-                                            <Insets left="5.0"/>
-                                        </HBox.margin>
-                                    </Label>
-                                </children>
-                            </HBox>
-                            <HBox>
-                                <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DARKBLUE" height="20.0"
-                                               stroke="LIGHTSLATEGRAY" strokeType="INSIDE" width="20.0"/>
-                                    <Label text="Base">
-                                        <HBox.margin>
-                                            <Insets left="5.0"/>
-                                        </HBox.margin>
-                                    </Label>
-                                </children>
-                                <VBox.margin>
-                                    <Insets bottom="5.0" top="5.0"/>
-                                </VBox.margin>
-                            </HBox>
-                            <HBox>
-                                <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="GREY" height="20.0"
-                                               stroke="LIGHTSLATEGRAY" strokeType="INSIDE" width="20.0"/>
-                                    <Label text="Pierraille">
-                                        <HBox.margin>
-                                            <Insets left="5.0"/>
-                                        </HBox.margin>
-                                    </Label>
-                                </children>
-                                <VBox.margin>
-                                    <Insets bottom="5.0" top="5.0"/>
-                                </VBox.margin>
-                            </HBox>
-                            <HBox>
-                                <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="FORESTGREEN" height="20.0"
-                                               stroke="LIGHTSLATEGRAY" strokeType="INSIDE" width="20.0"/>
-                                    <Label text="Forêt">
-                                        <HBox.margin>
-                                            <Insets left="5.0"/>
-                                        </HBox.margin>
-                                    </Label>
-                                </children>
-                                <VBox.margin>
-                                    <Insets bottom="5.0" top="5.0"/>
-                                </VBox.margin>
-                            </HBox>
-                            <HBox>
-                                <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DARKGREEN" height="20.0"
-                                               stroke="LIGHTSLATEGRAY" strokeType="INSIDE" width="20.0"/>
-                                    <Label text="Prairie grasse">
-                                        <HBox.margin>
-                                            <Insets left="5.0"/>
-                                        </HBox.margin>
-                                    </Label>
-                                </children>
-                                <VBox.margin>
-                                    <Insets bottom="5.0" top="5.0"/>
-                                </VBox.margin>
-                            </HBox>
-                            <HBox>
-                                <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMSEAGREEN" height="20.0"
-                                               stroke="LIGHTSLATEGRAY" strokeType="INSIDE" width="20.0"/>
-                                    <Label text="Prairie">
-                                        <HBox.margin>
-                                            <Insets left="5.0"/>
-                                        </HBox.margin>
-                                    </Label>
-                                </children>
-                                <VBox.margin>
-                                    <Insets bottom="5.0" top="5.0"/>
-                                </VBox.margin>
-                            </HBox>
-                            <HBox>
-                                <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="YELLOWGREEN" height="20.0"
-                                               stroke="LIGHTSLATEGRAY" strokeType="INSIDE" width="20.0"/>
-                                    <Label text="Prairie sèche">
-                                        <HBox.margin>
-                                            <Insets left="5.0"/>
-                                        </HBox.margin>
-                                    </Label>
-                                </children>
-                                <VBox.margin>
-                                    <Insets bottom="5.0" top="5.0"/>
-                                </VBox.margin>
-                            </HBox>
-                            <HBox>
-                                <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="LEMONCHIFFON" height="20.0"
-                                               stroke="LIGHTSLATEGRAY" strokeType="INSIDE" width="20.0"/>
-                                    <Label text="Désert">
-                                        <HBox.margin>
-                                            <Insets left="5.0"/>
-                                        </HBox.margin>
-                                    </Label>
-                                </children>
-                                <VBox.margin>
-                                    <Insets bottom="5.0" top="5.0"/>
-                                </VBox.margin>
-                            </HBox>
-                            <HBox>
-                                <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TOMATO" height="20.0"
-                                               stroke="LIGHTSLATEGRAY" strokeType="INSIDE" width="20.0"/>
-                                    <Label text="Nourriture">
-                                        <HBox.margin>
-                                            <Insets left="5.0"/>
-                                        </HBox.margin>
-                                    </Label>
-                                </children>
-                                <VBox.margin>
-                                    <Insets bottom="5.0" top="5.0"/>
-                                </VBox.margin>
-                            </HBox>
-                            <HBox>
-                                <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="BLACK" height="20.0"
-                                               stroke="LIGHTSLATEGRAY" strokeType="INSIDE" width="20.0"/>
-                                    <Label text="Infranchissable">
-                                        <HBox.margin>
-                                            <Insets left="5.0"/>
-                                        </HBox.margin>
-                                    </Label>
-                                </children>
-                                <VBox.margin>
-                                    <Insets bottom="5.0" top="5.0"/>
-                                </VBox.margin>
-                            </HBox>
-                        </children>
-                    </VBox>
-                    <VBox layoutX="10.0" layoutY="10.0">
-                        <children>
-                            <HBox>
-                                <children>
-                                    <Circle fill="DODGERBLUE" radius="10.0" stroke="LIGHTSLATEGRAY" strokeType="INSIDE"/>
-                                    <Label text="Cartographe">
-                                        <HBox.margin>
-                                            <Insets left="5.0"/>
-                                        </HBox.margin>
-                                    </Label>
-                                </children>
-                                <VBox.margin>
-                                    <Insets bottom="5.0" top="5.0"/>
-                                </VBox.margin>
-                            </HBox>
-                            <HBox layoutX="10.0" layoutY="179.0">
-                                <children>
-                                    <Circle fill="DARKMAGENTA" radius="10.0" stroke="LIGHTSLATEGRAY" strokeType="INSIDE"/>
-                                    <Label text="Extracteur de minerai">
-                                        <HBox.margin>
-                                            <Insets left="5.0"/>
-                                        </HBox.margin>
-                                    </Label>
-                                </children>
-                            </HBox>
-                            <HBox layoutX="10.0" layoutY="153.0">
-                                <children>
-                                    <Circle fill="DARKORANGE" radius="10.0" stroke="LIGHTSLATEGRAY" strokeType="INSIDE"/>
-                                    <Label text="Récolteur de nourriture">
-                                        <HBox.margin>
-                                            <Insets left="5.0"/>
-                                        </HBox.margin>
-                                    </Label>
-                                </children>
-                                <VBox.margin>
-                                    <Insets bottom="5.0" top="5.0"/>
-                                </VBox.margin>
-                            </HBox>
-                            <HBox layoutX="10.0" layoutY="189.0">
-                                <children>
-                                    <Circle fill="CORNSILK" radius="10.0" stroke="LIGHTSLATEGRAY" strokeType="INSIDE"/>
-                                    <Label text="Agriculteur">
-                                        <HBox.margin>
-                                            <Insets left="5.0"/>
-                                        </HBox.margin>
-                                    </Label>
-                                </children>
-                            </HBox>
-                            <HBox layoutX="10.0" layoutY="204.0">
-                                <children>
-                                    <Circle fill="DARKSEAGREEN" radius="10.0" stroke="LIGHTSLATEGRAY" strokeType="INSIDE"/>
-                                    <Label text="Constructeur de Pipeline">
-                                        <HBox.margin>
-                                            <Insets left="5.0"/>
-                                        </HBox.margin>
-                                    </Label>
-                                </children>
-                                <VBox.margin>
-                                    <Insets bottom="5.0" top="5.0"/>
-                                </VBox.margin>
-                            </HBox>
-                        </children>
-                    </VBox>
-                </children>
-            </HBox>
-        </VBox>
-
-    </children>
 </HBox>

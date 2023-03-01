@@ -15,7 +15,7 @@ public abstract class ExtractableCell extends Cell {
      * The initial amount of a given resource that was available at the start
      * of the simulation
      */
-    protected final double initialQuantity;
+    protected double initialQuantity;
 
     /**
      * Constructs a new {@code FoodCell} instance with the specified cell type,
@@ -36,9 +36,13 @@ public abstract class ExtractableCell extends Cell {
     public double getQuantity() {
         return quantity;
     }
+    public double addQuantity(double quantity) {
+        return this.quantity+=quantity;
+    }
 
     public void setQuantity(double quantity) {
         this.quantity = quantity;
+        this.initialQuantity = quantity;
     }
 
     public double getInitialQuantity() {
@@ -47,5 +51,9 @@ public abstract class ExtractableCell extends Cell {
 
     public double getPercentageExtraction() {
         return 100 - (quantity / initialQuantity) * 100;
+    }
+
+    public void extract(double quantity) {
+        this.quantity -= quantity;
     }
 }

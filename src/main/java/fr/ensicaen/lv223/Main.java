@@ -25,6 +25,7 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
+        // TODO : update legend of main frame
         int width;
         int height;
         Presenter presenter;

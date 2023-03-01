@@ -1,21 +1,28 @@
 package fr.ensicaen.lv223.model.agent.robot.specials;
 
+import fr.ensicaen.lv223.model.agent.command.Command;
+import fr.ensicaen.lv223.model.agent.command.CommandFactory;
+import fr.ensicaen.lv223.model.agent.command.CommandType;
 import fr.ensicaen.lv223.model.agent.robot.Robot;
 import fr.ensicaen.lv223.model.agent.robot.RobotType;
-import fr.ensicaen.lv223.model.agent.robot.message.Message;
+import fr.ensicaen.lv223.model.logic.agentInterface.PlanetInterface;
 
-public class PipelineBuilder extends Robot {
-    public PipelineBuilder(RobotType type) {
-        super(type);
+import java.util.List;
+import java.util.Random;
+
+public abstract class PipelineBuilder extends Robot {
+    public PipelineBuilder(RobotType type, CommandFactory commandFactory, PlanetInterface captors) {
+        super(type, commandFactory, captors);
     }
 
     @Override
-    public boolean isAvailable( Message m ) {
-        return false;
-    }
-
-    @Override
-    public void compute() {
-
+    public List<Command> compute() {
+        List<Command> commands = super.compute();
+        Random random = new Random();
+        if (random.nextInt(100) < 10) {
+            commands.add(commandFactory.createCommand(this, CommandType.INSTALL_PIPE, 1));
+        }
+        commands.add(commandFactory.createCommand(this, CommandType.MOVE, 1));
+        return commands;
     }
 }
