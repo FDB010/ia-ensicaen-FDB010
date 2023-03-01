@@ -24,6 +24,7 @@ public class PlanetInterface implements AgentInterface {
         }
         return instance;
     }
+
     private final Planet planet;
 
     private PlanetInterface(Planet planet, RobotMapper robotMapper) {
@@ -37,29 +38,29 @@ public class PlanetInterface implements AgentInterface {
         }
         Coordinate coord = robotMapper.getCoordinate(robot);
         HashMap<Direction, CellType> surrounding = new HashMap<>();
-        if (coord.x > 0) { // NORTH
-            surrounding.put(Direction.NORTH, planet.getCell(coord.x - 1, coord.y).getType());
-            if (coord.y > 0) { // NORTH WEST
+        if (coord.y > 0) { // NORTH
+            surrounding.put(Direction.NORTH, planet.getCell(coord.x, coord.y - 1).getType());
+            if (coord.x > 0) { // NORTH WEST
                 surrounding.put(Direction.NORTH_WEST, planet.getCell(coord.x - 1, coord.y - 1).getType());
             }
-            if (coord.y < planet.getHeight() - 1) { // NORTH EAST
-                surrounding.put(Direction.NORTH_EAST, planet.getCell(coord.x - 1, coord.y + 1).getType());
+            if (coord.x < planet.getHeight() - 1) { // NORTH EAST
+                surrounding.put(Direction.NORTH_EAST, planet.getCell(coord.x + 1, coord.y - 1).getType());
             }
         }
-        if (coord.x < planet.getHeight() - 1) { // SOUTH
-            surrounding.put(Direction.SOUTH, planet.getCell(coord.x + 1, coord.y).getType());
-            if (coord.y > 0) { // SOUTH WEST
-                surrounding.put(Direction.SOUTH_WEST, planet.getCell(coord.x + 1, coord.y - 1).getType());
+        if (coord.y < planet.getHeight() - 1) { // SOUTH
+            surrounding.put(Direction.SOUTH, planet.getCell(coord.x, coord.y + 1).getType());
+            if (coord.x > 0) { // SOUTH WEST
+                surrounding.put(Direction.SOUTH_WEST, planet.getCell(coord.x - 1, coord.y + 1).getType());
             }
-            if (coord.y < planet.getWidth() - 1) { // SOUTH EAST
+            if (coord.x < planet.getWidth() - 1) { // SOUTH EAST
                 surrounding.put(Direction.SOUTH_EAST, planet.getCell(coord.x + 1, coord.y + 1).getType());
             }
         }
-        if (coord.y > 0) { // WEST
-            surrounding.put(Direction.WEST, planet.getCell(coord.x, coord.y - 1).getType());
+        if (coord.x > 0) { // WEST
+            surrounding.put(Direction.WEST, planet.getCell(coord.x - 1, coord.y).getType());
         }
-        if (coord.y < planet.getWidth() - 1) { // EAST
-            surrounding.put(Direction.EAST, planet.getCell(coord.x, coord.y + 1).getType());
+        if (coord.x < planet.getWidth() - 1) { // EAST
+            surrounding.put(Direction.EAST, planet.getCell(coord.x + 1, coord.y).getType());
         }
         return surrounding;
     }

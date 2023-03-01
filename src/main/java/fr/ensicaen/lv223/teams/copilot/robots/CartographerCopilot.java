@@ -31,13 +31,44 @@ public class CartographerCopilot extends Cartographer {
     @Override
     public List<Command> compute() {
         List<Command> commands = new ArrayList<>();
+        List<Direction> directions = captors.getSurrounding(this).keySet().stream().toList();
         if (!hasDiscovered) {
+            System.out.println(id + " " + directions);
             if (id == 0) {
-                commands.add(commandFactory.createMoveCommand(this, Direction.EAST));
+                if (directions.contains(Direction.NORTH)) {
+                    commands.add(commandFactory.createMoveCommand(this, Direction.NORTH));
+                }
+                else {
+                    commands.add(commandFactory.createMoveCommand(this, Direction.WEST));
+                }
             }
             else if (id == 1) {
-                commands.add(commandFactory.createMoveCommand(this, Direction.WEST));
+                // Check if NORTH is available
+                if (directions.contains(Direction.SOUTH)) {
+                    commands.add(commandFactory.createMoveCommand(this, Direction.SOUTH));
+                }
+                else {
+                    commands.add(commandFactory.createMoveCommand(this, Direction.EAST));
+                }
             }
+            else if (id == 2) {
+                if (directions.contains(Direction.SOUTH)) {
+                    commands.add(commandFactory.createMoveCommand(this, Direction.SOUTH));
+                }
+                else {
+                    commands.add(commandFactory.createMoveCommand(this, Direction.WEST));
+                }
+            }
+            else if (id == 3) {
+                if (directions.contains(Direction.SOUTH)) {
+                    commands.add(commandFactory.createMoveCommand(this, Direction.SOUTH));
+                }
+                else {
+                    commands.add(commandFactory.createMoveCommand(this, Direction.EAST));
+                }
+            }
+            // get planetInterface
+            captors.getSurrounding(this);
         }
         return commands;
     }
