@@ -34,7 +34,7 @@ public class RobotMapper {
         RobotFactory factory = new RobotFactory(commandFactory, planet, this);
 
         Coordinate baseCoord = new Coordinate(planet.getHeight()/2, planet.getWidth()/2);
-        ProjectTeam currentTeam = ProjectTeam.JAMES_BOND;
+        ProjectTeam currentTeam = ProjectTeam.COPILOT;
         robotMap.put(factory.createRobot(RobotType.CENTRALIZER, currentTeam), baseCoord);
         robotMap.put(factory.createRobot(RobotType.ORE_EXTRACTOR, currentTeam), baseCoord);
         robotMap.put(factory.createRobot(RobotType.ORE_EXTRACTOR, currentTeam), baseCoord);
