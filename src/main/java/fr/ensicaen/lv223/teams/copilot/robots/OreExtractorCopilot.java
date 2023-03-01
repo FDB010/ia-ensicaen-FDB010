@@ -11,8 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OreExtractorCopilot extends OreExtractor {
-    public OreExtractorCopilot(RobotType type, CommandFactory commandFactory, PlanetInterface captors) {
+    private CentralizerCopilot centralizer;
+    public OreExtractorCopilot(RobotType type, CommandFactory commandFactory, PlanetInterface captors, CentralizerCopilot centralizer) {
         super(type, commandFactory, captors);
+        this.centralizer = centralizer;
     }
 
     @Override
