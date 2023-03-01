@@ -1,4 +1,4 @@
-package fr.ensicaen.lv223.model.environment.planet;
+package fr.ensicaen.lv223.model.environment.planet.state;
 
 /**
  * Enumeration representing the health status of the planet.

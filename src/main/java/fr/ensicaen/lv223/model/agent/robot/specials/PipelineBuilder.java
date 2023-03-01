@@ -8,6 +8,7 @@ import fr.ensicaen.lv223.model.agent.robot.RobotType;
 import fr.ensicaen.lv223.model.logic.agentInterface.PlanetInterface;
 
 import java.util.List;
+import java.util.Random;
 
 public abstract class PipelineBuilder extends Robot {
     public PipelineBuilder(RobotType type, CommandFactory commandFactory, PlanetInterface captors) {
@@ -17,7 +18,11 @@ public abstract class PipelineBuilder extends Robot {
     @Override
     public List<Command> compute() {
         List<Command> commands = super.compute();
-        commands.add(commandFactory.createCommand(this, CommandType.MOVE));
+        Random random = new Random();
+        if (random.nextInt(100) < 10) {
+            commands.add(commandFactory.createCommand(this, CommandType.INSTALL_PIPE, 1));
+        }
+        commands.add(commandFactory.createCommand(this, CommandType.MOVE, 1));
         return commands;
     }
 }

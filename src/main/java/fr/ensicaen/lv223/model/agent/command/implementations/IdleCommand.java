@@ -6,7 +6,7 @@ import fr.ensicaen.lv223.model.logic.localisation.RobotMapper;
 
 public class IdleCommand extends Command {
     public IdleCommand(Robot robot, RobotMapper robotMapper) {
-        super(robot, robotMapper);
+        super(robot, robotMapper, 0);
     }
 
     @Override

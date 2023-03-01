@@ -2,6 +2,7 @@ package fr.ensicaen.lv223.util.loader.viewloader;
 
 import fr.ensicaen.lv223.model.agent.robot.RobotType;
 import fr.ensicaen.lv223.model.environment.cells.CellType;
+import fr.ensicaen.lv223.model.environment.construction.ConstructionType;
 import javafx.scene.image.Image;
 
 import java.io.File;
@@ -15,8 +16,10 @@ public class ImageLoader {
     private static ImageLoader instance;
     private HashMap<RobotType, String> robotTypeImagesPath;
     private HashMap<CellType, String> cellTypeImagesPath;
+    private HashMap<ConstructionType, String> constructionTypeImagesPath;
     private HashMap<RobotType, Image> robotTypeImages;
     private HashMap<CellType, Image> cellTypeImages;
+    private HashMap<ConstructionType, Image> constructionTypeImages;
     private double width;
     private double height;
 
@@ -25,8 +28,10 @@ public class ImageLoader {
     private ImageLoader(double width, double height) {
         robotTypeImagesPath = new HashMap<>();
         cellTypeImagesPath = new HashMap<>();
+        constructionTypeImagesPath = new HashMap<>();
         robotTypeImages = new HashMap<>();
         cellTypeImages = new HashMap<>();
+        constructionTypeImages = new HashMap<>();
 
         this.width = width;
         this.height = height;
@@ -39,6 +44,11 @@ public class ImageLoader {
         for (CellType type : CellType.values()) {
             String path = ressourcePath + "tile/TILE_" + type.name().toUpperCase() + ".png";
             cellTypeImagesPath.put(type, path);
+        }
+
+        for (ConstructionType type : ConstructionType.values()) {
+            String path = ressourcePath + "construction/CONSTRUCTION_" + type.name().toUpperCase() + ".png";
+            constructionTypeImagesPath.put(type, path);
         }
     }
 
@@ -76,6 +86,18 @@ public class ImageLoader {
             );
         }
         return cellTypeImages.get(type);
+    }
+
+    public Image getConstructionImage(ConstructionType type) throws FileNotFoundException, URISyntaxException {
+        if (!constructionTypeImages.containsKey(type)) {
+            URI imgURI = getClass().getResource(constructionTypeImagesPath.get(type)).toURI();
+            File imgFile = new File(imgURI);
+            constructionTypeImages.put(
+                    type,
+                    new Image(new FileInputStream(imgFile), width, height, true, true)
+            );
+        }
+        return constructionTypeImages.get(type);
     }
 
     public double getWidth() {

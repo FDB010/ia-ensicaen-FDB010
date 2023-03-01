@@ -71,9 +71,9 @@
             <VBox.margin>
                 <Insets bottom="10.0" top="10.0"/>
             </VBox.margin>
-            <Label fx:id="waterStockOfTheColony" text="Stock d'eau : 0"/>
-            <Label fx:id="foodStockOfTheColony" text="Stock de nourriture : 0"/>
-            <Label fx:id="oreStockOfTheColony" text="Stock de minerai : 0"/>
+            <Label fx:id="waterStockOfTheColony" text="Stock eau : 0"/>
+            <Label fx:id="foodStockOfTheColony" text="Stock nourriture : 0"/>
+            <Label fx:id="oreStockOfTheColony" text="Stock minerai : 0"/>
         </HBox>
         <HBox prefHeight="25.0" prefWidth="340.0">
             <ChoiceBox fx:id="choiceOfThePlanetTolerance" prefWidth="150.0"/>

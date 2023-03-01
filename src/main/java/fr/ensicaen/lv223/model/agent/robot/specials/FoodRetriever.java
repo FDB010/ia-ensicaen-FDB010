@@ -17,7 +17,8 @@ public abstract class FoodRetriever extends Robot {
     @Override
     public List<Command> compute() {
         List<Command> commands = super.compute();
-        commands.add(commandFactory.createCommand(this, CommandType.MOVE));
+        commands.add(commandFactory.createCommand(this, CommandType.MOVE, 1));
         return commands;
     }
+
 }

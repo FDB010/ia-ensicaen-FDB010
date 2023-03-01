@@ -1,5 +1,8 @@
 package fr.ensicaen.lv223.model.agent.command;
 
 public enum CommandType {
-    MOVE;
+    INSTALL_PIPE,
+    EXTRACT,
+    MOVE,
+    IDLE;
 }

@@ -10,12 +10,12 @@ public class RandomMovementCommand extends Command {
     public int x;
     public int y;
 
-    public RandomMovementCommand(Robot robot, RobotMapper robotMapper) {
-        super(robot, robotMapper);
+    public RandomMovementCommand(Robot robot, RobotMapper robotMapper, int value) {
+        super(robot, robotMapper, value);
         Random random = new Random();
-        // set x and y to a random value between -1 and 1
-        x = random.nextInt(3) - 1;
-        y = random.nextInt(3) - 1;
+        // set x and y to a random value between -value and value
+        x = random.nextInt(value * 2 + 1) - value;
+        y = random.nextInt(value * 2 + 1) - value;
     }
 
     @Override
