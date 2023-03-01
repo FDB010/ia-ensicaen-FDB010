@@ -7,13 +7,16 @@ import fr.ensicaen.lv223.model.agent.robot.RobotType;
 import fr.ensicaen.lv223.model.agent.robot.message.Message;
 import fr.ensicaen.lv223.model.agent.robot.specials.Cartographer;
 import fr.ensicaen.lv223.model.logic.agentInterface.PlanetInterface;
+import fr.ensicaen.lv223.teams.jamesbond.robots.CentralizerJB;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CartographerCopilot extends Cartographer {
-    public CartographerCopilot(RobotType type, CommandFactory commandFactory, PlanetInterface captors) {
+    private CentralizerCopilot centralizer;
+    public CartographerCopilot(RobotType type, CommandFactory commandFactory, PlanetInterface captors, CentralizerCopilot centralizer) {
         super(type, commandFactory, captors);
+        this.centralizer = centralizer;
     }
 
     @Override

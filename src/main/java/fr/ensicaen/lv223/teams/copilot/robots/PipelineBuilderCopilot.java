@@ -11,8 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PipelineBuilderCopilot extends PipelineBuilder {
-    public PipelineBuilderCopilot(RobotType type, CommandFactory commandFactory, PlanetInterface captors) {
+    private CentralizerCopilot centralizer;
+    public PipelineBuilderCopilot(RobotType type, CommandFactory commandFactory, PlanetInterface captors, CentralizerCopilot centralizer) {
         super(type, commandFactory, captors);
+        this.centralizer = centralizer;
     }
 
     @Override
