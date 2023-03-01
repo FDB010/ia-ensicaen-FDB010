@@ -3,33 +3,54 @@ package fr.ensicaen.lv223.teams.jamesbond.objectifs;
 import fr.ensicaen.lv223.model.agent.command.Command;
 import fr.ensicaen.lv223.model.agent.robot.Robot;
 import fr.ensicaen.lv223.model.agent.robot.objectif.Objectif;
-import fr.ensicaen.lv223.model.logic.localisation.RobotMapper;
+import fr.ensicaen.lv223.model.environment.cells.Cell;
+import fr.ensicaen.lv223.model.logic.localisation.Coordinate;
+import fr.ensicaen.lv223.teams.ProjectTeam;
+import fr.ensicaen.lv223.teams.jamesbond.UnknownCell;
+import fr.ensicaen.lv223.teams.jamesbond.robots.CentralizerJB;
+import fr.ensicaen.lv223.teams.jamesbond.robots.RobotInterfaceJB;
+import fr.ensicaen.lv223.util.astar.Astar;
 
-import java.util.PriorityQueue;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+
+import static fr.ensicaen.lv223.util.Util.cellListToCommandList;
 
 public class HelpRobotObjectif implements Objectif {
-    private Robot currentRobot;
-    private Robot robotToHelp;
-    private RobotMapper robotMapper;
+    private RobotInterfaceJB currentRobot;
+    private RobotInterfaceJB robotToHelp;
+    private CentralizerJB centralizer;
 
-    public HelpRobotObjectif(Robot currentRobot, RobotMapper robotMapper, Robot robotToHelp) {
+    public HelpRobotObjectif(RobotInterfaceJB currentRobot, CentralizerJB centralizer, RobotInterfaceJB robotToHelp) {
         this.currentRobot = currentRobot;
         this.robotToHelp = robotToHelp;
-        this.robotMapper = robotMapper;
+        this.centralizer = centralizer;
     }
     @Override
-    public PriorityQueue<Command> generateCommmandList() {
-        // Start : position du robot. End : position du robot à aider.
-        //Cell start = currentRobot.getCell();
-        //Cell end = robotToHelp.getCell();
-        //Astar astar = new Astar(cells, start, end);
-        //astar.compute();
-        PriorityQueue<Command> path = new PriorityQueue<>();
-        // cast la liste de cellules en liste de commande : comment ?
-        //ArrayList<Cell> cellPath = (ArrayList<Cell>) astar.getPath();
-        //while(!cellPath.isEmpty()){
+    public Queue<Command> generateCommmandList() {
+        Coordinate helpedRobot = robotToHelp.getPosition();
+        Coordinate current = currentRobot.getPosition();
+        List<List<UnknownCell>> map = centralizer.getCells();
+        UnknownCell start = map.get(current.getX()).get(current.getY());
+        UnknownCell end = map.get(helpedRobot.getX()).get(helpedRobot.getY());
 
-        //}
-        return path;
+        Cell[][] cells = new Cell[map.size()][];
+
+        for (int i = 0; i < cells.length; i++) {
+            List<UnknownCell> currentList = map.get(i);
+            Cell[] currentArray = new Cell[currentList.size()];
+            for (int j = 0; j < currentArray.length; j++) {
+                currentArray[j] = currentList.get(j);
+            }
+            cells[i] = currentArray;
+        }
+        Astar astar = new Astar(cells, start, end);
+
+        astar.compute();
+        ArrayList<Cell> cellPath = (ArrayList<Cell>) astar.getPath();
+
+        // cast la liste de cellules en liste de commande : comment ?
+        return cellListToCommandList(cellPath, ProjectTeam.JAMES_BOND, (Robot)currentRobot);
     }
 }

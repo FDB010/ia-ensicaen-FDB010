@@ -46,9 +46,10 @@ public class Sequencer {
         // Planet turn
         commands.addAll(planet.compute());
         // Robots turn
-        for (Robot robot : robots) {
-            robot.compute();
-        }
+        // Inutile de les faire compute 2 fois
+        //for (Robot robot : robots) {
+        //    robot.compute();
+        //}
         for (Robot robot : robots) {
             commands.addAll(robot.compute());
         }

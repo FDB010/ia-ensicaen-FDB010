@@ -30,6 +30,6 @@ public class FarmerJB extends Farmer implements RobotInterfaceJB{
 
     @Override
     public Coordinate getPosition() {
-        return new Coordinate(12,12);
+        return new Coordinate(super.getPos_x(),super.getPos_y());
     }
 }

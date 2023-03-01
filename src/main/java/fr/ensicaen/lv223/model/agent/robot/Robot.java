@@ -9,6 +9,7 @@ import fr.ensicaen.lv223.model.logic.agentInterface.PlanetInterface;
 import fr.ensicaen.lv223.model.logic.localisation.Direction;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -22,16 +23,16 @@ public abstract class Robot implements Agent {
      * The type of the robot. Only temporary and implemented because of a lack of time.
      */
     public final RobotType type;
-    private PriorityQueue<Message> priorityQueueMessage;
-    private PriorityQueue<Command> priorityQueueCommand;
+    protected LinkedList<Message> priorityQueueMessage;
+    protected LinkedList<Command> priorityQueueCommand;
     /**
      * This objective is the basic objective of the robot.
      */
-    private Objectif primalObjectif;
+    protected Objectif primalObjectif;
     /**
      * This objective is only temporary and prevail on the primal objective.
      */
-    private Objectif temporaryObjectif;
+    protected Objectif temporaryObjectif;
 
     private int pos_x;
     private int pos_y;
@@ -40,6 +41,10 @@ public abstract class Robot implements Agent {
         this.type = type;
         this.commandFactory = commandFactory;
         this.captors = captors;
+        this.pos_x = 12;
+        this.pos_y = 12;
+        this.priorityQueueCommand = new LinkedList<>();
+        this.priorityQueueMessage = new LinkedList<>();
     }
 
     /**

@@ -7,6 +7,7 @@ import fr.ensicaen.lv223.model.environment.cells.specials.MineralCell;
 import fr.ensicaen.lv223.model.logic.localisation.RobotMapper;
 
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class CollectOreObjectif implements Objectif {
 
@@ -21,7 +22,7 @@ public class CollectOreObjectif implements Objectif {
     }
 
     @Override
-    public PriorityQueue<Command> generateCommmandList() {
+    public Queue<Command> generateCommmandList() {
         PriorityQueue<Command> commandes = new PriorityQueue<>();
         if(this.focusedCell != null){
             // Si capacité max atteinte, se rendre au centralisateur

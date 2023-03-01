@@ -11,9 +11,7 @@ import fr.ensicaen.lv223.teams.ProjectTeam;
 import fr.ensicaen.lv223.teams.jamesbond.command.MoveCommandJB;
 import fr.ensicaen.lv223.teams.jamesbond.robots.RobotInterfaceJB;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 import java.util.logging.Logger;
 
 public class Util {
@@ -51,13 +49,15 @@ public class Util {
     }
 
 
-    public static PriorityQueue<Command> cellListToCommandList(ArrayList<Cell> AStarPath, ProjectTeam team, Robot rob) {
-        PriorityQueue<Command> commandList = new PriorityQueue<>();
+    public static Queue<Command> cellListToCommandList(ArrayList<Cell> AStarPath, ProjectTeam team, Robot rob) {
+
+        LinkedList<Command> commandList = new LinkedList<>();
         for (int i = 0; i < AStarPath.size() - 1; i++) {
             Cell current = AStarPath.get(i);
             Cell next = AStarPath.get(i + 1);
             if(team==ProjectTeam.JAMES_BOND){
-                commandList.add(rob.getCommandFactory().createCommand(rob, CommandType.MOVEJB, current.getDirectionTo(next)));
+                Command cmd = rob.getCommandFactory().createCommand(rob, CommandType.MOVEJB, current.getDirectionTo(next));
+                commandList.add(cmd);
             }
             else{
                 //todo
