@@ -252,6 +252,7 @@ public class Cell implements EnvironmentCell, Comparable {
         else if (next.x == x - 1 && next.y == y - 1){
             return Direction.NORTH_WEST;
         }
+        System.out.println("x: " + x + " y: " + y + " next.x: " + next.x + " next.y: " + next.y);
         return null;
     }
 }
