@@ -3,6 +3,7 @@ package fr.ensicaen.lv223.model.environment.cells;
 import fr.ensicaen.lv223.model.environment.EnvironmentCell;
 import fr.ensicaen.lv223.model.environment.cells.specials.FoodCell;
 import fr.ensicaen.lv223.model.environment.construction.WaterPipe;
+import fr.ensicaen.lv223.model.logic.localisation.Direction;
 
 import java.util.Random;
 
@@ -223,5 +224,34 @@ public class Cell implements EnvironmentCell, Comparable {
 
     public void addIntensityOfWave(int intensity){
         this.intensityOfWave += intensity;
+    }
+
+    public Direction getDirectionTo(Cell next) {
+        if (next.x == x) {
+            if (next.y == y + 1) {
+                return Direction.SOUTH;
+            } else if (next.y == y - 1) {
+                return Direction.NORTH;
+            }
+        } else if (next.y == y) {
+            if (next.x == x + 1) {
+                return Direction.EAST;
+            } else if (next.x == x - 1) {
+                return Direction.WEST;
+            }
+        }
+        else if (next.x == x + 1 && next.y == y + 1){
+            return Direction.SOUTH_EAST;
+        }
+        else if (next.x == x - 1 && next.y == y + 1){
+            return Direction.SOUTH_WEST;
+        }
+        else if (next.x == x + 1 && next.y == y - 1){
+            return Direction.NORTH_EAST;
+        }
+        else if (next.x == x - 1 && next.y == y - 1){
+            return Direction.NORTH_WEST;
+        }
+        return null;
     }
 }

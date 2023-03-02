@@ -119,6 +119,7 @@ public class RobotMapper {
             return false;
         }
         robotMap.replace(robot, newCoordinate);
+        robot.update_position(offsetX, offsetY);
         return true;
     }
 }

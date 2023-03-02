@@ -1,7 +1,7 @@
 package fr.ensicaen.lv223.util.astar;
 
-import fr.ensicaen.lv223.model.environment.planet.Planet;
 import fr.ensicaen.lv223.model.environment.cells.Cell;
+import fr.ensicaen.lv223.model.environment.planet.Planet;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -56,9 +56,13 @@ public class AStarTest {
                         [cells[cells.length-1].length-1];
 
         Astar astar = new Astar(cells, start, end);
-
         astar.compute();
-
         assert astar.isFinished();
+
+        start = cells[12][10]; // 2 cases under the base
+        end = cells[10][12]; // 2 cases to the right of the base
+        astar = new Astar(cells, start, end);
+        astar.compute();
+        assert astar.pathToString().equals("(12,10) (11,11) (10,12) ");
     }
 }

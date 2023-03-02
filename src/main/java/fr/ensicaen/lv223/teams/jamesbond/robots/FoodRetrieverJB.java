@@ -8,10 +8,14 @@ import fr.ensicaen.lv223.model.logic.agentInterface.PlanetInterface;
 import fr.ensicaen.lv223.model.logic.localisation.Coordinate;
 
 public class FoodRetrieverJB extends FoodRetriever implements RobotInterfaceJB {
-    private CentralizerJB centralizer;
+    private final CentralizerJB centralizer;
     public FoodRetrieverJB(RobotType type, CommandFactory commandFactory, PlanetInterface captors, CentralizerJB centralizer) {
         super(type, commandFactory, captors);
         this.centralizer = centralizer;
+    }
+    @Override
+    public CentralizerJB getCentralizer() {
+        return this.centralizer;
     }
 
     @Override
@@ -26,6 +30,6 @@ public class FoodRetrieverJB extends FoodRetriever implements RobotInterfaceJB {
 
     @Override
     public Coordinate getPosition() {
-        return centralizer.getMapper().getCoordinate(this);
+        return new Coordinate(12,12);
     }
 }

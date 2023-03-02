@@ -5,8 +5,6 @@ import fr.ensicaen.lv223.util.Util;
 import fr.ensicaen.lv223.util.loader.viewloader.ImageLoader;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 
 /**
  * A visual representation of a robot in the simulation. The robot is
@@ -17,7 +15,7 @@ public class RobotView {
 
     /** The circle shape representing the robot */
     private final ImageView displayElement;
-    private double cellWidth;
+    private final double cellWidth;
 
     /**
      * Creates a new instance of the {@code RobotView} class.

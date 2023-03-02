@@ -1,21 +1,20 @@
 package fr.ensicaen.lv223.util.astar;
 
 
-import fr.ensicaen.lv223.model.environment.cells.CellType;
 import fr.ensicaen.lv223.model.environment.cells.Cell;
+import fr.ensicaen.lv223.model.environment.cells.CellType;
 import fr.ensicaen.lv223.util.astar.heuristic.Heuristic;
 import fr.ensicaen.lv223.util.astar.heuristic.ManhattanHeuristic;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.PriorityQueue;
 
 public class Astar implements Agent {
     private final AstarCell[][] cells;
     private final AstarCell start;
     private final AstarCell end;
-    private final PriorityQueue<AstarCell> openList;
+    private ArrayList<AstarCell> openList;
     private final ArrayList<AstarCell> closedList;
     private final Heuristic heuristic;
 
@@ -23,7 +22,7 @@ public class Astar implements Agent {
         this(cells, start, end, new ManhattanHeuristic());
     }
     public Astar(Cell[][] cells, Cell start, Cell end, Heuristic heuristic) {
-        openList = new PriorityQueue<>();
+        openList = new ArrayList<>();
         closedList = new ArrayList<>();
         this.heuristic = heuristic;
 
@@ -62,48 +61,84 @@ public class Astar implements Agent {
         int y = cell.getY();
 
         if (x > 0) { // TOP
-            if (cells[x - 1][y].getType() != CellType.IMPENETRABLE
+            if (cells[x - 1][y].getType() != CellType.UNKNOWN
+                    && cells[x - 1][y].getType() != CellType.IMPENETRABLE
                     && cells[x - 1][y].getType() != CellType.LAKE) {
+//                cells[x - 1][y].setH(heuristic.compute(cells[x - 1][y].getX(), cells[x - 1][y].getY(), end.getX(), end.getY()));
                 neighbours.add(cells[x - 1][y]);
             }
-            if (y > 0 && cells[x - 1][y - 1].getType() != CellType.IMPENETRABLE
+            if (y > 0
+                    && cells[x - 1][y - 1].getType() != CellType.UNKNOWN
+                    && cells[x - 1][y - 1].getType() != CellType.IMPENETRABLE
                     && cells[x - 1][y - 1].getType() != CellType.LAKE) { // TOP LEFT
+//                cells[x - 1][y - 1].setH(heuristic.compute(cells[x - 1][y - 1].getX(), cells[x - 1][y - 1].getY(), end.getX(), end.getY()));
                 neighbours.add(cells[x - 1][y - 1]);
             }
             if (y < cells[0].length - 1
+                    && cells[x - 1][y + 1].getType() != CellType.UNKNOWN
                     && cells[x - 1][y + 1].getType() != CellType.IMPENETRABLE
                     && cells[x - 1][y + 1].getType() != CellType.LAKE) { // TOP RIGHT
+//                cells[x - 1][y + 1].setH(heuristic.compute(cells[x - 1][y + 1].getX(), cells[x - 1][y + 1].getY(), end.getX(), end.getY()));
                 neighbours.add(cells[x - 1][y + 1]);
             }
         }
         if (x < cells.length - 1) { // BOTTOM
-            if (cells[x + 1][y].getType() != CellType.IMPENETRABLE
+            if (cells[x + 1][y].getType() != CellType.UNKNOWN
+                    && cells[x + 1][y].getType() != CellType.IMPENETRABLE
                     && cells[x + 1][y].getType() != CellType.LAKE) {
+//                cells[x + 1][y].setH(heuristic.compute(cells[x + 1][y].getX(), cells[x + 1][y].getY(), end.getX(), end.getY()));
                 neighbours.add(cells[x + 1][y]);
             }
             if (y > 0
+                    && cells[x + 1][y - 1].getType() != CellType.UNKNOWN
                     && cells[x + 1][y - 1].getType() != CellType.IMPENETRABLE
                     && cells[x + 1][y - 1].getType() != CellType.LAKE) { // BOTTOM LEFT
+//                cells[x + 1][y - 1].setH(heuristic.compute(cells[x + 1][y - 1].getX(), cells[x + 1][y - 1].getY(), end.getX(), end.getY()));
                 neighbours.add(cells[x + 1][y - 1]);
             }
             if (y < cells[0].length - 1
+                    && cells[x + 1][y + 1].getType() != CellType.UNKNOWN
                     && cells[x + 1][y + 1].getType() != CellType.IMPENETRABLE
                     && cells[x + 1][y + 1].getType() != CellType.LAKE) { // BOTTOM RIGHT
+//                cells[x + 1][y + 1].setH(heuristic.compute(cells[x + 1][y + 1].getX(), cells[x + 1][y + 1].getY(), end.getX(), end.getY()));
                 neighbours.add(cells[x + 1][y + 1]);
             }
         }
         if (y > 0
+                && cells[x][y - 1].getType() != CellType.UNKNOWN
                 && cells[x][y - 1].getType() != CellType.IMPENETRABLE
                 && cells[x][y - 1].getType() != CellType.LAKE) { // LEFT
+//            cells[x][y - 1].setH(heuristic.compute(cells[x][y - 1].getX(), cells[x][y - 1].getY(), end.getX(), end.getY()));
             neighbours.add(cells[x][y - 1]);
         }
         if (y < cells[0].length - 1
+                && cells[x][y + 1].getType() != CellType.UNKNOWN
                 && cells[x][y + 1].getType() != CellType.IMPENETRABLE
                 && cells[x][y + 1].getType() != CellType.LAKE) { // RIGHT
+//            cells[x][y + 1].setH(heuristic.compute(cells[x][y + 1].getX(), cells[x][y + 1].getY(), end.getX(), end.getY()));
             neighbours.add(cells[x][y + 1]);
         }
 
         return neighbours;
+    }
+
+    private List<AstarCell> sortList(List<AstarCell> list) {
+        List<AstarCell> sortedList = new ArrayList<>();
+        while (!list.isEmpty()) {
+            AstarCell min = list.get(0);
+            for (AstarCell cell : list) {
+                if (cell.getF() < min.getF()) {
+                    min = cell;
+                } else if (cell.getF() == min.getF()) {
+                    if (cell.getH() < min.getH()) {
+                        min = cell;
+                    }
+                }
+            }
+            sortedList.add(min);
+            list.remove(min);
+        }
+        return sortedList;
     }
 
     @Override
@@ -115,9 +150,8 @@ public class Astar implements Agent {
         if (isFinished())
             return;
 
-        AstarCell current = openList.remove();
+        AstarCell current = openList.remove(0);
         List<AstarCell> neighbours = getNeighbours(current);
-        Arrays.sort(neighbours.toArray());
         for (AstarCell neighbour : neighbours) {
             if (!closedList.contains(neighbour)) {
                 neighbour.setParent(current);
@@ -127,6 +161,7 @@ public class Astar implements Agent {
                 neighbour.setParent(current);
             }
         }
+        openList = (ArrayList<AstarCell>) sortList(openList);
         closedList.add(current);
     }
 
@@ -145,6 +180,15 @@ public class Astar implements Agent {
             path.add(cell);
             cell = cell.getParent();
         }
+        Collections.reverse(path);
         return path;
+    }
+
+    public String pathToString() {
+        StringBuilder sb = new StringBuilder();
+        for (Cell cell : getPath()) {
+            sb.append("(").append(cell.getX()).append(",").append(cell.getY()).append(") ");
+        }
+        return sb.toString();
     }
 }
