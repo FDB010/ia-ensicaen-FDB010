@@ -7,7 +7,7 @@ import fr.ensicaen.lv223.model.agent.robot.specials.OreExtractor;
 import fr.ensicaen.lv223.model.logic.agentInterface.PlanetInterface;
 import fr.ensicaen.lv223.model.logic.localisation.Coordinate;
 
-public class OreExtractorJB extends OreExtractor implements RobotInterfaceJB{
+public class OreExtractorJB extends OreExtractor implements RobotInterfaceJB {
     private final CentralizerJB centralizer;
     public OreExtractorJB(RobotType type, CommandFactory commandFactory, PlanetInterface captors, CentralizerJB centralizer) {
         super(type, commandFactory, captors);
