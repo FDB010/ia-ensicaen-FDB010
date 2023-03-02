@@ -1,11 +1,9 @@
 package fr.ensicaen.lv223.model.agent.command;
 
-import fr.ensicaen.lv223.model.agent.command.implementations.ExtractFromCellCommand;
-import fr.ensicaen.lv223.model.agent.command.implementations.IdleCommand;
-import fr.ensicaen.lv223.model.agent.command.implementations.InstallPipeCommand;
-import fr.ensicaen.lv223.model.agent.command.implementations.RandomMovementCommand;
+import fr.ensicaen.lv223.model.agent.command.implementations.*;
 import fr.ensicaen.lv223.model.agent.robot.Robot;
 import fr.ensicaen.lv223.model.environment.planet.Planet;
+import fr.ensicaen.lv223.model.logic.localisation.Direction;
 import fr.ensicaen.lv223.model.logic.localisation.RobotMapper;
 
 /**
@@ -46,5 +44,9 @@ public class CommandFactory {
             default:
                 return new IdleCommand(robot, robotMapper);
         }
+    }
+
+    public Command createMoveCommand(Robot robot, Direction direction) {
+        return new MoveCommand(robot, robotMapper, direction);
     }
 }
