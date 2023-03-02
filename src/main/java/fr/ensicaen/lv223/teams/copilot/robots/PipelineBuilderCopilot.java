@@ -6,6 +6,7 @@ import fr.ensicaen.lv223.model.agent.robot.RobotType;
 import fr.ensicaen.lv223.model.agent.robot.message.Message;
 import fr.ensicaen.lv223.model.agent.robot.specials.PipelineBuilder;
 import fr.ensicaen.lv223.model.logic.agentInterface.PlanetInterface;
+import fr.ensicaen.lv223.model.logic.localisation.Coordinate;
 
 import java.util.ArrayList;
 import java.util.List;

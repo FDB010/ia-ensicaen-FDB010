@@ -6,6 +6,7 @@ import fr.ensicaen.lv223.model.agent.robot.RobotType;
 import fr.ensicaen.lv223.model.agent.robot.message.Message;
 import fr.ensicaen.lv223.model.agent.robot.specials.Farmer;
 import fr.ensicaen.lv223.model.logic.agentInterface.PlanetInterface;
+import fr.ensicaen.lv223.model.logic.localisation.Coordinate;
 import fr.ensicaen.lv223.teams.jamesbond.robots.CentralizerJB;
 
 import java.util.ArrayList;
@@ -21,6 +22,14 @@ public class FarmerCopilot extends Farmer {
     @Override
     public boolean isAvailable(Message m) {
         return false;
+    }
+
+    public void updateCentralizerMap() {
+        centralizer.updateMap(captors.getSurrounding(this), this);
+    }
+
+    public Coordinate getPosition() {
+        return centralizer.getMapper().getCoordinate(this);
     }
 
     @Override

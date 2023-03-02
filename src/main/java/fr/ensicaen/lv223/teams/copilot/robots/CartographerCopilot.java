@@ -66,7 +66,7 @@ public class CartographerCopilot extends Cartographer {
                 else {
                     commands.add(commandFactory.createMoveCommand(this, Direction.EAST));
                 }
-            }
+}
             // get planetInterface
             captors.getSurrounding(this);
         }
