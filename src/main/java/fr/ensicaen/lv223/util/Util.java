@@ -5,6 +5,7 @@ import fr.ensicaen.lv223.model.agent.command.CommandType;
 import fr.ensicaen.lv223.model.agent.robot.Robot;
 import fr.ensicaen.lv223.model.environment.cells.Cell;
 import fr.ensicaen.lv223.model.logic.localisation.Coordinate;
+import fr.ensicaen.lv223.model.logic.localisation.Direction;
 import fr.ensicaen.lv223.teams.ProjectTeam;
 
 import java.util.ArrayList;
@@ -57,6 +58,19 @@ public class Util {
                 commandList.add(cmd);
             }
             else{
+                //todo
+            }
+        }
+        return commandList;
+    }
+
+    public static Queue<Command> directionListToCommandList(ArrayList<Direction> directionArrayList, ProjectTeam team, Robot rob) {
+        LinkedList<Command> commandList = new LinkedList<>();
+        for (Direction direction : directionArrayList) {
+            if(team==ProjectTeam.JAMES_BOND) {
+                Command cmd = rob.getCommandFactory().createCommand(rob, CommandType.MOVEJB, direction);
+                commandList.add(cmd);
+            } else{
                 //todo
             }
         }

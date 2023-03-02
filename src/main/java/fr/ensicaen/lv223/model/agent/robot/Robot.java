@@ -11,7 +11,6 @@ import fr.ensicaen.lv223.model.logic.localisation.Direction;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.PriorityQueue;
 
 public abstract class Robot implements Agent {
     protected final PlanetInterface captors;
@@ -41,8 +40,8 @@ public abstract class Robot implements Agent {
         this.type = type;
         this.commandFactory = commandFactory;
         this.captors = captors;
-        this.pos_x = 12;
-        this.pos_y = 12;
+        this.pos_x = 10;
+        this.pos_y = 10;
         this.priorityQueueCommand = new LinkedList<>();
         this.priorityQueueMessage = new LinkedList<>();
     }

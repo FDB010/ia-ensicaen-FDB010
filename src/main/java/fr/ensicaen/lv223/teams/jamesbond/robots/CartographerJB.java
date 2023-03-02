@@ -12,13 +12,18 @@ import fr.ensicaen.lv223.teams.jamesbond.objectifs.ExploreObjectif;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CartographerJB extends Cartographer implements RobotInterfaceJB{
+public class CartographerJB extends Cartographer implements RobotInterfaceJB {
+    /**
+     * id possible is -1 or +1
+     */
+    private static int id = -1;
     private CentralizerJB centralizer;
     public CartographerJB(RobotType type, CommandFactory commandFactory, PlanetInterface captors, CentralizerJB centralizer) {
         super(type, commandFactory, captors);
         this.centralizer = centralizer;
-        this.primalObjectif = new ExploreObjectif(this, centralizer);
+        this.primalObjectif = new ExploreObjectif(this, centralizer, CartographerJB.id);
         this.temporaryObjectif = null;
+        CartographerJB.id += 2;
     }
 
     @Override

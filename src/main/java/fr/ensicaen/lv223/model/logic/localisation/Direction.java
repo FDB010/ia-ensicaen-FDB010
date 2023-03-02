@@ -27,4 +27,17 @@ public enum Direction {
         return this.direction_y;
     }
 
+    public Direction reverseDirection() {
+        return switch (this) {
+            case NORTH -> SOUTH;
+            case SOUTH -> NORTH;
+            case EAST -> WEST;
+            case WEST -> EAST;
+            case NORTH_WEST -> SOUTH_EAST;
+            case NORTH_EAST -> SOUTH_WEST;
+            case SOUTH_WEST -> NORTH_EAST;
+            case SOUTH_EAST -> NORTH_WEST;
+        };
+    }
+
 }
