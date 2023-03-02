@@ -30,21 +30,11 @@ public class ExploreObjectif implements Objectif {
         Coordinate current = robot.getPosition();
         UnknownCell focus = centralizer.closestCellToRobot(robot, centralizer.closestUndiscoveredCells());
         List<List<UnknownCell>> map = centralizer.getCells();
-        UnknownCell start = map.get(current.getX()).get(current.getY());
-        UnknownCell end = map.get(focus.getX()).get(focus.getY());
-
-        Cell[][] cells = new Cell[map.size()][];
-
-        for (int i = 0; i < cells.length; i++) {
-            List<UnknownCell> currentList = map.get(i);
-            Cell[] currentArray = new Cell[currentList.size()];
-            for (int j = 0; j < currentArray.length; j++) {
-                currentArray[j] = currentList.get(j);
-            }
-            cells[i] = currentArray;
-        }
-        Astar astar = new Astar(cells, start, end);
+        Cell start = map.get(current.getX()).get(current.getY());
+        Cell end = map.get(focus.getX()).get(focus.getY());
+        Astar astar = new Astar(map, start, end);
         astar.compute();
+
         ArrayList<Cell> cellPath = new ArrayList<>();
         cellPath.add(new UnknownCell(current.getX(), current.getY()));
         cellPath.addAll(astar.getPath());
