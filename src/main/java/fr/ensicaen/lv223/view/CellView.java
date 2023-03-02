@@ -74,32 +74,20 @@ public class CellView {
      * @return The color of this cell.
      */
     private Color getColor(CellType type) {
-        switch (type) {
-            case BASE:
-                return Color.DARKBLUE;
-            case DESERT:
-                return Color.LEMONCHIFFON;
-            case DRY_GRASS:
-                return Color.YELLOWGREEN;
-            case FOOD:
-                return Color.TOMATO;
-            case FOREST:
-                return Color.FORESTGREEN;
-            case GRASS:
-                return Color.MEDIUMSEAGREEN;
-            case IMPENETRABLE:
-                return Color.BLACK;
-            case LAKE:
-                return Color.MEDIUMAQUAMARINE;
-            case ORE:
-                return Color.GOLD;
-            case STONE:
-                return Color.GREY;
-            case WET_GRASS:
-                return Color.DARKGREEN;
-            default:
-                return Color.CHOCOLATE;
-        }
+        return switch (type) {
+            case BASE -> Color.DARKBLUE;
+            case DESERT -> Color.LEMONCHIFFON;
+            case DRY_GRASS -> Color.YELLOWGREEN;
+            case FOOD -> Color.TOMATO;
+            case FOREST -> Color.FORESTGREEN;
+            case GRASS -> Color.MEDIUMSEAGREEN;
+            case IMPENETRABLE -> Color.BLACK;
+            case LAKE -> Color.MEDIUMAQUAMARINE;
+            case ORE -> Color.GOLD;
+            case STONE -> Color.GREY;
+            case WET_GRASS -> Color.DARKGREEN;
+            default -> Color.CHOCOLATE;
+        };
     }
 
     /**

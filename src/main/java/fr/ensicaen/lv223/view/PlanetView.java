@@ -1,7 +1,5 @@
 package fr.ensicaen.lv223.view;
 
-import java.util.List;
-
 import fr.ensicaen.lv223.presenter.IPresenter;
 import fr.ensicaen.lv223.presenter.Presenter;
 import javafx.beans.Observable;
@@ -13,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+
+import java.util.List;
 
 /**
  * {@code PlanetView} is a JavaFX class that represents the visual aspect of
@@ -144,17 +144,11 @@ public class PlanetView implements IPresenter {
         buttonToStartOneOrMoreSteps.setOnAction(event -> presenter.simulate(Integer.parseInt(choiceOfNumberOfSteps.getValue())));
         choiceOfThePlanetTolerance.setOnAction(event -> {
             switch (choiceOfThePlanetTolerance.getValue()) {
-                case "Hostile":
-                    presenter.setTolerance(1.0);
-                    break;
-                case "Adaptative":
-                    presenter.setTolerance(1.5);
-                    break;
-                case "Tolérante":
-                    presenter.setTolerance(2.0);
-                    break;
-                default:
-                    break;
+                case "Hostile" -> presenter.setTolerance(1.0);
+                case "Adaptative" -> presenter.setTolerance(1.5);
+                case "Tolérante" -> presenter.setTolerance(2.0);
+                default -> {
+                }
             }
         });
     }
