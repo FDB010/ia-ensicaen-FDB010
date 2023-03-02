@@ -18,9 +18,9 @@ import java.util.Queue;
 import static fr.ensicaen.lv223.util.Util.cellListToCommandList;
 
 public class HelpRobotObjectif implements Objectif {
-    private RobotInterfaceJB currentRobot;
-    private RobotInterfaceJB robotToHelp;
-    private CentralizerJB centralizer;
+    private final RobotInterfaceJB currentRobot;
+    private final RobotInterfaceJB robotToHelp;
+    private final CentralizerJB centralizer;
 
     public HelpRobotObjectif(RobotInterfaceJB currentRobot, CentralizerJB centralizer, RobotInterfaceJB robotToHelp) {
         this.currentRobot = currentRobot;
@@ -34,18 +34,7 @@ public class HelpRobotObjectif implements Objectif {
         List<List<UnknownCell>> map = centralizer.getCells();
         UnknownCell start = map.get(current.getX()).get(current.getY());
         UnknownCell end = map.get(helpedRobot.getX()).get(helpedRobot.getY());
-
-        Cell[][] cells = new Cell[map.size()][];
-
-        for (int i = 0; i < cells.length; i++) {
-            List<UnknownCell> currentList = map.get(i);
-            Cell[] currentArray = new Cell[currentList.size()];
-            for (int j = 0; j < currentArray.length; j++) {
-                currentArray[j] = currentList.get(j);
-            }
-            cells[i] = currentArray;
-        }
-        Astar astar = new Astar(cells, start, end);
+        Astar astar = new Astar(map, start, end);
 
         astar.compute();
         ArrayList<Cell> cellPath = (ArrayList<Cell>) astar.getPath();

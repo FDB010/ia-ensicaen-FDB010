@@ -11,16 +11,15 @@ import fr.ensicaen.lv223.teams.jamesbond.robots.CentralizerJB;
 import fr.ensicaen.lv223.teams.jamesbond.robots.RobotInterfaceJB;
 import fr.ensicaen.lv223.util.astar.Astar;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
 
 import static fr.ensicaen.lv223.util.Util.cellListToCommandList;
 
 public class ExploreObjectif implements Objectif {
-
-
-
-    private RobotInterfaceJB robot;
-    private CentralizerJB centralizer;
+    private final RobotInterfaceJB robot;
+    private final CentralizerJB centralizer;
 
     public ExploreObjectif(RobotInterfaceJB currentRobot, CentralizerJB centralizer) {
         this.robot = currentRobot;

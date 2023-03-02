@@ -10,7 +10,6 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class CollectOreObjectif implements Objectif {
-
     private Robot robot;
 
     private MineralCell focusedCell = null;
@@ -24,12 +23,11 @@ public class CollectOreObjectif implements Objectif {
     @Override
     public Queue<Command> generateCommmandList() {
         PriorityQueue<Command> commandes = new PriorityQueue<>();
-        if(this.focusedCell != null){
+        if (this.focusedCell != null) {
             // Si capacité max atteinte, se rendre au centralisateur
             // Sinon si sur une cellule de minerais, la miner
             // Sinon, se rendre sur la cellule de minerais
-        }
-        else{
+        } else {
             // Si centralisateur connait une case de minerais non utilisée, la récuppérer puis return this.generateCommmandList()
             // Sinon, se balader vers les cases non découvertes
         }
