@@ -50,19 +50,24 @@ public class CartographerJB extends Cartographer implements RobotInterfaceJB {
     @Override
     public List<Command> compute() {
         List<Command> commands = new ArrayList<>();
+        this.refreshCommandList();
+        commands.add(super.priorityQueueCommand.poll());
         if(super.priorityQueueCommand.isEmpty()){
-            if(this.temporaryObjectif != null){
-                System.out.println("Temporary objectif");
-                super.priorityQueueCommand.addAll(this.temporaryObjectif.generateCommmandList());
-            }
-            else{
-                System.out.println("Primal objectif");
-                super.priorityQueueCommand.addAll(this.primalObjectif.generateCommmandList());}
+            this.refreshCommandList();
         }
         commands.add(super.priorityQueueCommand.poll());
-
         return commands;
     }
 
+    private void refreshCommandList(){
+        if(super.priorityQueueCommand.isEmpty()){
+            if(this.temporaryObjectif != null){
+                super.priorityQueueCommand.addAll(this.temporaryObjectif.generateCommmandList());
+            }
+            else{
+                super.priorityQueueCommand.addAll(this.primalObjectif.generateCommmandList());
+            }
+        }
+    }
 
 }
