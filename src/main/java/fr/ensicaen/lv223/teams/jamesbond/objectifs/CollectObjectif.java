@@ -3,21 +3,25 @@ package fr.ensicaen.lv223.teams.jamesbond.objectifs;
 import fr.ensicaen.lv223.model.agent.command.Command;
 import fr.ensicaen.lv223.model.agent.robot.Robot;
 import fr.ensicaen.lv223.model.agent.robot.objectif.Objectif;
-import fr.ensicaen.lv223.model.environment.cells.specials.MineralCell;
-import fr.ensicaen.lv223.model.logic.localisation.RobotMapper;
+import fr.ensicaen.lv223.model.agent.robot.specials.FoodRetriever;
+import fr.ensicaen.lv223.model.agent.robot.specials.OreExtractor;
+import fr.ensicaen.lv223.model.environment.cells.CellType;
+import fr.ensicaen.lv223.teams.jamesbond.UnknownCell;
+import fr.ensicaen.lv223.teams.jamesbond.robots.CentralizerJB;
 
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class CollectOreObjectif implements Objectif {
+public class CollectObjectif implements Objectif {
     private Robot robot;
+    private CentralizerJB centralizer;
 
-    private MineralCell focusedCell = null;
-    private RobotMapper robotMapper;
+    private UnknownCell focusedCell;
 
-    public CollectOreObjectif(Robot currentRobot, RobotMapper robotMapper) {
+    public CollectObjectif(Robot currentRobot, CentralizerJB centralizer) {
         this.robot = currentRobot;
-        this.robotMapper = robotMapper;
+        this.centralizer = centralizer;
+        focusedCell = null;
     }
 
     @Override
@@ -29,8 +33,19 @@ public class CollectOreObjectif implements Objectif {
             // Sinon, se rendre sur la cellule de minerais
         } else {
             // Si centralisateur connait une case de minerais non utilisée, la récuppérer puis return this.generateCommmandList()
+            if (robot instanceof OreExtractor) {
+                focusedCell = centralizer.findCellToExtract(CellType.ORE);
+            } else if (robot instanceof FoodRetriever) {
+                focusedCell = centralizer.findCellToExtract(CellType.FOOD);
+            }
             // Sinon, se balader vers les cases non découvertes
         }
         return commandes;
+    }
+
+    private void oreExtractorAction() {
+    }
+
+    private void foodRetrieverAction() {
     }
 }

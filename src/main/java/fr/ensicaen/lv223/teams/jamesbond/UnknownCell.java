@@ -7,6 +7,8 @@ import fr.ensicaen.lv223.model.environment.cells.CellType;
 public class UnknownCell extends Cell{
     private Boolean isFocused = false;
     private Robot focusedBy = null;
+
+    private int lastHitDay;
     /**
      * Constructs a new {@code Cell} object with given x and y coordinates,
      * cell type, and intensity of metamorphosis. The intensity of wave is
@@ -17,8 +19,8 @@ public class UnknownCell extends Cell{
      */
     public UnknownCell(int x, int y) {
         super(x, y, CellType.UNKNOWN, 0);
+        lastHitDay = 0;
     }
-
 
     public void update(CellType type){
         super.type = type;
@@ -39,5 +41,13 @@ public class UnknownCell extends Cell{
 
     public boolean isFocused(){
         return this.isFocused;
+    }
+
+    public int getLastHitDay() {
+        return lastHitDay;
+    }
+
+    public void setLastHitDay(int lastHitDay) {
+        this.lastHitDay = lastHitDay;
     }
 }

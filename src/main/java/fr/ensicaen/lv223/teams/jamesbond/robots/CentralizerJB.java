@@ -23,8 +23,11 @@ public class CentralizerJB extends Centralizer implements RobotInterfaceJB{
     private static int WIDTH_MAP = 21;
     private static int HEIGHT_MAP = 21;
 
+    private int oreQttToExtract;
+
     private CentralizerJB(RobotType type, CommandFactory commandFactory, PlanetInterface captors) {
         super(type, commandFactory, captors);
+        this.oreQttToExtract = 1000;
         cells = new ArrayList<>();
         for(int i = 0; i< WIDTH_MAP; i++){
             cells.add(new ArrayList<>());
@@ -43,6 +46,9 @@ public class CentralizerJB extends Centralizer implements RobotInterfaceJB{
         return instance;
     }
 
+    public void takeHitOnOre() {
+        this.oreQttToExtract = (int) (this.oreQttToExtract*0.90);
+    }
     @Override
     public boolean isAvailable(Message m) {
         return false;
@@ -83,5 +89,22 @@ public class CentralizerJB extends Centralizer implements RobotInterfaceJB{
     @Override
     public Coordinate getPosition() {
         return new Coordinate(WIDTH_MAP/2,HEIGHT_MAP/2);
+    }
+
+    public UnknownCell findCellToExtract(CellType type) {
+        UnknownCell closestCell = null;
+        int distance = Integer.MAX_VALUE;
+        for (List<UnknownCell> list : cells) {
+            for (UnknownCell cell : list) {
+                //todo : check if cell is not already extracted
+                if (cell.getType() == type && cell.isFocused()) {
+                    if(closestCell == null || Math.max(Math.abs(getPos_x() - cell.getX()), Math.abs(getPos_y() - cell.getY())) < distance){
+                        closestCell = cell;
+                        distance = Math.max(Math.abs(closestCell.getX() - cell.getX()), Math.abs(closestCell.getY() - cell.getY()));
+                    }
+                }
+            }
+        }
+        return closestCell;
     }
 }
