@@ -54,7 +54,7 @@ public class Util {
             Cell current = AStarPath.get(i);
             Cell next = AStarPath.get(i + 1);
             if(team==ProjectTeam.JAMES_BOND){
-                Command cmd = rob.getCommandFactory().createCommand(rob, CommandType.MOVEJB, current.getDirectionTo(next));
+                Command cmd = rob.getCommandFactory().createCommand(rob, CommandType.MOVEJB, getDirectionTo(current, next));
                 commandList.add(cmd);
             }
             else{
@@ -75,5 +75,36 @@ public class Util {
             }
         }
         return commandList;
+    }
+
+
+
+    public static Direction getDirectionTo(Cell previous, Cell next) {
+        if (next.getX() == previous.getX()) {
+            if (next.getY() == previous.getY() + 1) {
+                return Direction.SOUTH;
+            } else if (next.getY() == previous.getY() - 1) {
+                return Direction.NORTH;
+            }
+        } else if (next.getY() == previous.getY()) {
+            if (next.getX() == previous.getX() + 1) {
+                return Direction.EAST;
+            } else if (next.getX() == previous.getX() - 1) {
+                return Direction.WEST;
+            }
+        }
+        else if (next.getX() == previous.getX() + 1 && next.getY() == previous.getY() + 1){
+            return Direction.SOUTH_EAST;
+        }
+        else if (next.getX() == previous.getX() - 1 && next.getY() == previous.getY() + 1){
+            return Direction.SOUTH_WEST;
+        }
+        else if (next.getX() == previous.getX() + 1 && next.getY() == previous.getY() - 1){
+            return Direction.NORTH_EAST;
+        }
+        else if (next.getX() == previous.getX() - 1 && next.getY() == previous.getY() - 1){
+            return Direction.NORTH_WEST;
+        }
+        return null;
     }
 }

@@ -226,33 +226,4 @@ public class Cell implements EnvironmentCell, Comparable {
         this.intensityOfWave += intensity;
     }
 
-    public Direction getDirectionTo(Cell next) {
-        if (next.x == x) {
-            if (next.y == y + 1) {
-                return Direction.SOUTH;
-            } else if (next.y == y - 1) {
-                return Direction.NORTH;
-            }
-        } else if (next.y == y) {
-            if (next.x == x + 1) {
-                return Direction.EAST;
-            } else if (next.x == x - 1) {
-                return Direction.WEST;
-            }
-        }
-        else if (next.x == x + 1 && next.y == y + 1){
-            return Direction.SOUTH_EAST;
-        }
-        else if (next.x == x - 1 && next.y == y + 1){
-            return Direction.SOUTH_WEST;
-        }
-        else if (next.x == x + 1 && next.y == y - 1){
-            return Direction.NORTH_EAST;
-        }
-        else if (next.x == x - 1 && next.y == y - 1){
-            return Direction.NORTH_WEST;
-        }
-        System.out.println("x: " + x + " y: " + y + " next.x: " + next.x + " next.y: " + next.y);
-        return null;
-    }
 }
