@@ -9,9 +9,13 @@ import fr.ensicaen.lv223.model.logic.localisation.Coordinate;
 
 public class FoodRetrieverJB extends FoodRetriever implements RobotInterfaceJB {
     private final CentralizerJB centralizer;
+    private int foodqtt;
+    private int maxFoodQtt;
     public FoodRetrieverJB(RobotType type, CommandFactory commandFactory, PlanetInterface captors, CentralizerJB centralizer) {
         super(type, commandFactory, captors);
         this.centralizer = centralizer;
+        this.foodqtt = 0;
+        this.maxFoodQtt = 1000;
     }
     @Override
     public CentralizerJB getCentralizer() {
@@ -31,5 +35,28 @@ public class FoodRetrieverJB extends FoodRetriever implements RobotInterfaceJB {
     @Override
     public Coordinate getPosition() {
         return new Coordinate(super.getPos_x(),super.getPos_y());
+    }
+
+
+    public boolean isFull() {
+        return foodqtt >= maxFoodQtt;
+    }
+
+    public boolean addOre(int oreqtt) {
+        if(this.foodqtt + oreqtt > maxFoodQtt) {
+            return false;
+        }
+        this.foodqtt += oreqtt;
+        return true;
+    }
+
+    public int getOre() {
+        int tmp = this.foodqtt;
+        this.foodqtt = 0;
+        return tmp;
+    }
+
+    public int getMaxQttToExtract() {
+        return this.maxFoodQtt - this.foodqtt;
     }
 }
