@@ -44,7 +44,11 @@ public class CollectObjectif implements Objectif {
         LinkedList<Command> commandes = new LinkedList<>();
         // Si le robot est plein, retourner au centralizer
         if((robot instanceof OreExtractorJB && ((OreExtractorJB) robot).isFull()) || (robot instanceof FoodRetrieverJB && ((FoodRetrieverJB) robot).isFull())) {
-            System.out.println("Je suis foooooooooul");
+            // Si le robot est déjà au centralizer, On dépose la ressource
+            if(robot.getPos_x() == centralizer.getPos_x() && robot.getPos_y() == centralizer.getPos_y()) {
+                commandes.add(this.robot.getCommandFactory().createCommand(this.robot, CommandType.DROP_RESOURCES, centralizer));
+                return commandes;
+            }
             List<List<UnknownCell>> map = centralizer.getCells();
             UnknownCell start = map.get(robot.getPos_x()).get(robot.getPos_y());
             UnknownCell end = map.get(centralizer.getPos_x()).get(centralizer.getPos_y());
@@ -66,10 +70,6 @@ public class CollectObjectif implements Objectif {
         if(this.focusedCell != null){
             // Si on est déjà dessus, on extrait
             if(this.focusedCell.getX() == robot.getPos_x() && this.focusedCell.getY() == robot.getPos_y()) {
-                System.out.println("Je suis sur la cellule MAMAAAAAAAAAAAAAAAAAAAAAN !");
-                System.out.println("Position : " + robot.getPos_x() + " " + robot.getPos_y());
-                System.out.println("Cellule : " + this.focusedCell.getX() + " " + this.focusedCell.getY());
-                System.out.println("Type : " + this.focusedCell.getType());
                 int amount = this.centralizer.getQttToExtract(this.focusedCellType);
                 if(robot instanceof OreExtractorJB) {
                     amount = Math.min(amount, ((OreExtractorJB) robot).getMaxQttToExtract());

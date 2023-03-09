@@ -7,6 +7,8 @@ import fr.ensicaen.lv223.model.environment.cells.CellType;
 import fr.ensicaen.lv223.model.environment.cells.specials.ExtractableCell;
 import fr.ensicaen.lv223.model.environment.planet.Planet;
 import fr.ensicaen.lv223.model.logic.localisation.RobotMapper;
+import fr.ensicaen.lv223.teams.jamesbond.robots.FoodRetrieverJB;
+import fr.ensicaen.lv223.teams.jamesbond.robots.OreExtractorJB;
 
 /**
  * This command allows a robot to extract a given quantity of a resource from an
@@ -25,6 +27,11 @@ public class ExtractFromCellCommand extends Command {
         if (CellType.isExtractableDirectly(cell.getType())) {
             ExtractableCell extractableCell = (ExtractableCell) cell;;
             extractableCell.extract(value);
+        }
+        if (this.robot instanceof OreExtractorJB){
+            ((OreExtractorJB) this.robot).addOre(value);
+        } else if (this.robot instanceof FoodRetrieverJB) {
+            ((FoodRetrieverJB) this.robot).addFood(value);
         }
     }
 

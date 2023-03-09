@@ -94,4 +94,25 @@ public abstract class Robot implements Agent {
         this.pos_x += dir.getDirection_x();
         this.pos_y += dir.getDirection_y();
     }
+
+    public int getOre(){
+        System.out.println("A implementer par type de robot");
+        return 0;
+    }
+    public int getFood(){
+        System.out.println("A implementer par type de robot");
+        return 0;
+    }
+    public void clearOreQtt(){
+        System.out.println("A implementer par type de robot");
+    }
+    public void clearFoodQtt(){
+        System.out.println("A implementer par type de robot");
+    }
+    public void addOre(int qtt){
+        System.out.println("A implementer par type de robot");
+    }
+    public void addFood(int qtt){
+        System.out.println("A implementer par type de robot");
+    }
 }

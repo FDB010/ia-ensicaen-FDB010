@@ -7,6 +7,7 @@ import fr.ensicaen.lv223.model.agent.robot.message.Message;
 import fr.ensicaen.lv223.model.agent.robot.specials.OreExtractor;
 import fr.ensicaen.lv223.model.logic.agentInterface.PlanetInterface;
 import fr.ensicaen.lv223.model.logic.localisation.Coordinate;
+import fr.ensicaen.lv223.model.logic.localisation.Direction;
 import fr.ensicaen.lv223.teams.jamesbond.objectifs.CollectObjectif;
 
 import java.util.ArrayList;
@@ -69,12 +70,8 @@ public class OreExtractorJB extends OreExtractor implements RobotInterfaceJB {
         return oreqtt >= maxOreQtt;
     }
 
-    public boolean addOre(int oreqtt) {
-        if(this.oreqtt + oreqtt > maxOreQtt) {
-            return false;
-        }
+    public void addOre(int oreqtt) {
         this.oreqtt += oreqtt;
-        return true;
     }
 
     public int getOre() {
@@ -86,4 +83,5 @@ public class OreExtractorJB extends OreExtractor implements RobotInterfaceJB {
     public int getMaxQttToExtract() {
         return this.maxOreQtt - this.oreqtt;
     }
+
 }

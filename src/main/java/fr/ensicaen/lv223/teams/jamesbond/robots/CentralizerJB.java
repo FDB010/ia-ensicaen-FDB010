@@ -1,6 +1,7 @@
 package fr.ensicaen.lv223.teams.jamesbond.robots;
 
 import fr.ensicaen.lv223.model.agent.command.CommandFactory;
+import fr.ensicaen.lv223.model.agent.robot.Robot;
 import fr.ensicaen.lv223.model.agent.robot.RobotType;
 import fr.ensicaen.lv223.model.agent.robot.message.Message;
 import fr.ensicaen.lv223.model.agent.robot.specials.Centralizer;
@@ -60,10 +61,9 @@ public class CentralizerJB extends Centralizer implements RobotInterfaceJB{
         return cells;
     }
 
-    public void updateMap(HashMap<Direction, CellType> map, RobotInterfaceJB robot){
-        Coordinate c = robot.getPosition();
-        int x = c.getX();
-        int y = c.getY();
+    public void updateMap(HashMap<Direction, CellType> map, Robot robot){
+        int x = robot.getPos_x();
+        int y = robot.getPos_y();
         for(Direction d : map.keySet()){
             switch (d) {
                 case NORTH -> cells.get(x - 1).get(y).update(map.get(d));

@@ -1,10 +1,8 @@
 package fr.ensicaen.lv223.model.agent.command;
 
-import fr.ensicaen.lv223.model.agent.command.implementations.ExtractFromCellCommand;
-import fr.ensicaen.lv223.model.agent.command.implementations.IdleCommand;
-import fr.ensicaen.lv223.model.agent.command.implementations.InstallPipeCommand;
-import fr.ensicaen.lv223.model.agent.command.implementations.RandomMovementCommand;
+import fr.ensicaen.lv223.model.agent.command.implementations.*;
 import fr.ensicaen.lv223.model.agent.robot.Robot;
+import fr.ensicaen.lv223.model.agent.robot.specials.Centralizer;
 import fr.ensicaen.lv223.model.environment.planet.Planet;
 import fr.ensicaen.lv223.model.logic.localisation.Direction;
 import fr.ensicaen.lv223.model.logic.localisation.RobotMapper;
@@ -62,6 +60,16 @@ public class CommandFactory {
         switch (type) {
             case MOVEJB:
                 return new MoveCommandJB(robot, robotMapper, value);
+
+            default:
+                return new IdleCommand(robot, robotMapper);
+        }
+    }
+
+    public Command createCommand(Robot robot, CommandType type, Centralizer centralizer) {
+        switch (type) {
+            case DROP_RESOURCES:
+                return new DropResourcesCommand(robot, robotMapper, centralizer);
 
             default:
                 return new IdleCommand(robot, robotMapper);

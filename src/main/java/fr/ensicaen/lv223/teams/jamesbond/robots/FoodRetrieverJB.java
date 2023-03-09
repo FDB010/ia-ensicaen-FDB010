@@ -42,15 +42,11 @@ public class FoodRetrieverJB extends FoodRetriever implements RobotInterfaceJB {
         return foodqtt >= maxFoodQtt;
     }
 
-    public boolean addOre(int oreqtt) {
-        if(this.foodqtt + oreqtt > maxFoodQtt) {
-            return false;
-        }
-        this.foodqtt += oreqtt;
-        return true;
+    public void addFood(int foodqtt) {
+        this.foodqtt += foodqtt;
     }
 
-    public int getOre() {
+    public int getFood() {
         int tmp = this.foodqtt;
         this.foodqtt = 0;
         return tmp;

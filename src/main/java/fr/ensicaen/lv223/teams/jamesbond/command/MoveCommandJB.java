@@ -14,7 +14,7 @@ public class MoveCommandJB extends MoveCommand {
     @Override
     public void apply() {
         super.apply();
-        ((RobotInterfaceJB)robot).updateCentralizerMap();
         robot.update_position(super.direction);
+        ((RobotInterfaceJB)robot).updateCentralizerMap();
     }
 }
