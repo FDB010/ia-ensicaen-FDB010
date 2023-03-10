@@ -50,5 +50,5 @@ public interface Environment {
      * Sets the emotion for the planet
      */
 
-    void setEmotion();
+    PlanetEmotion setEmotion();
 }

@@ -1,9 +1,7 @@
 package fr.ensicaen.lv223.model.environment.cells;
 
 import fr.ensicaen.lv223.model.environment.EnvironmentCell;
-import fr.ensicaen.lv223.model.environment.cells.specials.FoodCell;
-import fr.ensicaen.lv223.model.environment.construction.WaterPipe;
-import fr.ensicaen.lv223.model.logic.localisation.Direction;
+import fr.ensicaen.lv223.model.environment.cells.specials.extractable.FoodCell;
 
 import java.util.Random;
 
@@ -16,7 +14,7 @@ import java.util.Random;
  * @see EnvironmentCell
  * @see Comparable
  */
-public class Cell implements EnvironmentCell, Comparable {
+public abstract class Cell implements EnvironmentCell, Comparable {
     private final int x;
     private final int y;
     protected CellType type;
@@ -137,121 +135,5 @@ public class Cell implements EnvironmentCell, Comparable {
      */
     public String toString() {
         return "" + intensityOfWave;
-    }
-
-    public int getRandomTransformation(){
-        Random rand = new Random(System.currentTimeMillis());
-        return rand.nextInt(100);
-    }
-
-    public Cell transformation() {
-        int random = getRandomTransformation();
-        switch (type){
-            case FOREST:
-                if (random > 0 && random <= 9) {
-                    type = CellType.DESERT;
-                }
-                else if (random > 9 && random <= 29){
-                    type = CellType.DRY_GRASS;
-                }
-                else if (random > 29 && random <=59) {
-                    type = CellType.GRASS;
-                }
-                else if (random > 59 && random <= 99){
-                    type = CellType.WET_GRASS;
-                }
-                break;
-
-            case DRY_GRASS:
-                if (random > 0 && random <= 80){
-                    type = CellType.DESERT;
-                }
-                else if (random > 80 && random <= 99){
-                    return new FoodCell(this.x, this.y,CellType.FOOD,this.intensityOfWave,this.intensityOfWave);
-                }
-                break;
-
-            case GRASS:
-                if (random > 0 && random <= 10){
-                    type = CellType.DESERT;
-                }
-                else if (random > 10 && random <= 70){
-                    type = CellType.DRY_GRASS;
-                }
-                else if(random > 70 && random <= 100){
-                    return new FoodCell(this.x, this.y,CellType.FOOD,this.intensityOfWave,this.intensityOfWave);
-                }
-                break;
-
-            case WET_GRASS:
-                if (random > 0 && random <= 5){
-                    type = CellType.DESERT;
-                }
-                else if (random > 5 && random <= 45){
-                    type = CellType.GRASS;
-                }
-                else if(random > 45 && random <= 75){
-                    type = CellType.DRY_GRASS;
-                }
-                else if (random > 75 && random <= 100){
-                    return new FoodCell(this.x, this.y,CellType.FOOD,this.intensityOfWave,this.intensityOfWave);
-                }
-                break;
-
-            case DESERT:
-                if (random > 0 && random <= 65){
-                    type = CellType.DRY_GRASS;
-                }
-                break;
-
-            case FOOD:
-                if (random > 0 && random <= 50){
-                    return new Cell(this.x, this.y,CellType.WET_GRASS,this.intensityOfWave);
-                }
-                else if (random > 50 && random <= 80){
-                    return new Cell(this.x, this.y,CellType.GRASS,this.intensityOfWave);
-                }
-                else if (random > 80 && random <= 90){
-                    return new Cell(this.x, this.y,CellType.DRY_GRASS,this.intensityOfWave);
-                }
-                else if (random > 90 && random <= 100){
-                    return new Cell(this.x, this.y,CellType.FOREST,this.intensityOfWave);
-                }
-                break;
-        }
-        return this;
-    }
-
-    public void addIntensityOfWave(int intensity){
-        this.intensityOfWave += intensity;
-    }
-
-    public Direction getDirectionTo(Cell next) {
-        if (next.x == x) {
-            if (next.y == y + 1) {
-                return Direction.SOUTH;
-            } else if (next.y == y - 1) {
-                return Direction.NORTH;
-            }
-        } else if (next.y == y) {
-            if (next.x == x + 1) {
-                return Direction.EAST;
-            } else if (next.x == x - 1) {
-                return Direction.WEST;
-            }
-        }
-        else if (next.x == x + 1 && next.y == y + 1){
-            return Direction.SOUTH_EAST;
-        }
-        else if (next.x == x - 1 && next.y == y + 1){
-            return Direction.SOUTH_WEST;
-        }
-        else if (next.x == x + 1 && next.y == y - 1){
-            return Direction.NORTH_EAST;
-        }
-        else if (next.x == x - 1 && next.y == y - 1){
-            return Direction.NORTH_WEST;
-        }
-        return null;
     }
 }

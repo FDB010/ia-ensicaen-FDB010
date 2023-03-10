@@ -1,6 +1,6 @@
 package fr.ensicaen.lv223.teams.jamesbond.command;
 
-import fr.ensicaen.lv223.model.agent.command.implementations.MoveCommand;
+import fr.ensicaen.lv223.model.agent.command.implementations.movement.MoveCommand;
 import fr.ensicaen.lv223.model.agent.robot.Robot;
 import fr.ensicaen.lv223.model.logic.localisation.Direction;
 import fr.ensicaen.lv223.model.logic.localisation.RobotMapper;

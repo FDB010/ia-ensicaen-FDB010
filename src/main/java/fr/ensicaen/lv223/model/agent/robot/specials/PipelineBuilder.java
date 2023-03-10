@@ -19,9 +19,6 @@ public abstract class PipelineBuilder extends Robot {
     public List<Command> compute() {
         List<Command> commands = super.compute();
         Random random = new Random();
-        if (random.nextInt(100) < 10) {
-            commands.add(commandFactory.createCommand(this, CommandType.INSTALL_PIPE, 1));
-        }
         commands.add(commandFactory.createCommand(this, CommandType.MOVE, 1));
         return commands;
     }

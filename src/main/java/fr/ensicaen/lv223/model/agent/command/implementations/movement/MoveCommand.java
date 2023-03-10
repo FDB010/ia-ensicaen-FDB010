@@ -1,4 +1,4 @@
-package fr.ensicaen.lv223.model.agent.command.implementations;
+package fr.ensicaen.lv223.model.agent.command.implementations.movement;
 
 import fr.ensicaen.lv223.model.agent.command.Command;
 import fr.ensicaen.lv223.model.agent.robot.Robot;

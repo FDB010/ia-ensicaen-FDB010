@@ -2,9 +2,10 @@ package fr.ensicaen.lv223.view;
 
 import fr.ensicaen.lv223.presenter.IPresenter;
 import fr.ensicaen.lv223.presenter.Presenter;
+import fr.ensicaen.lv223.view.content.NumberOfSteps;
+import fr.ensicaen.lv223.view.content.VisionMode;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -43,14 +44,11 @@ public class PlanetView implements IPresenter {
      * or 100 steps).
      */
     @FXML
-    private ChoiceBox<String> choiceOfNumberOfSteps;
-
-    /**
-     * The {@code choiceOfThePlanetTolerance} is a {@link ChoiceBox} object
-     * used to choose the tolerance level of the planet.
-     */
+    private ChoiceBox<NumberOfSteps> choiceOfNumberOfSteps;
     @FXML
-    private ChoiceBox<String> choiceOfThePlanetTolerance;
+    private ChoiceBox<VisionMode> choiceOfVisionMode;
+    @FXML
+    private ChoiceBox<String> agentsChoiceBox;
 
     /**
      * The label to display the age of the planet since the arrival of the
@@ -97,14 +95,9 @@ public class PlanetView implements IPresenter {
     /**
      * An Observable list of items to select the number of steps of the simulation
      */
-    private final Observable items = FXCollections.observableArrayList("1",
-            "10", "100");
-
-    /**
-     * An Observable list of items to select the tolerance of the planet
-     */
-    private final Observable tolerances = FXCollections.observableArrayList(
-            "Hostile", "Adaptative", "Tolérante");
+    private final Observable nbTurnsItems = FXCollections.observableArrayList(NumberOfSteps.values());
+    private final Observable visionModeItems = FXCollections.observableArrayList(VisionMode.values());
+    private final Observable agentsItems = FXCollections.observableArrayList("ALL");
 
     /**
      * Constructs a new {@code PlanetView} object with a reference to the
@@ -141,16 +134,11 @@ public class PlanetView implements IPresenter {
      * Sets the action when the user clicks on the button to simulate.
      */
     public void setOnclick() {
-        buttonToStartOneOrMoreSteps.setOnAction(event -> presenter.simulate(Integer.parseInt(choiceOfNumberOfSteps.getValue())));
-        choiceOfThePlanetTolerance.setOnAction(event -> {
-            switch (choiceOfThePlanetTolerance.getValue()) {
-                case "Hostile" -> presenter.setTolerance(1.0);
-                case "Adaptative" -> presenter.setTolerance(1.5);
-                case "Tolérante" -> presenter.setTolerance(2.0);
-                default -> {
-                }
+        buttonToStartOneOrMoreSteps.setOnAction(
+            (event) -> {
+                presenter.simulate(choiceOfNumberOfSteps.getValue().getValue());
             }
-        });
+        );
     }
 
     /**
@@ -158,16 +146,18 @@ public class PlanetView implements IPresenter {
      * simulation.
      */
     public void setChoicesOfNumberOfSteps() {
-        choiceOfNumberOfSteps.setItems((ObservableList<String>) items);
-        choiceOfNumberOfSteps.setValue("1");
+        choiceOfNumberOfSteps.getItems().setAll(NumberOfSteps.values());
+        choiceOfNumberOfSteps.setValue(NumberOfSteps.ONE);
     }
 
-    /**
-     * Sets the items of the choice boxe to select the tolerance for the planet.
-     */
-    public void setChoicesOfPlanetTolerance() {
-        choiceOfThePlanetTolerance.setItems((ObservableList<String>) tolerances);
-        choiceOfThePlanetTolerance.setValue("Tolérante");
+    public void setChoicesOfVisionMode() {
+        choiceOfVisionMode.getItems().setAll(VisionMode.values());
+        choiceOfVisionMode.setValue(VisionMode.DEFAULT);
+    }
+
+    public void setChoicesOfAgents() {
+        agentsChoiceBox.setDisable(true);
+        agentsChoiceBox.setValue("ALL");
     }
 
     /**
@@ -202,22 +192,20 @@ public class PlanetView implements IPresenter {
         return cellsView;
     }
 
-    /**
-     * Updates the planet's status in the UI.
-     * @param age the planet's age since the arrival of the colony
-     * @param healthStatus the planet's health status
-     * @param foodStock the colony's food stock
-     * @param waterStock the colony's water stock
-     * @param oreStock the colony's ore stock
-     * @param nbRobots the number of robots for the colony
-     */
-    public void updateStatus(int age, String healthStatus, double foodStock,
-                             double waterStock, double oreStock, int nbRobots) {
-        ageSinceTheArrivalOfTheColony.setText("Âge de la planète : " + age + " an(s)");
-        healthStatusOfThePlanet.setText("Santé de la planète : " + healthStatus);
+    @Override
+    public void updateAge(int age) {
+        ageSinceTheArrivalOfTheColony.setText("Âge de la planète : " + age + " jour(s)");
+    }
+
+    @Override
+    public void updateStock(double foodStock, double waterStock, double oreStock) {
         foodStockOfTheColony.setText("Food Stock : " + foodStock);
-        waterStockOfTheColony.setText("Water Stock : " + waterStock);
+        waterStockOfTheColony.setText("Water-Stock : " + waterStock + " Km3");
         oreStockOfTheColony.setText("Ore Stock : " + oreStock);
+    }
+
+    @Override
+    public void updateNbRobots(int nbRobots) {
         currentNumberOfRobots.setText("Nombre de robots : " + nbRobots);
     }
 

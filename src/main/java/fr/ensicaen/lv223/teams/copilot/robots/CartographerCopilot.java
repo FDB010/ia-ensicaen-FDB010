@@ -17,6 +17,7 @@ public class CartographerCopilot extends Cartographer {
     private boolean hasDiscovered = false;
     private CentralizerCopilot centralizer;
     int id;
+
     public CartographerCopilot(RobotType type, CommandFactory commandFactory, PlanetInterface captors, CentralizerCopilot centralizer, int id) {
         super(type, commandFactory, captors);
         this.centralizer = centralizer;
@@ -24,7 +25,7 @@ public class CartographerCopilot extends Cartographer {
     }
 
     @Override
-    public boolean isAvailable( Message m ) {
+    public boolean isAvailable(Message m) {
         return false;
     }
 
@@ -36,37 +37,30 @@ public class CartographerCopilot extends Cartographer {
             System.out.println(id + " " + directions);
             if (id == 0) {
                 if (directions.contains(Direction.NORTH)) {
-                    commands.add(commandFactory.createMoveCommand(this, Direction.NORTH));
+                    commands.add(commandFactory.createCommand(this, CommandType.MOVECP, Direction.NORTH));
+                } else {
+                    commands.add(commandFactory.createCommand(this, CommandType.MOVECP, Direction.WEST));
                 }
-                else {
-                    commands.add(commandFactory.createMoveCommand(this, Direction.WEST));
-                }
-            }
-            else if (id == 1) {
+            } else if (id == 1) {
                 // Check if NORTH is available
                 if (directions.contains(Direction.SOUTH)) {
-                    commands.add(commandFactory.createMoveCommand(this, Direction.SOUTH));
+                    commands.add(commandFactory.createCommand(this, CommandType.MOVECP, Direction.SOUTH));
+                } else {
+                    commands.add(commandFactory.createCommand(this, CommandType.MOVECP, Direction.EAST));
                 }
-                else {
-                    commands.add(commandFactory.createMoveCommand(this, Direction.EAST));
+            } else if (id == 2) {
+                if (directions.contains(Direction.SOUTH)) {
+                    commands.add(commandFactory.createCommand(this, CommandType.MOVECP, Direction.SOUTH));
+                } else {
+                    commands.add(commandFactory.createCommand(this, CommandType.MOVECP, Direction.WEST));
+                }
+            } else if (id == 3) {
+                if (directions.contains(Direction.SOUTH)) {
+                    commands.add(commandFactory.createCommand(this, CommandType.MOVECP, Direction.SOUTH));
+                } else {
+                    commands.add(commandFactory.createCommand(this, CommandType.MOVECP, Direction.EAST));
                 }
             }
-            else if (id == 2) {
-                if (directions.contains(Direction.SOUTH)) {
-                    commands.add(commandFactory.createMoveCommand(this, Direction.SOUTH));
-                }
-                else {
-                    commands.add(commandFactory.createMoveCommand(this, Direction.WEST));
-                }
-            }
-            else if (id == 3) {
-                if (directions.contains(Direction.SOUTH)) {
-                    commands.add(commandFactory.createMoveCommand(this, Direction.SOUTH));
-                }
-                else {
-                    commands.add(commandFactory.createMoveCommand(this, Direction.EAST));
-                }
-}
             // get planetInterface
             captors.getSurrounding(this);
         }

@@ -16,8 +16,6 @@ public class Presenter {
     private final ColonyPresenter colonyPresenter;
     private final Sequencer sequencer;
 
-    private double tolerance;
-
     /**
      * Constructs a new {@code Presenter} instance.
      */
@@ -57,15 +55,15 @@ public class Presenter {
     }
 
     public void updateView() {
+        view.updateAge(sequencer.getDays());
+        planetPresenter.updateStatus();
+        colonyPresenter.updateStatus();
         planetPresenter.drawPlanet();
         colonyPresenter.drawColony();
     }
 
-    /**
-     * Sets the tolerance of the planet.
-     * @param d the tolerance value to set
-     */
-    public void setTolerance(double d) {
-        this.tolerance = d;
+    public void drawPlanet(){
+        planetPresenter.drawPlanet();
+        colonyPresenter.drawColony();
     }
 }

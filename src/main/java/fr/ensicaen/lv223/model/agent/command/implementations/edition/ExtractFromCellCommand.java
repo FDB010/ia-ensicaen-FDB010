@@ -1,11 +1,12 @@
-package fr.ensicaen.lv223.model.agent.command.implementations;
+package fr.ensicaen.lv223.model.agent.command.implementations.edition;
 
 import fr.ensicaen.lv223.model.agent.command.Command;
 import fr.ensicaen.lv223.model.agent.robot.Robot;
 import fr.ensicaen.lv223.model.environment.EnvironmentCell;
 import fr.ensicaen.lv223.model.environment.cells.CellType;
-import fr.ensicaen.lv223.model.environment.cells.specials.ExtractableCell;
+import fr.ensicaen.lv223.model.environment.cells.specials.extractable.ExtractableCell;
 import fr.ensicaen.lv223.model.environment.planet.Planet;
+import fr.ensicaen.lv223.model.logic.localisation.Coordinate;
 import fr.ensicaen.lv223.model.logic.localisation.RobotMapper;
 
 /**
@@ -21,11 +22,8 @@ public class ExtractFromCellCommand extends Command {
 
     @Override
     public void apply() {
-        EnvironmentCell cell = planet.getCell(robotMapper.getCoordinate(robot));
-        if (CellType.isExtractableDirectly(cell.getType())) {
-            ExtractableCell extractableCell = (ExtractableCell) cell;;
-            extractableCell.extract(value);
-        }
+        Coordinate coordinate = robotMapper.getCoordinate(robot);
+        planet.extract(coordinate, value);
     }
 
     @Override

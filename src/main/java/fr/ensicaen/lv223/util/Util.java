@@ -49,20 +49,4 @@ public class Util {
         }
         return neighbors;
     }
-
-
-    public static PriorityQueue<Command> cellListToCommandList(ArrayList<Cell> AStarPath, ProjectTeam team, Robot rob) {
-        PriorityQueue<Command> commandList = new PriorityQueue<>();
-        for (int i = 0; i < AStarPath.size() - 1; i++) {
-            Cell current = AStarPath.get(i);
-            Cell next = AStarPath.get(i + 1);
-            if(team==ProjectTeam.JAMES_BOND){
-                commandList.add(rob.getCommandFactory().createCommand(rob, CommandType.MOVEJB, current.getDirectionTo(next)));
-            }
-            else{
-                //todo
-            }
-        }
-        return commandList;
-    }
 }

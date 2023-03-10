@@ -1,5 +1,6 @@
 package fr.ensicaen.lv223.view;
 
+import fr.ensicaen.lv223.Main;
 import fr.ensicaen.lv223.model.environment.cells.CellType;
 import fr.ensicaen.lv223.model.environment.construction.ConstructionType;
 import fr.ensicaen.lv223.util.Util;
@@ -8,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 
 /**
  * The {@code CellView} class is a visual representation of a {@code Cell} in
@@ -31,7 +33,7 @@ public class CellView {
      * @param height The height of the cell.
      * @param type The type of cell, used to determine its color.
      */
-    public CellView(double width, double height, CellType type, boolean hasPipe) {
+    public CellView(double width, double height, CellType type, boolean hasPipe, int x, int y) {
         this.pane = new StackPane();
         this.width = width;
         this.height = height;
@@ -51,13 +53,18 @@ public class CellView {
             Util.LOGGER.severe("Error while loading cell image: " + e.getMessage());
         }
 
-
         robotView = new RobotView(this.width);
         this.pane.getChildren().add(robotView.getNode());
+
+        if (Main.DEBUG_DISPLAY) {
+            Text text = new Text(x + ", " + y);
+            text.setFill(Color.BLACK);
+            this.pane.getChildren().add(text);
+        }
     }
 
-    public CellView(double width, double height, CellType type) {
-        this(width, height, type, false);
+    public CellView(double width, double height, CellType type, int x, int y) {
+        this(width, height, type, false, x, y);
     }
 
     /**

@@ -16,6 +16,7 @@ import java.io.IOException;
  * It sets up the scene, size, style and behavior of the application.
  */
 public class Main extends Application {
+    public static final boolean DEBUG_DISPLAY = false;
     /**
      * Override the start method of {@link Application} class to set up the GUI
      * elements and behaviors.
@@ -28,6 +29,7 @@ public class Main extends Application {
         // TODO : update legend of main frame
         int width;
         int height;
+
         Presenter presenter;
         IPresenter view;
         FXMLLoader fxmlLoader;
@@ -49,20 +51,23 @@ public class Main extends Application {
 
         view.setOnclick();
         view.setChoicesOfNumberOfSteps();
-        view.setChoicesOfPlanetTolerance();
+        view.setChoicesOfVisionMode();
+        view.setChoicesOfAgents();
+
         scene.getRoot().setStyle("-fx-font-family: 'sans-serif'");
-        presenter.updateView();
+        presenter.drawPlanet();
 
         scene.widthProperty().addListener((observableValue, oldSceneWidth, newSceneWidth) -> {
-            presenter.updateView();
+            presenter.drawPlanet();
         });
         scene.heightProperty().addListener((observableValue, oldSceneHeight, newSceneHeight) -> {
             view.setSceneHeight(newSceneHeight.intValue());
             view.setSceneWidth(newSceneHeight.intValue());
 
-            presenter.updateView();
+            presenter.drawPlanet();
         });
 
+        presenter.updateView();
         stage.setMaximized(true);
         stage.show();
     }
