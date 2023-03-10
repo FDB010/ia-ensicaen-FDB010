@@ -5,5 +5,6 @@ public enum CommandType {
     EXTRACT,
     MOVE,
     IDLE,
-    MOVEJB;
+    MOVEJB,
+    MOVECP,
 }

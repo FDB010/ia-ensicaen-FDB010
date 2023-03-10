@@ -22,8 +22,8 @@ public abstract class Robot implements Agent {
      * The type of the robot. Only temporary and implemented because of a lack of time.
      */
     public final RobotType type;
-    private PriorityQueue<Message> priorityQueueMessage;
-    private PriorityQueue<Command> priorityQueueCommand;
+    protected PriorityQueue<Message> priorityQueueMessage;
+    protected PriorityQueue<Command> priorityQueueCommand;
     /**
      * This objective is the basic objective of the robot.
      */
@@ -40,10 +40,13 @@ public abstract class Robot implements Agent {
         this.type = type;
         this.commandFactory = commandFactory;
         this.captors = captors;
+        this.priorityQueueMessage = new PriorityQueue<Message>();
+        this.priorityQueueCommand = new PriorityQueue<Command>();
     }
 
     /**
      * Compute the commands to execute this turn.
+     *
      * @return the list of commands to execute this turn. This return can't be null.
      */
     @Override
@@ -51,30 +54,32 @@ public abstract class Robot implements Agent {
         List<Command> commands = new ArrayList<>();
         return commands;
     }
+
     public abstract boolean isAvailable(Message m);
+
     public void addMessage(Message message) {
         this.priorityQueueMessage.add(message);
     }
 
-    private Message getTopMessage(){
-        if(priorityQueueMessage.size() != 0){
+    private Message getTopMessage() {
+        if (priorityQueueMessage.size() != 0) {
             return this.priorityQueueMessage.poll();
         }
         return null;
     }
 
-    private Command getTopCommand(){
-        if(priorityQueueCommand.size() != 0){
+    private Command getTopCommand() {
+        if (priorityQueueCommand.size() != 0) {
             return this.priorityQueueCommand.peek();
         }
         return null;
     }
 
-    public void resetCommandQueue(){
+    public void resetCommandQueue() {
         this.priorityQueueCommand.clear();
     }
 
-    public CommandFactory getCommandFactory(){
+    public CommandFactory getCommandFactory() {
         return this.commandFactory;
     }
 
@@ -86,8 +91,8 @@ public abstract class Robot implements Agent {
         return pos_y;
     }
 
-    public void update_position(Direction dir){
-        this.pos_x += dir.getDirection_x();
-        this.pos_y += dir.getDirection_y();
+    public void update_position(int offset_x, int offset_y) {
+        this.pos_x += offset_x;
+        this.pos_y += offset_y;
     }
 }

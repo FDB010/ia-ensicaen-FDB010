@@ -3,6 +3,7 @@ package fr.ensicaen.lv223.model.agent.command;
 import fr.ensicaen.lv223.model.agent.command.implementations.edition.ExtractFromCellCommand;
 import fr.ensicaen.lv223.model.agent.command.implementations.IdleCommand;
 import fr.ensicaen.lv223.model.agent.command.implementations.edition.InstallPipeCommand;
+import fr.ensicaen.lv223.model.agent.command.implementations.movement.MoveCommand;
 import fr.ensicaen.lv223.model.agent.command.implementations.movement.RandomMovementCommand;
 import fr.ensicaen.lv223.model.agent.robot.Robot;
 import fr.ensicaen.lv223.model.environment.planet.Planet;
@@ -31,8 +32,9 @@ public class CommandFactory {
 
     /**
      * Create a command.
+     *
      * @param robot The robot that will execute the command.
-     * @param type The type of the command.
+     * @param type  The type of the command.
      * @param value The value of the command.
      * @return The command.
      */
@@ -52,7 +54,6 @@ public class CommandFactory {
     }
 
     /**
-     *
      * @param robot
      * @param type
      * @param value
@@ -62,6 +63,8 @@ public class CommandFactory {
         switch (type) {
             case MOVEJB:
                 return new MoveCommandJB(robot, robotMapper, value);
+            case MOVECP:
+                return new MoveCommand(robot, robotMapper, value);
 
             default:
                 return new IdleCommand(robot, robotMapper);
