@@ -1,8 +1,11 @@
 package fr.ensicaen.lv223.model.environment.cells;
 
-import fr.ensicaen.lv223.model.environment.cells.specials.FoodCell;
-import fr.ensicaen.lv223.model.environment.cells.specials.LakeCell;
-import fr.ensicaen.lv223.model.environment.cells.specials.MineralCell;
+import fr.ensicaen.lv223.model.environment.EnvironmentCell;
+import fr.ensicaen.lv223.model.environment.cells.specials.*;
+import fr.ensicaen.lv223.model.environment.cells.specials.extractable.ExtractableCell;
+import fr.ensicaen.lv223.model.environment.cells.specials.extractable.FoodCell;
+import fr.ensicaen.lv223.model.environment.cells.specials.extractable.LakeCell;
+import fr.ensicaen.lv223.model.environment.cells.specials.extractable.OreCell;
 
 import java.util.Optional;
 
@@ -24,45 +27,66 @@ public class CellFactory {
      * @return an Optional containing the Cell object, or an empty Optional if
      * the type is invalid
      */
-    public static Optional<Cell> factory(String type, double intensity, int x, int y,double quantity) {
-        Cell c;
+    public static Optional<Cell> factory(CellType type, double intensity, int x, int y) {
         switch (type) {
-            case "BASE":
-                c = new Cell(x, y, CellType.BASE, intensity);
-                break;
-            case "DESERT":
-                c = new Cell(x, y, CellType.DESERT, intensity);
-                break;
-            case "DRY_GRASS":
-                c = new Cell(x, y, CellType.DRY_GRASS, intensity);
-                break;
-            case "FOOD":
-                c = new FoodCell(x, y, CellType.FOOD, intensity,quantity);
-                break;
-            case "FOREST":
-                c = new Cell(x, y, CellType.FOREST, intensity);
-                break;
-            case "GRASS":
-                c = new Cell(x, y, CellType.GRASS, intensity);
-                break;
-            case "IMPENETRABLE":
-                c = new Cell(x, y, CellType.IMPENETRABLE, intensity);
-                break;
-            case "LAKE":
-                c = new LakeCell(x, y, CellType.LAKE, intensity,quantity);
-                break;
-            case "ORE":
-                c = new MineralCell(x, y, CellType.ORE, intensity,0);
-                break;
-            case "STONE":
-                c = new Cell(x, y, CellType.STONE, intensity);
-                break;
-            case "WET_GRASS":
-                c = new Cell(x, y, CellType.WET_GRASS, intensity);
-                break;
-            default:
-                return null;
+            case BASE -> {
+                return Optional.of(new BaseCell(x, y, intensity));
+            }
+            case DESERT -> {
+                return Optional.of(new DesertCell(x, y, intensity));
+            }
+            case FOOD -> {
+                return Optional.of(new FoodCell(x, y, intensity, 1));
+            }
+            case FOREST -> {
+                return Optional.of(new ForestCell(x, y, intensity));
+            }
+            case IMPENETRABLE -> {
+                return Optional.of(new ImpenetrableCell(x, y, intensity));
+            }
+            case LAKE -> {
+                return Optional.of(new LakeCell(x, y, intensity, 1));
+            }
+            case ORE -> {
+                return Optional.of(new OreCell(x, y, intensity, 1));
+            }
+            case STONE -> {
+                return Optional.of(new StoneCell(x, y, intensity));
+            }
+            case GRASS -> {
+                return Optional.of(new GrassCell(x, y, intensity));
+            }
+            case WET_GRASS -> {
+                GrassCell cell = new GrassCell(x, y, intensity);
+                cell.setWet();
+                return Optional.of(cell);
+            }
+            case DRY_GRASS -> {
+                GrassCell cell = new GrassCell(x, y, intensity);
+                cell.setDry();
+                return Optional.of(cell);
+            }
         }
-        return Optional.of(c);
+        return Optional.of(null);
+    }
+
+    public static Optional<ExtractableCell> convert(Cell cell) {
+        switch (cell.getType()) {
+            case FOOD -> {
+                return Optional.of(new FoodCell(cell.getX(), cell.getY(), cell.getIntensity(), 1));
+            }
+            case LAKE -> {
+                return Optional.of(new LakeCell(cell.getX(), cell.getY(), cell.getIntensity(), 1));
+            }
+            case ORE -> {
+                return Optional.of(new OreCell(cell.getX(), cell.getY(), cell.getIntensity(), 1));
+            }
+        }
+        return Optional.of(null);
+
+    }
+
+    public static Cell convert(EnvironmentCell cell) {
+        return (Cell) cell;
     }
 }

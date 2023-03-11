@@ -1,12 +1,8 @@
 package fr.ensicaen.lv223.model.environment.planet;
 
 import fr.ensicaen.lv223.model.environment.cells.Cell;
-import fr.ensicaen.lv223.model.environment.cells.CellFactory;
 import fr.ensicaen.lv223.model.environment.cells.CellType;
-import fr.ensicaen.lv223.model.environment.cells.specials.ExtractableCell;
-import fr.ensicaen.lv223.model.environment.cells.specials.FoodCell;
-import fr.ensicaen.lv223.model.environment.cells.specials.LakeCell;
-import fr.ensicaen.lv223.model.environment.cells.specials.MineralCell;
+import fr.ensicaen.lv223.model.environment.cells.specials.extractable.ExtractableCell;
 
 import java.util.ArrayList;
 import java.util.List;

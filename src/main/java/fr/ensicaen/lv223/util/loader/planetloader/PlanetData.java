@@ -1,14 +1,16 @@
 package fr.ensicaen.lv223.util.loader.planetloader;
 
+import fr.ensicaen.lv223.model.environment.cells.CellType;
+
 /**
  * The {@code PlanetData} class contains the data of a planet with its type and
  * cell positions.
  */
 public class PlanetData {
-    private String type;
+    private CellType type;
     private CellPosition[] cellPos;
 
-    public String getType() {
+    public CellType getType() {
         return type;
     }
 

@@ -50,34 +50,19 @@ public interface IPresenter {
      * Draws the view.
      */
     void draw();
-
-    /**
-     * Updates the status of the planet.
-     * @param age the age of the planet.
-     * @param healthStatus the health status of the planet.
-     * @param foodStock the food stock of the planet.
-     * @param waterStock the water stock of the planet.
-     * @param oreStock the ore stock of the planet.
-     * @param nbRobots the number of robots in the planet.
-     */
-    void updateStatus(int age, String healthStatus, double foodStock,
-                      double waterStock, double oreStock, int nbRobots);
-
+    void updateAge(int age);
+    void updateStock(double foodStock, double waterStock, double oreStock);
+    void updateNbRobots(int nbRobots);
     /**
      * Set the onclick behavior of the view.
      */
     void setOnclick();
-
     /**
      * Set the number of steps using the choice box of the view.
      */
     void setChoicesOfNumberOfSteps();
-
-    /**
-     * Set the tolerance of the planet using the choice box of the view.
-     */
-    void setChoicesOfPlanetTolerance();
-
+    void setChoicesOfVisionMode();
+    void setChoicesOfAgents();
     /**
      * Finish the view.
      */

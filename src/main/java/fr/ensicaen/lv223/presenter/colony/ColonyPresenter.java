@@ -22,7 +22,6 @@ import java.util.List;
 public class ColonyPresenter {
     private IPresenter view;
     private final RobotMapper robotMapper;
-
     public ColonyPresenter(RobotMapper robotMapper) {
         this.robotMapper = robotMapper;
     }
@@ -53,5 +52,9 @@ public class ColonyPresenter {
 
     public void setView(IPresenter view) {
         this.view = view;
+    }
+
+    public void updateStatus() {
+        view.updateNbRobots(robotMapper.getRobots().size());
     }
 }

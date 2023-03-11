@@ -66,4 +66,8 @@ public class Sequencer {
     public boolean hasHumansArrived() {
         return days >= 8 * 365;
     }
+
+    public int getDays() {
+        return days;
+    }
 }

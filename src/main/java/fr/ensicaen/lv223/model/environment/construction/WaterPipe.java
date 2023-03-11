@@ -28,6 +28,10 @@ public class WaterPipe {
         return pipe;
     }
 
+    public static void removePipe(WaterPipe pipe) {
+        waterPipes.remove(pipe);
+    }
+
     private WaterPipe(int x, int y) {
         this.x = x;
         this.y = y;

@@ -1,4 +1,4 @@
-package fr.ensicaen.lv223.model.environment.cells.specials;
+package fr.ensicaen.lv223.model.environment.cells.specials.extractable;
 
 import fr.ensicaen.lv223.model.environment.cells.CellType;
 
@@ -16,7 +16,7 @@ public class LakeCell extends ExtractableCell {
      * @param intensity the intensity of metamorphosis for the cell
      * @param quantity the quantity of water on the cell
      */
-    public LakeCell(int x, int y, CellType type, double intensity, double quantity) {
-        super(x, y, type, intensity, quantity);
+    public LakeCell(int x, int y, double intensity, double quantity) {
+        super(x, y, CellType.LAKE, intensity, quantity);
     }
 }

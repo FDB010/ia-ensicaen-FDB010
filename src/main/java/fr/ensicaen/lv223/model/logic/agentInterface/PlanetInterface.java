@@ -1,6 +1,7 @@
 package fr.ensicaen.lv223.model.logic.agentInterface;
 
 import fr.ensicaen.lv223.model.agent.robot.Robot;
+import fr.ensicaen.lv223.model.agent.robot.RobotType;
 import fr.ensicaen.lv223.model.environment.cells.CellType;
 import fr.ensicaen.lv223.model.environment.planet.Planet;
 import fr.ensicaen.lv223.model.logic.localisation.Coordinate;
@@ -29,6 +30,10 @@ public class PlanetInterface implements AgentInterface {
     private PlanetInterface(Planet planet, RobotMapper robotMapper) {
         this.planet = planet;
         this.robotMapper = robotMapper;
+    }
+
+    public CellType getCellType(Robot robot) {
+        return planet.getCell(robotMapper.getCoordinate(robot)).getType();
     }
 
     public HashMap<Direction, CellType> getSurrounding(Robot robot) throws IllegalArgumentException {

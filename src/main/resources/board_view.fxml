@@ -1,239 +1,261 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<HBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
     <GridPane fx:id="gridOfPlanet">
         <columnConstraints>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2"/>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="12"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="4.2" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="12" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
-            <RowConstraints percentHeight="4.75" vgrow="ALWAYS"/>
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS" />
+            <RowConstraints percentHeight="4.75" vgrow="ALWAYS" />
         </rowConstraints>
 
     </GridPane>
     <VBox HBox.hgrow="ALWAYS">
-        <Label fx:id="ageSinceTheArrivalOfTheColony" text="Durée de la simulation : 0 ans">
-            <VBox.margin>
-                <Insets bottom="10.0" top="15.0"/>
-            </VBox.margin>
-        </Label>
-        <Label fx:id="healthStatusOfThePlanet" text="Santé de la planète : Bonne"/>
-        <Label fx:id="currentNumberOfRobots" text="Nombre de robots : 13">
-            <VBox.margin>
-                <Insets top="10.0"/>
-            </VBox.margin>
-        </Label>
-        <HBox spacing="20.0">
-            <VBox.margin>
-                <Insets bottom="10.0" top="10.0"/>
-            </VBox.margin>
-            <Label fx:id="waterStockOfTheColony" text="Stock eau : 0"/>
-            <Label fx:id="foodStockOfTheColony" text="Stock nourriture : 0"/>
-            <Label fx:id="oreStockOfTheColony" text="Stock minerai : 0"/>
-        </HBox>
-        <HBox prefHeight="25.0" prefWidth="340.0">
-            <ChoiceBox fx:id="choiceOfThePlanetTolerance" prefWidth="150.0"/>
-            <Label fx:id="tolerances" prefHeight="25.0" prefWidth="190.0" text=" : Tolérance de la planète "
-                   textAlignment="CENTER"/>
-        </HBox>
-        <ChoiceBox fx:id="choiceOfNumberOfSteps" prefWidth="150.0">
-            <VBox.margin>
-                <Insets bottom="10.0" top="10.0"/>
-            </VBox.margin>
-        </ChoiceBox>
+      <VBox>
+         <children>
+              <Label fx:id="ageSinceTheArrivalOfTheColony" text="Durée de la simulation : 0 ans">
+                  <VBox.margin>
+                      <Insets bottom="10.0" top="15.0" />
+                  </VBox.margin>
+              </Label>
+              <Label fx:id="healthStatusOfThePlanet" text="Santé de la planète : Bonne" />
+              <Label fx:id="currentNumberOfRobots" text="Nombre de robots : 13">
+                  <VBox.margin>
+                      <Insets top="10.0" />
+                  </VBox.margin>
+              </Label>
+         </children>
+      </VBox>
+      <VBox>
+         <VBox.margin>
+            <Insets bottom="10.0" top="10.0" />
+         </VBox.margin>
+         <children>
+               <Label fx:id="waterStockOfTheColony" prefHeight="16.0" prefWidth="336.0" text="Stock eau : 0" />
+               <Label fx:id="foodStockOfTheColony" prefHeight="16.0" prefWidth="338.0" text="Stock nourriture : 0" />
+               <Label fx:id="oreStockOfTheColony" prefHeight="16.0" prefWidth="338.0" text="Stock minerai : 0" />
+         </children>
+      </VBox>
+      <HBox prefHeight="0.0" prefWidth="340.0">
+         <children>
+              <ChoiceBox fx:id="choiceOfNumberOfSteps" prefWidth="150.0" />
+            <Label text=" : Nombre de tours" />
+         </children>
+      </HBox>
+      <HBox prefHeight="0.0" prefWidth="340.0">
+         <children>
+            <ChoiceBox fx:id="choiceOfVisionMode" prefWidth="150.0" />
+            <Label text=" : Mode de vision" />
+         </children>
+      </HBox>
+      <HBox prefHeight="0.0" prefWidth="340.0">
+         <children>
+            <ChoiceBox fx:id="agentsChoiceBox" prefWidth="150.0" />
+            <Label text=" : Agent vision" />
+         </children>
+      </HBox>
         <Button fx:id="buttonToStartOneOrMoreSteps" mnemonicParsing="false" text="Avancer">
             <VBox.margin>
-                <Insets bottom="10.0" top="10.0"/>
+                <Insets bottom="10.0" top="10.0" />
             </VBox.margin>
         </Button>
         <Label text="Légende">
             <VBox.margin>
-                <Insets bottom="5.0"/>
+                <Insets bottom="5.0" />
             </VBox.margin>
         </Label>
         <HBox prefHeight="100.0" prefWidth="200.0">
             <VBox alignment="CENTER_LEFT">
                 <HBox>
                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0"/>
+                        <Insets bottom="5.0" top="5.0" />
                     </VBox.margin>
                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@display/img/tile/TILE_LAKE.png"/>
+                        <Image url="@display/img/tile/TILE_LAKE.png" />
                     </ImageView>
                     <Label text="Lac">
                         <HBox.margin>
-                            <Insets left="5.0"/>
+                            <Insets left="5.0" />
                         </HBox.margin>
                     </Label>
                 </HBox>
                 <HBox layoutX="10.0" layoutY="38.0">
                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@display/img/tile/TILE_ORE.png"/>
+                        <Image url="@display/img/tile/TILE_ORE.png" />
                     </ImageView>
                     <Label text="Minerai">
                         <HBox.margin>
-                            <Insets left="5.0"/>
+                            <Insets left="5.0" />
                         </HBox.margin>
                     </Label>
                 </HBox>
                 <HBox>
                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0"/>
+                        <Insets bottom="5.0" top="5.0" />
                     </VBox.margin>
                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@display/img/tile/TILE_BASE.png"/>
+                        <Image url="@display/img/tile/TILE_BASE.png" />
                     </ImageView>
                     <Label text="Base">
                         <HBox.margin>
-                            <Insets left="5.0"/>
+                            <Insets left="5.0" />
                         </HBox.margin>
                     </Label>
                 </HBox>
                 <HBox>
                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0"/>
+                        <Insets bottom="5.0" top="5.0" />
                     </VBox.margin>
                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@display/img/tile/TILE_STONE.png"/>
+                        <Image url="@display/img/tile/TILE_STONE.png" />
                     </ImageView>
                     <Label text="Pierraille">
                         <HBox.margin>
-                            <Insets left="5.0"/>
+                            <Insets left="5.0" />
                         </HBox.margin>
                     </Label>
                 </HBox>
                 <HBox>
                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0"/>
+                        <Insets bottom="5.0" top="5.0" />
                     </VBox.margin>
                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@display/img/tile/TILE_FOREST.png"/>
+                        <Image url="@display/img/tile/TILE_FOREST.png" />
                     </ImageView>
                     <Label text="Forêt">
                         <HBox.margin>
-                            <Insets left="5.0"/>
+                            <Insets left="5.0" />
                         </HBox.margin>
                     </Label>
                 </HBox>
                 <HBox>
                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0"/>
+                        <Insets bottom="5.0" top="5.0" />
                     </VBox.margin>
                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@display/img/tile/TILE_WET_GRASS.png"/>
+                        <Image url="@display/img/tile/TILE_WET_GRASS.png" />
                     </ImageView>
                     <Label text="Prairie grasse">
                         <HBox.margin>
-                            <Insets left="5.0"/>
+                            <Insets left="5.0" />
                         </HBox.margin>
                     </Label>
                 </HBox>
                 <HBox>
                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0"/>
+                        <Insets bottom="5.0" top="5.0" />
                     </VBox.margin>
                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@display/img/tile/TILE_GRASS.png"/>
+                        <Image url="@display/img/tile/TILE_GRASS.png" />
                     </ImageView>
                     <Label text="Prairie">
                         <HBox.margin>
-                            <Insets left="5.0"/>
+                            <Insets left="5.0" />
                         </HBox.margin>
                     </Label>
                 </HBox>
                 <HBox>
                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0"/>
+                        <Insets bottom="5.0" top="5.0" />
                     </VBox.margin>
                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@display/img/tile/TILE_DRY_GRASS.png"/>
+                        <Image url="@display/img/tile/TILE_DRY_GRASS.png" />
                     </ImageView>
                     <Label text="Prairie sèche">
                         <HBox.margin>
-                            <Insets left="5.0"/>
+                            <Insets left="5.0" />
                         </HBox.margin>
                     </Label>
                 </HBox>
                 <HBox>
                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0"/>
+                        <Insets bottom="5.0" top="5.0" />
                     </VBox.margin>
                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@display/img/tile/TILE_DESERT.png"/>
+                        <Image url="@display/img/tile/TILE_DESERT.png" />
                     </ImageView>
                     <Label text="Désert">
                         <HBox.margin>
-                            <Insets left="5.0"/>
+                            <Insets left="5.0" />
                         </HBox.margin>
                     </Label>
                 </HBox>
                 <HBox>
                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0"/>
+                        <Insets bottom="5.0" top="5.0" />
                     </VBox.margin>
                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@display/img/tile/TILE_FOOD.png"/>
+                        <Image url="@display/img/tile/TILE_FOOD.png" />
                     </ImageView>
                     <Label text="Nourriture">
                         <HBox.margin>
-                            <Insets left="5.0"/>
+                            <Insets left="5.0" />
                         </HBox.margin>
                     </Label>
                 </HBox>
                 <HBox>
                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0"/>
+                        <Insets bottom="5.0" top="5.0" />
                     </VBox.margin>
                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@display/img/tile/TILE_IMPENETRABLE.png"/>
+                        <Image url="@display/img/tile/TILE_IMPENETRABLE.png" />
                     </ImageView>
                     <Label text="Infranchissable">
                         <HBox.margin>
-                            <Insets left="5.0"/>
+                            <Insets left="5.0" />
                         </HBox.margin>
                     </Label>
                 </HBox>
@@ -241,60 +263,60 @@
             <VBox layoutX="10.0" layoutY="10.0">
                 <HBox>
                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0"/>
+                        <Insets bottom="5.0" top="5.0" />
                     </VBox.margin>
                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@display/img/robot/ROBOT_CARTOGRAPHER.png"/>
+                        <Image url="@display/img/robot/ROBOT_CARTOGRAPHER.png" />
                     </ImageView>
                     <Label text="Cartographe">
                         <HBox.margin>
-                            <Insets left="5.0"/>
+                            <Insets left="5.0" />
                         </HBox.margin>
                     </Label>
                 </HBox>
                 <HBox layoutX="10.0" layoutY="179.0">
                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@display/img/robot/ROBOT_ORE_EXTRACTOR.png"/>
+                        <Image url="@display/img/robot/ROBOT_ORE_EXTRACTOR.png" />
                     </ImageView>
                     <Label text="Extracteur de minerai">
                         <HBox.margin>
-                            <Insets left="5.0"/>
+                            <Insets left="5.0" />
                         </HBox.margin>
                     </Label>
                 </HBox>
                 <HBox layoutX="10.0" layoutY="153.0">
                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0"/>
+                        <Insets bottom="5.0" top="5.0" />
                     </VBox.margin>
                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@display/img/robot/ROBOT_FOOD_RETRIEVER.png"/>
+                        <Image url="@display/img/robot/ROBOT_FOOD_RETRIEVER.png" />
                     </ImageView>
                     <Label text="Récolteur de nourriture">
                         <HBox.margin>
-                            <Insets left="5.0"/>
+                            <Insets left="5.0" />
                         </HBox.margin>
                     </Label>
                 </HBox>
                 <HBox layoutX="10.0" layoutY="189.0">
                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@display/img/robot/ROBOT_FARMER.png"/>
+                        <Image url="@display/img/robot/ROBOT_FARMER.png" />
                     </ImageView>
                     <Label text="Agriculteur">
                         <HBox.margin>
-                            <Insets left="5.0"/>
+                            <Insets left="5.0" />
                         </HBox.margin>
                     </Label>
                 </HBox>
                 <HBox layoutX="10.0" layoutY="204.0">
                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0"/>
+                        <Insets bottom="5.0" top="5.0" />
                     </VBox.margin>
                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@display/img/robot/ROBOT_PIPELINE_BUILDER.png"/>
+                        <Image url="@display/img/robot/ROBOT_PIPELINE_BUILDER.png" />
                     </ImageView>
                     <Label text="Constructeur de Pipeline">
                         <HBox.margin>
-                            <Insets left="5.0"/>
+                            <Insets left="5.0" />
                         </HBox.margin>
                     </Label>
                 </HBox>
