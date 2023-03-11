@@ -48,7 +48,7 @@ public class ExploreObjectif implements Objectif {
     public Queue<Command> generateCommmandList() {
         Coordinate current = robot.getPosition();
         List<List<UnknownCell>> map = centralizer.getCells();
-        Cell start = map.get(current.getX()).get(current.getY());
+        Cell start = map.get(current.x()).get(current.y());
         int width = map.size();
         int height = map.get(0).size();
 

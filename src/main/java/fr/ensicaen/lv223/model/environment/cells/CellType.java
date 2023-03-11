@@ -19,7 +19,6 @@ public enum CellType {
     WET_GRASS,      /**<! A cell that contains a wet meadow. */
     UNKNOWN;        /**<! A cell that is unknown. */
 
-
     public static boolean isExtractableDirectly(CellType type) {
         return type == ORE || type == FOOD;
     }

@@ -5,8 +5,6 @@ import fr.ensicaen.lv223.model.environment.cells.CellType;
 import fr.ensicaen.lv223.model.environment.planet.Planet;
 import fr.ensicaen.lv223.model.environment.planet.behavior.metamorphosis.Metamorphosis;
 
-import java.util.Random;
-
 public class ForestMetamorphosis extends Metamorphosis {
     public ForestMetamorphosis(Cell affectedCell, Planet planet) {
         super(affectedCell, planet);

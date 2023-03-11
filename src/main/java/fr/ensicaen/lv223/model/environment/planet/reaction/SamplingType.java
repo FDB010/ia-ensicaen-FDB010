@@ -4,5 +4,5 @@ public enum SamplingType {
     NEGLIGIBLE,
     SMALL,
     MEDIUM,
-    GREAT;
+    GREAT
 }

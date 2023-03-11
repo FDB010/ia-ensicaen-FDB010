@@ -6,6 +6,7 @@ import fr.ensicaen.lv223.model.environment.cells.CellType;
 import fr.ensicaen.lv223.model.environment.planet.Planet;
 import fr.ensicaen.lv223.model.logic.localisation.Coordinate;
 
+import java.util.Optional;
 import java.util.Random;
 
 public abstract class Metamorphosis {
@@ -20,8 +21,9 @@ public abstract class Metamorphosis {
 
     protected void setNewCell(CellType type) {
         Coordinate coordinate = new Coordinate(affectedCell.getX(), affectedCell.getY());
-        Cell cell = CellFactory.factory(type, affectedCell.getIntensity(), coordinate.x, coordinate.y).get();
-        planet.setCell(coordinate, cell);
+        Optional<Cell> cell =
+                CellFactory.factory(type, affectedCell.getIntensity(), coordinate.getX(), coordinate.getY());
+        cell.ifPresent(value -> planet.setCell(coordinate, value));
     }
 
     protected int getRandomInt() {

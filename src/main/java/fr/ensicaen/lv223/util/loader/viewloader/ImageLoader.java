@@ -11,15 +11,16 @@ import java.io.FileNotFoundException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class ImageLoader {
     private static ImageLoader instance;
-    private HashMap<RobotType, String> robotTypeImagesPath;
-    private HashMap<CellType, String> cellTypeImagesPath;
-    private HashMap<ConstructionType, String> constructionTypeImagesPath;
-    private HashMap<RobotType, Image> robotTypeImages;
-    private HashMap<CellType, Image> cellTypeImages;
-    private HashMap<ConstructionType, Image> constructionTypeImages;
+    private final HashMap<RobotType, String> robotTypeImagesPath;
+    private final HashMap<CellType, String> cellTypeImagesPath;
+    private final HashMap<ConstructionType, String> constructionTypeImagesPath;
+    private final HashMap<RobotType, Image> robotTypeImages;
+    private final HashMap<CellType, Image> cellTypeImages;
+    private final HashMap<ConstructionType, Image> constructionTypeImages;
     private double width;
     private double height;
 
@@ -66,7 +67,7 @@ public class ImageLoader {
 
     public Image getRobotImage(RobotType type) throws FileNotFoundException, URISyntaxException {
         if (!robotTypeImages.containsKey(type)) {
-            URI imgURI = getClass().getResource(robotTypeImagesPath.get(type)).toURI();
+            URI imgURI = Objects.requireNonNull(getClass().getResource(robotTypeImagesPath.get(type))).toURI();
             File imgFile = new File(imgURI);
             robotTypeImages.put(
                     type,
@@ -78,7 +79,7 @@ public class ImageLoader {
 
     public Image getCellImage(CellType type) throws FileNotFoundException, URISyntaxException {
         if (!cellTypeImages.containsKey(type)) {
-            URI imgURI = getClass().getResource(cellTypeImagesPath.get(type)).toURI();
+            URI imgURI = Objects.requireNonNull(getClass().getResource(cellTypeImagesPath.get(type))).toURI();
             File imgFile = new File(imgURI);
             cellTypeImages.put(
                     type,
@@ -90,7 +91,7 @@ public class ImageLoader {
 
     public Image getConstructionImage(ConstructionType type) throws FileNotFoundException, URISyntaxException {
         if (!constructionTypeImages.containsKey(type)) {
-            URI imgURI = getClass().getResource(constructionTypeImagesPath.get(type)).toURI();
+            URI imgURI = Objects.requireNonNull(getClass().getResource(constructionTypeImagesPath.get(type))).toURI();
             File imgFile = new File(imgURI);
             constructionTypeImages.put(
                     type,

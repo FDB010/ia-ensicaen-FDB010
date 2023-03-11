@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class Dispatcher {
 
-    private List<List<Cell>> cells;
+    private final List<List<Cell>> cells;
 
     public Dispatcher(List<List<Cell>> cells){
         this.cells = cells;

@@ -15,7 +15,7 @@ public class RobotInterface implements AgentInterface {
     private final Robot robot;
     private final RobotMapper robotMapper;
 
-    private static List<RobotInterface> robotInterfaces = new ArrayList<>();
+    private static final List<RobotInterface> robotInterfaces = new ArrayList<>();
 
     public static void addRobotInterface(RobotInterface robotInterface) {
         robotInterfaces.add(robotInterface);

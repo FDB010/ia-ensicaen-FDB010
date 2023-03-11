@@ -1,16 +1,13 @@
 package fr.ensicaen.lv223.presenter.colony;
 
 import fr.ensicaen.lv223.model.agent.robot.Robot;
-import fr.ensicaen.lv223.model.environment.planet.Planet;
 import fr.ensicaen.lv223.model.logic.localisation.Coordinate;
 import fr.ensicaen.lv223.model.logic.localisation.RobotMapper;
 import fr.ensicaen.lv223.presenter.IPresenter;
 import fr.ensicaen.lv223.util.Util;
 import fr.ensicaen.lv223.view.CellView;
 import javafx.scene.effect.GaussianBlur;
-import javafx.scene.paint.Color;
 
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -30,10 +27,8 @@ public class ColonyPresenter {
         List<List<CellView>> cellViews = view.getCellView();
         GaussianBlur blur = new GaussianBlur(10);
         GaussianBlur noBlur = new GaussianBlur(0.0);
-        for (int i = 0; i < cellViews.size(); i++) {
-            List<CellView> row = cellViews.get(i);
-            for (int j = 0; j < row.size(); j++) {
-                CellView cell = row.get(j);
+        for (List<CellView> row : cellViews) {
+            for (CellView cell : row) {
                 cell.getPane().setEffect(blur);
                 cell.getRobotView().hide();
             }
@@ -41,11 +36,12 @@ public class ColonyPresenter {
 
         for (Robot robot : robotMapper.getRobots()) {
             Coordinate robotCoordinate = robotMapper.getCoordinate(robot);
-            cellViews.get(robotCoordinate.x).get(robotCoordinate.y).getRobotView().setRobotType(robot.type);
-            cellViews.get(robotCoordinate.x).get(robotCoordinate.y).getRobotView().setVisible();
-            cellViews.get(robotCoordinate.x).get(robotCoordinate.y).getPane().setEffect(noBlur);
+            System.out.println(robotCoordinate + " " + robot.type);
+            cellViews.get(robotCoordinate.getX()).get(robotCoordinate.getY()).getRobotView().setRobotType(robot.type);
+            cellViews.get(robotCoordinate.getX()).get(robotCoordinate.getY()).getRobotView().setVisible();
+            cellViews.get(robotCoordinate.getX()).get(robotCoordinate.getY()).getPane().setEffect(noBlur);
             for (Coordinate coord : Util.getNeighbors(robotCoordinate, robotMapper.getHeigth(), robotMapper.getWidth())) {
-                cellViews.get(coord.x).get(coord.y).getPane().setEffect(noBlur);
+                cellViews.get(coord.getX()).get(coord.getY()).getPane().setEffect(noBlur);
             }
         }
     }

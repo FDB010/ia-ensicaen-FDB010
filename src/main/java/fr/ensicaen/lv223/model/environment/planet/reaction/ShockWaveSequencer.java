@@ -4,12 +4,10 @@ import fr.ensicaen.lv223.model.environment.planet.Planet;
 import fr.ensicaen.lv223.model.logic.localisation.Coordinate;
 
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 import java.util.Queue;
-import java.util.Stack;
 
 public class ShockWaveSequencer {
-    private Planet planet;
+    private final Planet planet;
     private Queue<ShockWave> shockwaves;
 
     public ShockWaveSequencer(Planet planet) {
@@ -18,11 +16,15 @@ public class ShockWaveSequencer {
     }
 
     public void createShockWave(int x, int y, ExtractionType type) {
-        shockwaves.add(ShockWave.createShockWave(planet, new Coordinate(x, y), type).get());
+        if (ShockWave.createShockWave(planet, new Coordinate(x, y), type).isPresent()) {
+            shockwaves.add(ShockWave.createShockWave(planet, new Coordinate(x, y), type).get());
+        }
     }
 
     public void createShockWave(int x, int y, SamplingType type) {
-        shockwaves.add(ShockWave.createShockWave(planet, new Coordinate(x, y), type).get());
+        if (ShockWave.createShockWave(planet, new Coordinate(x, y), type).isPresent()) {
+            shockwaves.add(ShockWave.createShockWave(planet, new Coordinate(x, y), type).get());
+        }
     }
 
     public void updateShockWaves() {

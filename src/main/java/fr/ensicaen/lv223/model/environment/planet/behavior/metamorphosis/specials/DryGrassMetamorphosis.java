@@ -5,8 +5,6 @@ import fr.ensicaen.lv223.model.environment.cells.CellType;
 import fr.ensicaen.lv223.model.environment.planet.Planet;
 import fr.ensicaen.lv223.model.environment.planet.behavior.metamorphosis.Metamorphosis;
 
-import java.util.Random;
-
 public class DryGrassMetamorphosis extends Metamorphosis {
     public DryGrassMetamorphosis(Cell affectedCell, Planet planet) {
         super(affectedCell, planet);

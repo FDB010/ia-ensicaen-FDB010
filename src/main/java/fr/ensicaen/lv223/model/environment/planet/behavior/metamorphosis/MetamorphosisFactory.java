@@ -13,18 +13,24 @@ public class MetamorphosisFactory {
         Random random = new Random();
         if (!cell.isExoskeleton() && random.nextInt(MetamorphosisType.MAX_CHANCE + 1) < type.chanceOfRealization) {
             switch (cell.getType()) {
-                case FOREST:
+                case FOREST -> {
                     return Optional.of(new ForestMetamorphosis(cell, planet));
-                case DRY_GRASS:
+                }
+                case DRY_GRASS -> {
                     return Optional.of(new DryGrassMetamorphosis(cell, planet));
-                case GRASS:
+                }
+                case GRASS -> {
                     return Optional.of(new GrassMetamorphosis(cell, planet));
-                case WET_GRASS:
+                }
+                case WET_GRASS -> {
                     return Optional.of(new WetGrassMetamorphosis(cell, planet));
-                case DESERT:
+                }
+                case DESERT -> {
                     return Optional.of(new DesertMetamorphosis(cell, planet));
-                case FOOD:
+                }
+                case FOOD -> {
                     return Optional.of(new FoodMetamorphosis(cell, planet));
+                }
             }
         }
         return Optional.empty();

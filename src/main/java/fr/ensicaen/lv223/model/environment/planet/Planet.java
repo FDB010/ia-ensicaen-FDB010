@@ -1,29 +1,29 @@
 package fr.ensicaen.lv223.model.environment.planet;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
-
 import fr.ensicaen.lv223.model.agent.command.Command;
-import fr.ensicaen.lv223.model.environment.cells.Cell;
-import fr.ensicaen.lv223.model.environment.cells.CellFactory;
 import fr.ensicaen.lv223.model.environment.Environment;
 import fr.ensicaen.lv223.model.environment.EnvironmentCell;
+import fr.ensicaen.lv223.model.environment.cells.Cell;
+import fr.ensicaen.lv223.model.environment.cells.CellFactory;
 import fr.ensicaen.lv223.model.environment.cells.CellType;
 import fr.ensicaen.lv223.model.environment.cells.specials.extractable.ExtractableCell;
 import fr.ensicaen.lv223.model.environment.planet.behavior.EnvironmentAgent;
 import fr.ensicaen.lv223.model.environment.planet.behavior.FuzzyLogic;
 import fr.ensicaen.lv223.model.environment.planet.behavior.metamorphosis.Metamorphosis;
-import fr.ensicaen.lv223.model.environment.planet.reaction.ExtractionType;
-import fr.ensicaen.lv223.model.environment.planet.reaction.SamplingType;
 import fr.ensicaen.lv223.model.environment.planet.reaction.ShockWaveSequencer;
 import fr.ensicaen.lv223.model.environment.planet.state.PlanetEmotion;
+import fr.ensicaen.lv223.model.environment.planet.state.PlanetHealthStatus;
 import fr.ensicaen.lv223.model.logic.localisation.Coordinate;
 import fr.ensicaen.lv223.util.loader.planetloader.JsonLoader;
 import fr.ensicaen.lv223.util.loader.planetloader.PlanetData;
 import fr.ensicaen.lv223.util.loader.planetloader.PlanetLoader;
-import fr.ensicaen.lv223.model.environment.planet.state.PlanetHealthStatus;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import static fr.ensicaen.lv223.util.Map.MAP_HEIGHT;
+import static fr.ensicaen.lv223.util.Map.MAP_WIDTH;
 
 /**
  * The {@code Planet} class implements the {@link Environment} interface and
@@ -36,29 +36,25 @@ import fr.ensicaen.lv223.model.environment.planet.state.PlanetHealthStatus;
  * such as the width and height of the grid. Additionally, individual cells can
  * be retrieved or set using a {@link Coordinate} object to specify their
  * position in the grid.
- */
-
-
-/**
- * toDo emotions with planet
  * Generate around the Centralisator cases with probalities random
+ * toDo emotions with planet
  */
 public class Planet implements Environment, EnvironmentAgent {
     private final List<List<Cell>> cells;
-    private FuzzyLogic fuzzyLogic;
+    private final FuzzyLogic fuzzyLogic;
     private PlanetEmotion currentEmotion;
     // simulation
     private PlanetHealthStatus currentHealthStatus;
     // shockWave
-    private ShockWaveSequencer shockWaveSequencer;
-    private List<Metamorphosis> metamorphosisList;
+    private final ShockWaveSequencer shockWaveSequencer;
+    private final List<Metamorphosis> metamorphosisList;
     // stock data
     private double initalStockFood;
     private double initalStockMineral;
     private double initalStockWater;
-    private final double quantityWater = 200000;
-    private final double quantityOre = 200;
-    private final double quantityFood = 200;
+    private static final double quantityWater = 200000;
+    private static final double quantityOre = 200;
+    private static final double quantityFood = 200;
     private double stockFood;
     private double stockMineral;
     private double stockWater;
@@ -68,11 +64,13 @@ public class Planet implements Environment, EnvironmentAgent {
         PlanetData[] planetData = planetLoader.load();
 
 
-        for (int i = 0; i < 21; i++) {
+        for (int i = 0; i < MAP_WIDTH; i++) {
             cells.add(new ArrayList<>());
-            for (int j = 0; j < 21; j++) {
+            for (int j = 0; j < MAP_HEIGHT; j++) {
                 Optional<Cell> o = CellFactory.factory(CellType.IMPENETRABLE, -1, i, j);
-                cells.get(i).add(o.get());
+                if (o.isPresent()){
+                    cells.get(i).add(o.get());
+                }
             }
         }
 
@@ -86,7 +84,7 @@ public class Planet implements Environment, EnvironmentAgent {
                         planetDatum.getCellPos()[j].getX(),
                         planetDatum.getCellPos()[j].getY()
                 );
-                this.cells.get(x).set(y, o.get());
+                o.ifPresent(cell -> this.cells.get(x).set(y, cell));
             }
         }
     }
@@ -134,22 +132,20 @@ public class Planet implements Environment, EnvironmentAgent {
     }
 
     @Override
-    public PlanetEmotion setEmotion() {
+    public void setEmotion() {
         fuzzyLogic.executeEmotion(((this.stockMineral/this.initalStockMineral)*100) - 100,this.currentEmotion.ordinal(),((this.stockWater/this.initalStockWater)*100) - 100);
         this.currentEmotion = PlanetEmotion.values()[(int)(fuzzyLogic.getValueVariableEmotion("future_emotion"))];
-        return this.currentEmotion;
     }
 
     @Override
     public void setCell(Coordinate c, EnvironmentCell EnvCell) {
         Cell cell = CellFactory.convert(EnvCell);
-        cells.get(c.getX()).set(c.getY(), cell);
+        cells.get(c.x()).set(c.y(), cell);
     }
 
     private void react() {
         shockWaveSequencer.updateShockWaves();
-        for (int i = 0; i < metamorphosisList.size(); i++) {
-            Metamorphosis metamorphosis = metamorphosisList.get(i);
+        for (Metamorphosis metamorphosis : metamorphosisList) {
             metamorphosis.transform();
         }
         metamorphosisList.clear();
@@ -157,18 +153,18 @@ public class Planet implements Environment, EnvironmentAgent {
 
     @Override
     public List<Command> compute() {
-        ArrayList commands = new ArrayList();
+        ArrayList<Command> commands = new ArrayList<>();
         react();
         // TODO possible commands for planet
         return commands;
     }
 
     public void extract(Coordinate coord, int value) {
-        shockWaveSequencer.createShockWave(coord.x, coord.y, fuzzyLogic.getExtractionType(value));
+        shockWaveSequencer.createShockWave(coord.getX(), coord.getY(), fuzzyLogic.getExtractionType(value));
     }
 
     public void sample(Coordinate coord, int value) {
-        shockWaveSequencer.createShockWave(coord.x, coord.y, fuzzyLogic.getSamplingType(value));
+        shockWaveSequencer.createShockWave(coord.getX(), coord.getY(), fuzzyLogic.getSamplingType(value));
     }
 
     public void addMetamorphosis(Metamorphosis metamorphosis) {
@@ -188,7 +184,7 @@ public class Planet implements Environment, EnvironmentAgent {
     }
     @Override
     public EnvironmentCell getCell(Coordinate c) {
-        return cells.get(c.getX()).get(c.getY());
+        return cells.get(c.x()).get(c.y());
     }
     @Override
     public EnvironmentCell getCell( int x, int y ) {

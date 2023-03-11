@@ -19,8 +19,8 @@ public class Util {
 
     public static List<Coordinate> getNeighbors(Coordinate coord, int width, int height) {
         ArrayList<Coordinate> neighbors = new ArrayList<>();
-        int x = coord.x;
-        int y = coord.y;
+        int x = coord.getX();
+        int y = coord.getY();
         if (x > 0) {
             neighbors.add(new Coordinate(x - 1, y));
             if (y > 0) {
@@ -70,7 +70,7 @@ public class Util {
             if(team==ProjectTeam.JAMES_BOND) {
                 Command cmd = rob.getCommandFactory().createCommand(rob, CommandType.MOVEJB, direction);
                 commandList.add(cmd);
-            } else{
+            } else {
                 //todo
             }
         }

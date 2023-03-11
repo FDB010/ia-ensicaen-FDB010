@@ -43,6 +43,7 @@ public class RobotView {
 
     public void setRobotType(RobotType type) {
         try {
+            //noinspection SuspiciousNameCombination
             this.displayElement.setImage(ImageLoader.getInstance(cellWidth, cellWidth).getRobotImage(type));
         } catch (Exception e) {
             Util.LOGGER.severe("Error while loading robot image: " + e.getMessage());

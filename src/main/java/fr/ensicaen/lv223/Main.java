@@ -57,9 +57,7 @@ public class Main extends Application {
         scene.getRoot().setStyle("-fx-font-family: 'sans-serif'");
         presenter.drawPlanet();
 
-        scene.widthProperty().addListener((observableValue, oldSceneWidth, newSceneWidth) -> {
-            presenter.drawPlanet();
-        });
+        scene.widthProperty().addListener((observableValue, oldSceneWidth, newSceneWidth) -> presenter.drawPlanet());
         scene.heightProperty().addListener((observableValue, oldSceneHeight, newSceneHeight) -> {
             view.setSceneHeight(newSceneHeight.intValue());
             view.setSceneWidth(newSceneHeight.intValue());

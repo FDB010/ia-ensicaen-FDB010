@@ -9,6 +9,9 @@ import fr.ensicaen.lv223.view.CellView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static fr.ensicaen.lv223.util.Map.MAP_HEIGHT;
+import static fr.ensicaen.lv223.util.Map.MAP_WIDTH;
+
 public class PlanetPresenter {
     private IPresenter view;
     private final Planet planet;
@@ -26,8 +29,8 @@ public class PlanetPresenter {
             for (int j = 0; j < cells.get(i).size(); j++) {
                 cellsView.get(i).add(
                         new CellView(
-                                view.getSceneWidth() / 21.0,
-                                view.getSceneHeight() / 21.0,
+                                view.getSceneWidth() / (double)MAP_WIDTH,
+                                view.getSceneHeight() / (double)MAP_HEIGHT,
                                 cells.get(i).get(j).getType(),
                                 WaterPipe.hasPipe(i, j) != null,
                                 i,

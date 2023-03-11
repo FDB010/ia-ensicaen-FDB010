@@ -32,8 +32,8 @@ public class HelpRobotObjectif implements Objectif {
         Coordinate helpedRobot = robotToHelp.getPosition();
         Coordinate current = currentRobot.getPosition();
         List<List<UnknownCell>> map = centralizer.getCells();
-        UnknownCell start = map.get(current.getX()).get(current.getY());
-        UnknownCell end = map.get(helpedRobot.getX()).get(helpedRobot.getY());
+        UnknownCell start = map.get(current.x()).get(current.y());
+        UnknownCell end = map.get(helpedRobot.x()).get(helpedRobot.y());
         Astar astar = new Astar(map, start, end);
 
         astar.compute();

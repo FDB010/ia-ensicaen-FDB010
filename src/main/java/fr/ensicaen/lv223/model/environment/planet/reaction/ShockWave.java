@@ -11,10 +11,10 @@ import fr.ensicaen.lv223.util.Util;
 import java.util.*;
 
 public class ShockWave {
-    private Queue<List<EnvironmentCell>> steps;
-    private Coordinate coordinate;
-    private int speed;
-    private Planet planet;
+    private final Queue<List<EnvironmentCell>> steps;
+    private final Coordinate coordinate;
+    private final int speed;
+    private final Planet planet;
 
     public ShockWave(Planet planet, Coordinate coordinate, int amplitude, int speed) {
         this.coordinate = coordinate;
@@ -35,36 +35,25 @@ public class ShockWave {
                             planet,
                             (Cell) cell
                     );
-                    if (metamorphosis.isPresent()) {
-                        planet.addMetamorphosis(metamorphosis.get());
-                    }
+                    metamorphosis.ifPresent(planet::addMetamorphosis);
                 }
             }
         }
     }
 
     public static Optional<ShockWave> createShockWave(Planet planet, Coordinate coord, ExtractionType type) {
-        switch (type) {
-            case SMALL:
-                return Optional.of(new ShockWave(planet, coord, 2, 2));
-            case MEDIUM:
-                return Optional.of(new ShockWave(planet, coord, 3, 2));
-            case GREAT:
-                return Optional.of(new ShockWave(planet, coord, 4, 3));
-        }
-        return Optional.empty();
+        return switch (type) {
+            case SMALL -> Optional.of(new ShockWave(planet, coord, 2, 2));
+            case MEDIUM -> Optional.of(new ShockWave(planet, coord, 3, 2));
+            case GREAT -> Optional.of(new ShockWave(planet, coord, 4, 3));
+        };
     }
 
     public static Optional<ShockWave> createShockWave(Planet planet, Coordinate coord, SamplingType type) {
-        switch (type) {
-            case NEGLIGIBLE:
-            case SMALL:
-            case MEDIUM:
-                return Optional.of(new ShockWave(planet, coord, 1, 1));
-            case GREAT:
-                return Optional.of(new ShockWave(planet, coord, 2, 2));
-        }
-        return Optional.empty();
+        return switch (type) {
+            case NEGLIGIBLE, SMALL, MEDIUM -> Optional.of(new ShockWave(planet, coord, 1, 1));
+            case GREAT -> Optional.of(new ShockWave(planet, coord, 2, 2));
+        };
     }
 
     public boolean isFinished() {

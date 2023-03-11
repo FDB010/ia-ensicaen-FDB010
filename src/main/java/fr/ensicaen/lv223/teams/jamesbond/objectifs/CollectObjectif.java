@@ -8,22 +8,23 @@ import fr.ensicaen.lv223.model.agent.robot.specials.FoodRetriever;
 import fr.ensicaen.lv223.model.agent.robot.specials.OreExtractor;
 import fr.ensicaen.lv223.model.environment.cells.Cell;
 import fr.ensicaen.lv223.model.environment.cells.CellType;
-import fr.ensicaen.lv223.model.logic.localisation.Coordinate;
 import fr.ensicaen.lv223.teams.ProjectTeam;
 import fr.ensicaen.lv223.teams.jamesbond.UnknownCell;
 import fr.ensicaen.lv223.teams.jamesbond.robots.CentralizerJB;
 import fr.ensicaen.lv223.teams.jamesbond.robots.FoodRetrieverJB;
 import fr.ensicaen.lv223.teams.jamesbond.robots.OreExtractorJB;
-import fr.ensicaen.lv223.teams.jamesbond.robots.RobotInterfaceJB;
 import fr.ensicaen.lv223.util.astar.Astar;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 import static fr.ensicaen.lv223.util.Util.cellListToCommandList;
 
 public class CollectObjectif implements Objectif {
-    private Robot robot;
-    private CentralizerJB centralizer;
+    private final Robot robot;
+    private final CentralizerJB centralizer;
 
     private UnknownCell focusedCell;
     private CellType focusedCellType;

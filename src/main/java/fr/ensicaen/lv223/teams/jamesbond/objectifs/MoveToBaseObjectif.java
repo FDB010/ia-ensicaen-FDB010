@@ -32,8 +32,8 @@ public class MoveToBaseObjectif implements Objectif {
         Coordinate base = centralizer.getPosition();
         Coordinate current = robot.getPosition();
         List<List<UnknownCell>> map = centralizer.getCells();
-        Cell start = map.get(current.getX()).get(current.getY());
-        Cell end = map.get(base.getX()).get(base.getY());
+        Cell start = map.get(current.x()).get(current.y());
+        Cell end = map.get(base.x()).get(base.y());
         Astar astar = new Astar(map, start, end);
 
         astar.compute();

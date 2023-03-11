@@ -52,8 +52,7 @@ public abstract class Robot implements Agent {
      */
     @Override
     public List<Command> compute() {
-        List<Command> commands = new ArrayList<>();
-        return commands;
+        return new ArrayList<>();
     }
     public abstract boolean isAvailable(Message m);
     public void addMessage(Message message) {

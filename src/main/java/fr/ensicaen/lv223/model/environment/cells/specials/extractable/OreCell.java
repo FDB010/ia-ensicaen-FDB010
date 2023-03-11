@@ -11,7 +11,6 @@ import fr.ensicaen.lv223.model.environment.cells.CellType;
      * Constructs a new {@code OreCell} instance with the specified properties.
      * @param x the x coordinate of the cell
      * @param y the y coordinate of the cell
-     * @param type the type of the cell
      * @param intensity the intensity of metamorphosis for the cell
      * @param quantity the quantity of minerals that can be extracted on the
      *                 cell

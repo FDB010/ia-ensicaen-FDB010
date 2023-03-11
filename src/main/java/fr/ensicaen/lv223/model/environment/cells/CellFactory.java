@@ -67,7 +67,7 @@ public class CellFactory {
                 return Optional.of(cell);
             }
         }
-        return Optional.of(null);
+        return Optional.empty();
     }
 
     public static Optional<ExtractableCell> convert(Cell cell) {
@@ -82,7 +82,7 @@ public class CellFactory {
                 return Optional.of(new OreCell(cell.getX(), cell.getY(), cell.getIntensity(), 1));
             }
         }
-        return Optional.of(null);
+        return Optional.empty();
 
     }
 

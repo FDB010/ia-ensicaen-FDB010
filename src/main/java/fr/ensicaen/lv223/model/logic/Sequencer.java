@@ -1,7 +1,6 @@
 package fr.ensicaen.lv223.model.logic;
 
 import fr.ensicaen.lv223.model.agent.command.Command;
-import fr.ensicaen.lv223.model.agent.command.CommandFactory;
 import fr.ensicaen.lv223.model.agent.robot.Robot;
 import fr.ensicaen.lv223.model.environment.planet.Planet;
 import fr.ensicaen.lv223.model.logic.localisation.RobotMapper;
@@ -42,12 +41,11 @@ public class Sequencer {
      * Compute the next state of the game.
      */
     public void step() {
-        ArrayList<Command> commands = new ArrayList<>();
         // Planet turn
-        commands.addAll(planet.compute());
+        ArrayList<Command> commands = new ArrayList<>(planet.compute());
         // Robots turn
         // Inutile de les faire compute 2 fois
-        //for (Robot robot : robots) {
+        // for (Robot robot : robots) {
         //    robot.compute();
         //}
         for (Robot robot : robots) {
@@ -60,7 +58,7 @@ public class Sequencer {
     }
 
     /**
-     * Check if the humans have arrived on the planet.
+     * Check if the humans have arrived at the planet.
      * @return true if the humans have arrived, false otherwise.
      */
     public boolean hasHumansArrived() {

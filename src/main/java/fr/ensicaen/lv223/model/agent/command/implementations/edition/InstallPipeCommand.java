@@ -19,7 +19,7 @@ public class InstallPipeCommand extends Command {
     @Override
     public void apply() {
         Coordinate coord = robotMapper.getCoordinate(robot);
-        pipe = WaterPipe.createWaterPipe(coord.x, coord.y);
+        pipe = WaterPipe.createWaterPipe(coord.getX(), coord.getY());
     }
 
     @Override

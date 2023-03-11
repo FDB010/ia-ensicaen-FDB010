@@ -1,7 +1,5 @@
 package fr.ensicaen.lv223.model.environment.planet.behavior;
 
-import fr.ensicaen.lv223.model.environment.cells.specials.extractable.ExtractableCell;
-import fr.ensicaen.lv223.model.environment.planet.behavior.metamorphosis.MetamorphosisType;
 import fr.ensicaen.lv223.model.environment.planet.Planet;
 import fr.ensicaen.lv223.model.environment.planet.behavior.metamorphosis.MetamorphosisType;
 import fr.ensicaen.lv223.model.environment.planet.reaction.ExtractionType;
@@ -10,22 +8,25 @@ import fr.ensicaen.lv223.model.environment.planet.state.PlanetEmotion;
 import javafx.scene.control.Alert;
 import net.sourceforge.jFuzzyLogic.FIS;
 import net.sourceforge.jFuzzyLogic.FunctionBlock;
-import net.sourceforge.jFuzzyLogic.JFuzzyLogic;
 import net.sourceforge.jFuzzyLogic.plot.JFuzzyChart;
+
+import java.util.Objects;
 
 public class FuzzyLogic {
 
     private final Planet planet;
     private String filenameTransformation;
     private String filenameEmotion;
-    private FunctionBlock functionBlockTransformation;
-    private FunctionBlock functionBlockEmotion;
+    private final FunctionBlock functionBlockTransformation;
+    private final FunctionBlock functionBlockEmotion;
 
 
     public FuzzyLogic( Planet planet){
         this.planet = planet;
-        this.filenameTransformation = getClass().getClassLoader().getResource("planet-transformation.fcl").getPath();
-        this.filenameEmotion = getClass().getClassLoader().getResource("planet-emotion.fcl").getPath();
+        this.filenameTransformation = Objects
+                .requireNonNull(getClass().getClassLoader().getResource("planet-transformation.fcl")).getPath();
+        this.filenameEmotion = Objects
+                .requireNonNull(getClass().getClassLoader().getResource("planet-emotion.fcl")).getPath();
         this.functionBlockTransformation = loadFisFile(this.filenameTransformation);
         this.functionBlockEmotion = loadFisFile(this.filenameEmotion);
     }

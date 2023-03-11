@@ -2,7 +2,6 @@ package fr.ensicaen.lv223.model.environment;
 
 import fr.ensicaen.lv223.model.environment.cells.Cell;
 import fr.ensicaen.lv223.model.logic.localisation.Coordinate;
-import fr.ensicaen.lv223.model.environment.planet.state.PlanetEmotion;
 
 import java.util.List;
 
@@ -50,5 +49,5 @@ public interface Environment {
      * Sets the emotion for the planet
      */
 
-    PlanetEmotion setEmotion();
+    void setEmotion();
 }

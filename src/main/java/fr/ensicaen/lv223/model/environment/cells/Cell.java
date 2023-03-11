@@ -1,9 +1,6 @@
 package fr.ensicaen.lv223.model.environment.cells;
 
 import fr.ensicaen.lv223.model.environment.EnvironmentCell;
-import fr.ensicaen.lv223.model.environment.cells.specials.extractable.FoodCell;
-
-import java.util.Random;
 
 /**
  * The {@code Cell} class represents a cell in a two-dimensional grid, with
@@ -14,7 +11,7 @@ import java.util.Random;
  * @see EnvironmentCell
  * @see Comparable
  */
-public abstract class Cell implements EnvironmentCell, Comparable {
+public abstract class Cell implements EnvironmentCell, Comparable<Object> {
     private final int x;
     private final int y;
     protected CellType type;

@@ -5,8 +5,6 @@ import fr.ensicaen.lv223.model.agent.robot.Robot;
 import fr.ensicaen.lv223.model.logic.localisation.Direction;
 import fr.ensicaen.lv223.model.logic.localisation.RobotMapper;
 
-import java.util.Random;
-
 public class MoveCommand extends Command {
     public Direction direction;
 

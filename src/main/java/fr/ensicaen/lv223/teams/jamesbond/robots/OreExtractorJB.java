@@ -7,7 +7,6 @@ import fr.ensicaen.lv223.model.agent.robot.message.Message;
 import fr.ensicaen.lv223.model.agent.robot.specials.OreExtractor;
 import fr.ensicaen.lv223.model.logic.agentInterface.PlanetInterface;
 import fr.ensicaen.lv223.model.logic.localisation.Coordinate;
-import fr.ensicaen.lv223.model.logic.localisation.Direction;
 import fr.ensicaen.lv223.teams.jamesbond.objectifs.CollectObjectif;
 
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ import java.util.List;
 public class OreExtractorJB extends OreExtractor implements RobotInterfaceJB {
     private final CentralizerJB centralizer;
     private int oreqtt;
-    private int maxOreQtt;
+    private final int maxOreQtt;
 
     public OreExtractorJB(RobotType type, CommandFactory commandFactory, PlanetInterface captors, CentralizerJB centralizer) {
         super(type, commandFactory, captors);
@@ -24,7 +23,6 @@ public class OreExtractorJB extends OreExtractor implements RobotInterfaceJB {
         this.oreqtt = 0;
         this.maxOreQtt = 1000;
         super.primalObjectif =  new CollectObjectif(this, this.centralizer);
-
     }
 
     @Override

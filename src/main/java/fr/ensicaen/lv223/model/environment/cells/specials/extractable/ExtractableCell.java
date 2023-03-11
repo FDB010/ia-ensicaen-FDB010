@@ -35,8 +35,8 @@ public abstract class ExtractableCell extends Cell {
     public double getQuantity() {
         return quantity;
     }
-    public double addQuantity(double quantity) {
-        return this.quantity+=quantity;
+    public void addQuantity(double quantity) {
+        this.quantity += quantity;
     }
 
     public void setQuantity(double quantity) {

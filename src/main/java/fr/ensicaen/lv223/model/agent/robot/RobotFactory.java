@@ -23,32 +23,32 @@ public class RobotFactory {
         switch (type) {
             case CARTOGRAPHER -> {
                 if (team == ProjectTeam.JAMES_BOND)
-                    return new CartographerJB(RobotType.CARTOGRAPHER, factory, PlanetInterface.getInstance(planet, robotMapper), CentralizerJB.getInstance(RobotType.CENTRALIZER, factory, PlanetInterface.getInstance(planet, robotMapper), robotMapper));
+                    return new CartographerJB(RobotType.CARTOGRAPHER, factory, PlanetInterface.getInstance(planet, robotMapper), CentralizerJB.getInstance(RobotType.CENTRALIZER, factory, PlanetInterface.getInstance(planet, robotMapper)));
                 return new CartographerCopilot(RobotType.CARTOGRAPHER, factory, PlanetInterface.getInstance(planet, robotMapper));
             }
             case FOOD_RETRIEVER -> {
                 if (team == ProjectTeam.JAMES_BOND)
-                    return new FoodRetrieverJB(RobotType.FOOD_RETRIEVER, factory, PlanetInterface.getInstance(planet, robotMapper), CentralizerJB.getInstance(RobotType.CENTRALIZER, factory, PlanetInterface.getInstance(planet, robotMapper), robotMapper));
+                    return new FoodRetrieverJB(RobotType.FOOD_RETRIEVER, factory, PlanetInterface.getInstance(planet, robotMapper), CentralizerJB.getInstance(RobotType.CENTRALIZER, factory, PlanetInterface.getInstance(planet, robotMapper)));
                 return new FoodRetrieverCopilot(RobotType.FOOD_RETRIEVER, factory, PlanetInterface.getInstance(planet, robotMapper));
             }
             case FARMER -> {
                 if (team == ProjectTeam.JAMES_BOND)
-                    return new FarmerJB(RobotType.FARMER, factory, PlanetInterface.getInstance(planet, robotMapper), CentralizerJB.getInstance(RobotType.CENTRALIZER, factory, PlanetInterface.getInstance(planet, robotMapper), robotMapper));
+                    return new FarmerJB(RobotType.FARMER, factory, PlanetInterface.getInstance(planet, robotMapper), CentralizerJB.getInstance(RobotType.CENTRALIZER, factory, PlanetInterface.getInstance(planet, robotMapper)));
                 return new FarmerCopilot(RobotType.FARMER, factory, PlanetInterface.getInstance(planet, robotMapper));
             }
             case PIPELINE_BUILDER -> {
                 if (team == ProjectTeam.JAMES_BOND)
-                    return new PipelineBuilderJB(RobotType.PIPELINE_BUILDER, factory, PlanetInterface.getInstance(planet, robotMapper), CentralizerJB.getInstance(RobotType.CENTRALIZER, factory, PlanetInterface.getInstance(planet, robotMapper), robotMapper));
+                    return new PipelineBuilderJB(RobotType.PIPELINE_BUILDER, factory, PlanetInterface.getInstance(planet, robotMapper), CentralizerJB.getInstance(RobotType.CENTRALIZER, factory, PlanetInterface.getInstance(planet, robotMapper)));
                 return new PipelineBuilderCopilot(RobotType.PIPELINE_BUILDER, factory, PlanetInterface.getInstance(planet, robotMapper));
             }
             case ORE_EXTRACTOR -> {
                 if (team == ProjectTeam.JAMES_BOND)
-                    return new OreExtractorJB(RobotType.ORE_EXTRACTOR, factory, PlanetInterface.getInstance(planet, robotMapper), CentralizerJB.getInstance(RobotType.CENTRALIZER, factory, PlanetInterface.getInstance(planet, robotMapper), robotMapper));
+                    return new OreExtractorJB(RobotType.ORE_EXTRACTOR, factory, PlanetInterface.getInstance(planet, robotMapper), CentralizerJB.getInstance(RobotType.CENTRALIZER, factory, PlanetInterface.getInstance(planet, robotMapper)));
                 return new OreExtractorCopilot(RobotType.ORE_EXTRACTOR, factory, PlanetInterface.getInstance(planet, robotMapper));
             }
             case CENTRALIZER -> {
                 if (team == ProjectTeam.JAMES_BOND)
-                    return CentralizerJB.getInstance(RobotType.CENTRALIZER, factory, PlanetInterface.getInstance(planet, robotMapper), robotMapper);
+                    return CentralizerJB.getInstance(RobotType.CENTRALIZER, factory, PlanetInterface.getInstance(planet, robotMapper));
                 return new CentralizerCopilot(RobotType.CENTRALIZER, factory, PlanetInterface.getInstance(planet, robotMapper));
             }
             default -> throw new IllegalArgumentException("Unexpected value: " + type);

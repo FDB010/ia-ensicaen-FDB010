@@ -9,7 +9,6 @@ import fr.ensicaen.lv223.model.environment.cells.CellType;
 import fr.ensicaen.lv223.model.logic.agentInterface.PlanetInterface;
 import fr.ensicaen.lv223.model.logic.localisation.Coordinate;
 import fr.ensicaen.lv223.model.logic.localisation.Direction;
-import fr.ensicaen.lv223.model.logic.localisation.RobotMapper;
 import fr.ensicaen.lv223.teams.jamesbond.UnknownCell;
 
 import java.util.ArrayList;
@@ -17,15 +16,15 @@ import java.util.HashMap;
 import java.util.List;
 
 public class CentralizerJB extends Centralizer implements RobotInterfaceJB{
-    private List<List<UnknownCell>> cells;
+    private final List<List<UnknownCell>> cells;
 
     private static CentralizerJB instance;
 
-    private static int WIDTH_MAP = 21;
-    private static int HEIGHT_MAP = 21;
+    private static final int WIDTH_MAP = 21;
+    private static final int HEIGHT_MAP = 21;
 
     private int oreQttToExtract;
-    private int foodQttToExtract;
+    private final int foodQttToExtract;
 
     private CentralizerJB(RobotType type, CommandFactory commandFactory, PlanetInterface captors) {
         super(type, commandFactory, captors);
@@ -40,9 +39,7 @@ public class CentralizerJB extends Centralizer implements RobotInterfaceJB{
         }
     }
 
-
-
-    public static CentralizerJB getInstance(RobotType type, CommandFactory commandFactory, PlanetInterface captors, RobotMapper mapper){
+    public static CentralizerJB getInstance(RobotType type, CommandFactory commandFactory, PlanetInterface captors){
         if(instance == null){
             instance = new CentralizerJB(type, commandFactory, captors);
         }

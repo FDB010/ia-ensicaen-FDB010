@@ -1,13 +1,6 @@
 package fr.ensicaen.lv223.model.logic.localisation;
 
-public class Coordinate {
-    public final int x;
-    public final int y;
-
-    public Coordinate(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
+public record Coordinate(int x, int y) {
 
     @Override
     public boolean equals(Object obj) {
@@ -20,8 +13,17 @@ public class Coordinate {
         return y == that.y;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    @SuppressWarnings("MethodDoesntCallSuperMethod")
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    protected Object clone() {
         return new Coordinate(x, y);
     }
 
@@ -31,13 +33,5 @@ public class Coordinate {
                 "x=" + x +
                 ", y=" + y +
                 '}';
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
     }
 }

@@ -17,7 +17,7 @@ public class CartographerJB extends Cartographer implements RobotInterfaceJB {
      * id possible is -1 or +1
      */
     private static int id = -1;
-    private CentralizerJB centralizer;
+    private final CentralizerJB centralizer;
     public CartographerJB(RobotType type, CommandFactory commandFactory, PlanetInterface captors, CentralizerJB centralizer) {
         super(type, commandFactory, captors);
         this.centralizer = centralizer;

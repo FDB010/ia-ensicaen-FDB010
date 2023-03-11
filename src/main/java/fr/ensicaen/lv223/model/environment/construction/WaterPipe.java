@@ -7,8 +7,8 @@ import java.util.List;
 public class WaterPipe {
 
     public static final List<WaterPipe> waterPipes = new ArrayList<>();
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     public static WaterPipe hasPipe(int x, int y) {
         for (WaterPipe pipe: WaterPipe.waterPipes) {
