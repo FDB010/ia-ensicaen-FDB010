@@ -12,7 +12,7 @@ L'analyse du fichier JSON contenant la structure de la planète est
 réalisée à l'aide de la bibliothèque _Jackson_, elle aussi présente 
 dans le dossier.
 
-#Rapport LV-223
+# Rapport LV-223
 Team Planet
 Ce qui a été appliqué 
 Logique floue
