@@ -65,6 +65,21 @@ RULEBLOCK No1
      RULE 19 : IF extraction IS moyenne AND prelevement IS moyen AND emotion IS joyeuse THEN future_emotion IS triste;
      RULE 20 : IF extraction IS moyenne AND prelevement IS moyen AND emotion IS triste THEN future_emotion IS colere;
      RULE 21 : IF extraction IS moyenne AND prelevement IS moyen AND emotion IS colere THEN future_emotion IS colere;
+     RULE 22 : IF extraction IS moyenne AND prelevement IS grand AND emotion IS joyeuse THEN future_emotion IS triste;
+     RULE 23 : IF extraction IS moyenne AND prelevement IS grand AND emotion IS triste THEN future_emotion IS colere;
+     RULE 24 : IF extraction IS moyenne AND prelevement IS grand AND emotion IS colere THEN future_emotion IS colere;
+     RULE 25 : IF extraction IS grande AND prelevement IS insignifiant AND emotion IS joyeuse THEN future_emotion IS triste;
+     RULE 26 : IF extraction IS grande AND prelevement IS insignifiant AND emotion IS triste THEN future_emotion IS triste;
+     RULE 27 : IF extraction IS grande AND prelevement IS insignifiant AND emotion IS colere THEN future_emotion IS colere;
+     RULE 28 : IF extraction IS grande AND prelevement IS petit AND emotion IS joyeuse THEN future_emotion IS triste;
+     RULE 29 : IF extraction IS grande AND prelevement IS petit AND emotion IS triste THEN future_emotion IS triste;
+     RULE 30 : IF extraction IS grande AND prelevement IS petit AND emotion IS colere THEN future_emotion IS colere;
+     RULE 31 : IF extraction IS grande AND prelevement IS moyen AND emotion IS joyeuse THEN future_emotion IS triste;
+     RULE 32 : IF extraction IS grande AND prelevement IS moyen AND emotion IS triste THEN future_emotion IS colere;
+     RULE 33 : IF extraction IS grande AND prelevement IS moyen AND emotion IS colere THEN future_emotion IS colere;
+     RULE 34 : IF extraction IS grande AND prelevement IS grand AND emotion IS joyeuse THEN future_emotion IS colere;
+     RULE 35 : IF extraction IS grande AND prelevement IS grand AND emotion IS triste THEN future_emotion IS colere;
+     RULE 36 : IF extraction IS grande AND prelevement IS grand AND emotion IS colere THEN future_emotion IS colere;
 
     END_RULEBLOCK
 
