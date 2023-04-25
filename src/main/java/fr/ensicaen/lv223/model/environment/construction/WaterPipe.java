@@ -42,11 +42,6 @@ public class WaterPipe {
     }
 
     public void isAlimentedInWater(WaterPipe start){
-        for(WaterPipe pipe:neighbors){
-            if(pipe.getNeighbors()){
-                isAlimentedInWater();
-            }
-        }
     }
 
     public int getX() {
