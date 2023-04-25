@@ -26,4 +26,14 @@ La deuxième fonctionnalité faite pour la planète sont les shockwaves qui sero
 Pour la suite de la planète il serait intéressant d’ajouter des agents réactifs en effet avec l’émotion qui s’ajoute dans notre programme, nous aurions pu imaginer des agents réactifs qu’ils soient hostiles ou non pour aider les robots ou les nuire. Pas de soucis de temps, nous n’avons pas implémenté cette partie.
 
 
+## Team Planet
+### Ce qui a été appliqué 
+#### Astar
+Pour certains agents, nous avons implétenté l'algorythme Astar pour trouver le chemin le plus rapide vers leurs objectifs, par exemple pour les mineurs. Cependant ce ne sont pas les agents en soit qui choisissent leurs objectifs.
 
+#### Choix des objectifs
+Chaque agent de terrain (mineurs, cartographes, fermiers ...) possède une liste d'objectifs lui indiquant ce qu'il doit faire en priorité (exemple : en temps normal, un mineur mine, mais si le centraliseur lui indique qu'il doit aller chercher un autre robot en panne, cela passe en priorité). Et ces objectifs vont générer une liste d'action à effectuer pour le robot, et dans le cas où le robot doit aller miner par exemple, l'objectif demande au centraliseur quelle case il doit miner. Le centraliseur effectue donc un travail pour déterminer la case à choisir, en fonction de la distance de la case au centraliseur, au robot, et de la réactivité de la planet sur cette case en particulier.
+
+### Ce qu’il reste à faire
+#### Implémentation des autres robots
+A l'heure actuelle, nous n'avons pas encore implémenté le comportement de base de tous les robots. De plus certains algorithmes généraux ne sont pas mis en place, comme par exemple la phase d'appel d'offre entre le centraliseur et les robots pour choisir qui doit aider un robot blessé.
