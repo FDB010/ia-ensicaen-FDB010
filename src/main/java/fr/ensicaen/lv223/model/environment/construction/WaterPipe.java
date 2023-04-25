@@ -10,6 +10,8 @@ public class WaterPipe {
     private int x;
     private int y;
 
+    private List<WaterPipe> neighbors;
+
     public static WaterPipe hasPipe(int x, int y) {
         for (WaterPipe pipe: WaterPipe.waterPipes) {
             if (pipe.getX() == x && pipe.getY() == y) {
@@ -39,8 +41,20 @@ public class WaterPipe {
         waterPipes.add(this);
     }
 
+    public void isAlimentedInWater(WaterPipe start){
+        for(WaterPipe pipe:neighbors){
+            if(pipe.getNeighbors()){
+                isAlimentedInWater();
+            }
+        }
+    }
+
     public int getX() {
         return x;
+    }
+
+    public List<WaterPipe> getNeighbors(){
+        return this.neighbors;
     }
 
     public int getY() {
