@@ -1,23 +1,14 @@
 package fr.ensicaen.lv223.model.agent.robot;
 
-import javafx.scene.paint.Color;
+import fr.ensicaen.lv223.util.loader.viewloader.ImageLoader;
+import javafx.scene.image.Image;
 
 public enum RobotType {
-    CARTOGRAPHER(Color.DODGERBLUE),
-    FOOD_RETRIEVER(Color.DARKORANGE),
-    FARMER(Color.CORNSILK),
-    PIPELINE_BUILDER(Color.DARKSEAGREEN),
-    ORE_EXTRACTOR(Color.DARKMAGENTA),
-    CENTRALIZER(Color.TRANSPARENT),
-    NONE(Color.TRANSPARENT);
-
-    private final Color color;
-    RobotType(Color color)
-    {
-        this.color = color;
-    }
-    public Color getColor()
-    {
-        return color;
-    }
+    CARTOGRAPHER,
+    FOOD_RETRIEVER,
+    FARMER,
+    PIPELINE_BUILDER,
+    ORE_EXTRACTOR,
+    CENTRALIZER,
+    NONE;
 }

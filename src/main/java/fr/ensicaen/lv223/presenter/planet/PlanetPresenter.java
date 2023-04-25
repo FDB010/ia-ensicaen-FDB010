@@ -1,6 +1,7 @@
 package fr.ensicaen.lv223.presenter.planet;
 
 import fr.ensicaen.lv223.model.environment.cells.Cell;
+import fr.ensicaen.lv223.model.environment.construction.WaterPipe;
 import fr.ensicaen.lv223.model.environment.planet.Planet;
 import fr.ensicaen.lv223.presenter.IPresenter;
 import fr.ensicaen.lv223.view.CellView;
@@ -12,8 +13,7 @@ public class PlanetPresenter {
     private IPresenter view;
     private final Planet planet;
 
-    public PlanetPresenter(IPresenter view, Planet planet) {
-        this.view = view;
+    public PlanetPresenter(Planet planet) {
         this.planet = planet;
     }
 
@@ -25,9 +25,12 @@ public class PlanetPresenter {
             cellsView.add(new ArrayList<>(cells.get(0).size()));
             for (int j = 0; j < cells.get(i).size(); j++) {
                 cellsView.get(i).add(
-                    new CellView(view.getSceneWidth() / 21.0,
-                    view.getSceneHeight() / 21.0,
-                    cells.get(i).get(j).getType().name())
+                        new CellView(
+                                view.getSceneWidth() / 21.0,
+                                view.getSceneHeight() / 21.0,
+                                cells.get(i).get(j).getType(),
+                                WaterPipe.hasPipe(i, j) != null
+                        )
                 );
             }
         }
@@ -38,5 +41,16 @@ public class PlanetPresenter {
 
     public void setView(IPresenter view) {
         this.view = view;
+    }
+
+    public void updateStatus(){
+        this.view.updateStatus(
+                0,
+                planet.getCurrentHealthStatus().name(),
+                planet.getStockFood(),
+                (planet.getStockWater() * 1e-9),
+                planet.getStockMineral(),
+                0
+        );
     }
 }

@@ -10,6 +10,7 @@ import fr.ensicaen.lv223.view.CellView;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.paint.Color;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -22,32 +23,37 @@ public class ColonyPresenter {
     private IPresenter view;
     private final RobotMapper robotMapper;
 
-    public ColonyPresenter(IPresenter view, Planet planet) {
-        this.view = view;
-        this.robotMapper = new RobotMapper(planet);
+    public ColonyPresenter(RobotMapper robotMapper) {
+
+        this.robotMapper = robotMapper;
     }
 
     public void drawColony() {
         List<List<CellView>> cellViews = view.getCellView();
-        GaussianBlur blur = new GaussianBlur(60);
+        GaussianBlur blur = new GaussianBlur(10);
         GaussianBlur noBlur = new GaussianBlur(0.0);
         for (int i = 0; i < cellViews.size(); i++) {
             List<CellView> row = cellViews.get(i);
             for (int j = 0; j < row.size(); j++) {
                 CellView cell = row.get(j);
                 cell.getPane().setEffect(blur);
-                cell.getRobotView().setColor(Color.TRANSPARENT);
+                cell.getRobotView().hide();
             }
         }
 
-        // TODO check
         for (Robot robot : robotMapper.getRobots()) {
-            Coordinate robotCoordinate = robotMapper.getCoordiante(robot);
-            cellViews.get(robotCoordinate.x).get(robotCoordinate.y).getRobotView().setColor(robot.type.getColor());
+            Coordinate robotCoordinate = robotMapper.getCoordinate(robot);
+            cellViews.get(robotCoordinate.x).get(robotCoordinate.y).getRobotView().setRobotType(robot.type);
+            cellViews.get(robotCoordinate.x).get(robotCoordinate.y).getRobotView().setVisible();
+            cellViews.get(robotCoordinate.x).get(robotCoordinate.y).getPane().setEffect(noBlur);
             for (Coordinate coord : Util.getNeighbors(robotCoordinate, robotMapper.getHeigth(), robotMapper.getWidth())) {
                 cellViews.get(coord.x).get(coord.y).getPane().setEffect(noBlur);
             }
         }
+    }
+
+    public void updateColony(){
+        // TODO Method update for the presenter
     }
 
     public void setView(IPresenter view) {

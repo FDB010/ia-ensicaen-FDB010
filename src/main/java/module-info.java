@@ -6,7 +6,9 @@ module fr.ensicaen.lv223 {
     requires java.logging;
 
     opens fr.ensicaen.lv223 to javafx.fxml;
-    exports fr.ensicaen.lv223;
-    opens fr.ensicaen.lv223.planetloader to jackson.databind;
+    opens fr.ensicaen.lv223.util.loader.planetloader to jackson.databind;
     opens fr.ensicaen.lv223.view to javafx.fxml;
+
+    exports fr.ensicaen.lv223;
+    exports fr.ensicaen.lv223.model.environment.cells;
 }
